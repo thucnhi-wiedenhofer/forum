@@ -168,12 +168,14 @@ class Users extends Controller {
     public function createUserSession($user) {
         $_SESSION['id'] = $user->id;
         $_SESSION['login'] = $user->login;
+        $_SESSION['email'] =$user->email;
         header('location:' . URLROOT . '/posts/home');
     }
 
     public function logout() {
         unset($_SESSION['id']);
         unset($_SESSION['login']);
+        unset($_SESSION['email']);
         header('location:' . URLROOT . '/users/connexion');
     }
 

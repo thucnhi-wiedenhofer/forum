@@ -57,7 +57,8 @@
                                                     <div class="col-lg-6 col-md-6">
                                                         <input type="email"  value="<?php if(!empty($_SESSION['id'])){echo $_SESSION['email'];} ?>" name="email" class="form-control" />
                                                         <span class="invalidFeedback">
-                                                        <?php echo $data['emailError']; ?>
+                                                        <?php if(!empty($data['emailError'])){
+                                                        echo $data['emailError'];}  ?>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -84,7 +85,9 @@
                                     <!-- acc section -->
                                     <div class="accsection privacy">
                                     <span class="invalidFeedback">
-                                    <?php echo $data['fieldsEmptyError']; ?>
+                                    <?php if(!empty($data['fieldsEmptyError'])){
+                                        echo $data['fieldsEmptyError'];
+                                    }  ?>
                                     </span>
                                         <div class="acccap">
                                             <div class="userinfo pull-left">&nbsp;</div>
