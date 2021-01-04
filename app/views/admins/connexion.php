@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 breadcrumbf">
-                            <a href="#">CONNEXION</a> 
+                            <a href="#">CONNEXION ADMINISTRATION</a> 
                         </div>
                     </div>
                 </div>
@@ -33,9 +33,9 @@
 
                             <!-- POST -->
                             <div class="post">
-                                <form class="form newtopic" action="<?php echo URLROOT; ?>/users/connexion" method ="POST">
+                                <form class="form newtopic" action="<?php echo URLROOT; ?>/admins/connexion" method ="POST">
                                     <div class="postinfotop">
-                                        <h2>Se connecter </h2>
+                                        <h2>Se connecter</h2>
                                     </div>
 
                                     <!-- acc section -->

@@ -9,8 +9,7 @@ class Admins extends Controller {
         $data = [
             'title' => 'Login page',
             'loginError' => '',
-            'adminError' => ''
-        ];
+            ];
 
         //validation des post
         if(isset($_POST['submit'])) {
@@ -31,9 +30,9 @@ class Admins extends Controller {
                 if ($loggedInAdmin != false) {
                     $this->createAdminSession($loggedInAdmin);
                 } else {
-                    $data['loginError'] = 'Le mot de passe ou le login sont incorrects.';
+                    $data['loginError'] = 'Soit le mot de passe ou le login sont incorrects, soit vous n\'avez pas les droits administrateur. ';
 
-                    $this->view('users/connexion', $data);
+                    $this->view('admins/connexion', $data);
                 }
 
 
@@ -42,7 +41,7 @@ class Admins extends Controller {
                 'loginError' => ''
             ];
         }
-        $this->view('users/connexion', $data);
+        $this->view('admins/connexion', $data);
     }
 
     public function inscription() {
