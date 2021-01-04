@@ -104,7 +104,7 @@
                                                             <div class="col-lg-2 col-md-3">
                                                                 <div class="checkbox">
                                                                     <label>
-                                                                    <img src="<?php echo URLROOT; ?>/public/images/avatars/admin.png" alt="admin">
+                                                                    <img src="<?php echo URLROOT; ?>/public/images/avatars/admin.jpg" alt="admin">
                                                                         <input type="radio" id="av1" name="avatar" value="admin" checked/> 
                                                                     </label>
                                                                 </div>
