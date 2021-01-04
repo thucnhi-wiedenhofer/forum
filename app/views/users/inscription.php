@@ -105,7 +105,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar1.png" alt="avatar">
-                                                                        <input type="radio" id="av1" name="avatar" value="avatar1"/> 
+                                                                        <input type="checkbox" id="av1" name="avatar" value="avatar1"/> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -113,7 +113,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar2.png" alt="avatar"> 
-                                                                        <input type="radio" id="av2" name="avatar" value="avatar2"/>
+                                                                        <input type="checkbox" id="av2" name="avatar" value="avatar2"/>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -121,7 +121,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar3.png" alt="avatar">
-                                                                        <input type="radio" id="av3" name="avatar" value="avatar3" /> 
+                                                                        <input type="checkbox" id="av3" name="avatar" value="avatar3" /> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -129,7 +129,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar4.png" alt="avatar">
-                                                                        <input type="radio" id="av4" name="avatar" value="avatar4"/> 
+                                                                        <input type="checkbox" id="av4" name="avatar" value="avatar4"/> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -137,7 +137,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar5.png" alt="avatar">
-                                                                        <input type="radio" id="av5" name="avatar" value="avatar5" /> 
+                                                                        <input type="checkbox" id="av5" name="avatar" value="avatar5" /> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -145,7 +145,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar6.png" alt="avatar">
-                                                                        <input type="radio" id="av6" name="avatar" value="avatar6" /> 
+                                                                        <input type="checkbox" id="av6" name="avatar" value="avatar6" /> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -155,7 +155,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar7.png" alt="avatar">
-                                                                        <input type="radio" id="av7" name="avatar" value="avatar7"/> 
+                                                                        <input type="checkbox" id="av7" name="avatar" value="avatar7"/> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -163,7 +163,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar8.png" alt="avatar">
-                                                                        <input type="radio" id="av8" name="avatar" value="avatar8"/>
+                                                                        <input type="checkbox" id="av8" name="avatar" value="avatar8"/>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -171,7 +171,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar9.png" alt="avatar">
-                                                                        <input type="radio" id="av9" name="avatar" value="avatar9" /> 
+                                                                        <input type="checkbox" id="av9" name="avatar" value="avatar9" /> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -179,7 +179,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar10.png" alt="avatar">
-                                                                        <input type="radio" id="av10" name="avatar" value="avatar10"/> 
+                                                                        <input type="checkbox" id="av10" name="avatar" value="avatar10"/> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -187,7 +187,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar11.png" alt="avatar">
-                                                                        <input type="radio" id="av11" name="avatar" value="avatar11"/> 
+                                                                        <input type="checkbox" id="av11" name="avatar" value="avatar11"/> 
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -195,7 +195,7 @@
                                                                 <div class="checkbox">
                                                                     <label>
                                                                     <img src="<?php echo URLROOT; ?>/public/images/avatars/avatar12.png" alt="avatar">
-                                                                        <input type="radio" id="av12" name="avatar" value="avatar12" /> 
+                                                                        <input type="checkbox" id="av12" name="avatar" value="avatar12" /> 
                                                                     </label>
                                                                 </div>
                                                             </div>

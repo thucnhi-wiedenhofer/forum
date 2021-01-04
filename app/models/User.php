@@ -6,13 +6,10 @@ class User {
     }
 
     public function profil($data){
-                                            
-            $this->db->query('UPDATE utilisateurs SET password= :password, email= :email, 
-            avatar= :avatar WHERE id= :id');
             
+            $this->db->query('UPDATE utilisateurs SET login= :login, password= :password WHERE id= :id');
+            $this->db->bind(':login', $data['login']);
             $this->db->bind(':password', $data['password']);
-            $this->db->bind(':email', $data['email']);
-            $this->db->bind(':avatar', $data['avatar']);
             $this->db->bind(':id', $data['id']);
            
             //Execute function
@@ -24,7 +21,8 @@ class User {
     }  
     
     public function inscription($data) {
-       
+        $creation= date("Y-m-d");
+        $intranet= $data['login'].'@intranet';
         $this->db->query('INSERT INTO utilisateurs (login, password, email, intranet, avatar, naissance,
          creation, genre, role) VALUES(:login, :password, :email, :intranet,:avatar, :naissance, :creation, :genre, :role)');
 
@@ -33,10 +31,10 @@ class User {
         $this->db->bind(':login', $data['login']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':email', $data['email']);
-        $this->db->bind(':intranet', $data['intranet']);
+        $this->db->bind(':intranet', $intranet);
         $this->db->bind(':avatar', $data['avatar']);
         $this->db->bind(':naissance', $data['naissance']);
-        $this->db->bind(':creation', $data['creation']);
+        $this->db->bind(':creation', $creation);
         $this->db->bind(':genre', $data['genre']);
         $this->db->bind(':role', $data['role']);
        

@@ -13,5 +13,5 @@
     define('URLROOT', 'http://localhost/forum');
 
     //nom du site
-    define('SITENAME', 'forum');
+    define('SITENAME', 'Forum');
 ?>
