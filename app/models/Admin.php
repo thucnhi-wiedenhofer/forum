@@ -49,11 +49,11 @@ class User {
 
 
     public function connexion($login, $password) {
-        $this->db->query('SELECT * FROM utilisateurs WHERE login = :login');
+        $this->db->query('SELECT * FROM utilisateurs WHERE login = :login AND role = :role');
 
         //Bind 
         $this->db->bind(':login', $login);
-       
+        $this->db->bind(':role', 'admin');
         //méthode row comme objet de database
         $row = $this->db->single();
         if($row != FALSE){

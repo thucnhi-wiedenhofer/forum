@@ -24,13 +24,12 @@ class Admins extends Controller {
                  les filtres de la fonction valid_data*/
                 $login = valid_data($_POST["login"]);
                 $password = $_POST["password"];
+                
 
+                $loggedInAdmin = $this->adminModel->connexion($login, $password);
 
-
-                $loggedInUser = $this->userModel->connexion($login, $password);
-
-                if ($loggedInUser != false) {
-                    $this->createUserSession($loggedInUser);
+                if ($loggedInAdmin != false) {
+                    $this->createAdminSession($loggedInAdmin);
                 } else {
                     $data['loginError'] = 'Le mot de passe ou le login sont incorrects.';
 
