@@ -36,19 +36,20 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {.tp-banner-container{	background-image: url("../../public/images/banner-xsm.jpg");width:100vw;
-	height:15vh;}}
+	height:15vh;
+	}.tp-banner-container .h1 {padding-top: 0.5em; font-size: 3em;}}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {.tp-banner-container{	background-image: url("../../public/images/banner-sm.jpg");width:100vw;
-	height:20vh;} .tp-banner-container .h1{padding-top: 0.2em;}}
+	height:20vh;} .tp-banner-container .h1{padding-top: 0.5em; font-size: 3em;}}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {.tp-banner-container{	background-image: url("../../public/images/banner-md.jpg");width:100vw;
-	height:25vh;}.tp-banner-container .h1{padding-top: 1em;} }
+	height:25vh;}.tp-banner-container .h1{padding-top: 0.5em; font-size:4em;  } }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {.tp-banner-container{	background-image: url("../../public/images/banner2.jpg");width:100vw;
-	height:35vh;} .tp-banner-container .h1{padding-top: 1.5em;} }
+	height:35vh;} .tp-banner-container .h1{padding-top: 1em; font-size:5em; } }
 
 	@media only screen and (max-width: 600px) {.tp-banner-container .h1{ display:none;} }
 	@media only screen and (max-width: 600px) {.tp-banner-container .h5{ display: none;}}
@@ -69,7 +70,7 @@
 	.tp-banner-landing .h1{
 		color:white;
 		font-size:5em;
-		padding-top: 6.5em;	
+		padding-top: 5em;	
 		padding-left: 3em;
 	}
 	
