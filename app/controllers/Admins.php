@@ -187,7 +187,7 @@ class Admins extends Controller {
             'users' => $users
         ];
 
-        $this->view('admins/index', $data);
+        $this->view('admins/crud', $data);
         } else {
                  header('location:' . URLROOT . '/posts/home');
             }
