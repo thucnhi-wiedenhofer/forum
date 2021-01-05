@@ -84,9 +84,7 @@
 
                                     <!-- acc section -->
                                     <div class="accsection privacy">
-                                    <span class="invalidFeedback">
-                                    <?php echo $data['fieldsEmptyError']; ?>
-                                    </span>
+                                    
                                         <div class="acccap">
                                             <div class="userinfo pull-left">&nbsp;</div>
                                             <div class="posttext pull-left"><h3>Avatar</h3></div>
