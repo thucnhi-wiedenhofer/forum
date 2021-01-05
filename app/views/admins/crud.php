@@ -1,2 +1,2 @@
 <?php 
-var_dump($users);
+var_dump($data);
