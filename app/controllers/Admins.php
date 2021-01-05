@@ -181,12 +181,16 @@ class Admins extends Controller {
 
     public function crud(){
         if (!empty($_SESSION['id']) && $_SESSION['role']=='admin'){
-            if ($this->adminModel->crud()) {
-                //affiche la view crud
-                $this->view('admins/crud', $users);
-            } else {
-                die('Erreur système.');
+           $users = $this->adminModel->crud();
+
+        $data = [
+            'users' => $users
+        ];
+
+        $this->view('admins/index', $data);
+        } else {
+                 header('location:' . URLROOT . '/posts/home');
             }
         }
-    }
+    
 }

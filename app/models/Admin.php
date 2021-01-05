@@ -95,9 +95,10 @@ class Admin {
         }
     }
         public function crud(){
-            $this->db->query('SELECT * FROM utilisateurs');
+            $this->db->query('SELECT * FROM utilisateurs ORDER BY login ASC');
             $users=$this->db->resultSet();
             return $users;
         }
+        
     
 }
