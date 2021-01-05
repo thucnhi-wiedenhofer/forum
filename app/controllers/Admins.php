@@ -176,6 +176,7 @@ class Admins extends Controller {
         unset($_SESSION['id']);
         unset($_SESSION['login']);
         unset($_SESSION['email']);
+        unset($_SESSION['role']);
         header('location:' . URLROOT . '/posts/home');
     }
 
@@ -192,5 +193,14 @@ class Admins extends Controller {
                  header('location:' . URLROOT . '/posts/home');
             }
         }
+    
+        public function update(){
+            echo 'ok';
+        }
+
+          public function delete(){
+            echo 'ok';
+        }
+
     
 }
