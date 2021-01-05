@@ -51,19 +51,16 @@ class Admins extends Controller {
             'password' => '',
             'confirmPassword' => '',
             'confirmPasswordError' => '',
-            'fieldsEmptyError' =>'',
             'email'=> '',
             'emailError'=> '',
             'intranet' =>'',
             'avatar'=> '',
-            'naissance'=>'',
             'creation'=> '',
-            'genre'=>'',
             'role' => ''
             ];
 
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['inscrire'])){
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['enregistrer'])){
 
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -75,14 +72,11 @@ class Admins extends Controller {
                 'password' => trim($_POST['password']),
                 'confirmPassword' => trim($_POST['confirmPassword']),
                 'confirmPasswordError' => '',
-                'fieldsEmptyError' =>'',
                 'email'=> trim($_POST["email"]),
                 'emailError'=>'',
                 'intranet'=>$_POST['login'].'@intranet',
                 'avatar'=> trim($_POST["avatar"]),
-                'naissance'=>trim($_POST["naissance"]),
                 'creation'=> date('Y-m-d'),
-                'genre'=>trim($_POST["genre"]),
                 'role' => trim($_POST['role'])
 
             ];
@@ -90,32 +84,32 @@ class Admins extends Controller {
 
                 if ($data['password'] != $data['confirmPassword']) {
                     $data['confirmPasswordError'] = 'Les passwords ne correspondent pas.';
-                }elseif(empty($data['avatar']) || empty($data['naissance']) ||empty($data['genre'])){$data['fielfdsEmptyError']= 'Tous les champs doivent être renseignés';
+                
                 }elseif
-                    ($this->userModel->findUserByEmail($data['email'])) {
+                    ($this->adminModel->findAdminByEmail($data['email'])) {
                         $data['emailError'] = 'Cet email est déja utilisé.';
                 }elseif
-                ($this->userModel->findUserByLogin($data['login'])) {
+                ($this->adminModel->findAdminByLogin($data['login'])) {
                     $data['loginError'] = 'Ce login est déja utilisé.';}
 
 
             // error vide
-            if (empty($data['confirmPasswordError']) && empty($data['loginError']) && empty($data['emailError']) && empty($data['fieldsEmptyError'])) {
+            if (empty($data['confirmPasswordError']) && empty($data['loginError']) && empty($data['emailError']) ) {
 
                 // Hash password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 //enregistre utilisateur
-                if ($this->userModel->inscription($data)) {
+                if ($this->adminModel->inscription($data)) {
                     //Redirect page connexion
-                    header('location: ' . URLROOT . '/users/connexion');
+                    header('location: ' . URLROOT . '/admins/connexion');
                 } else {
                     die('Erreur systéme.');
                 }
             }
         }
 
-        $this->view('users/inscription', $data);
+        $this->view('admins/inscriptionAdmin', $data);
     }
 
     public function profil() {
@@ -125,10 +119,8 @@ class Admins extends Controller {
             'password' => '',
             'confirmPassword' => '',
             'confirmPasswordError' => '',
-            'fieldsEmptyError' =>'',
             'email'=> '',
             'emailError'=> '',
-            'avatar'=> '',
             ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['modifier'])){
@@ -141,47 +133,42 @@ class Admins extends Controller {
                 'login' => $_SESSION['login'],
                 'password' => trim($_POST['password']),
                 'confirmPassword' => trim($_POST['confirmPassword']),
-                'confirmPasswordError' => '',
-                'fieldsEmptyError' =>'',
+                'confirmPasswordError' => '',                
                 'email'=> trim($_POST["email"]),
                 'emailError'=>'',
-                'avatar'=> trim($_POST["avatar"]),
-
-            ];
-
-
+                ];
 
             if ($data['password'] != $data['confirmPassword']) {
                 $data['confirmPasswordError'] = 'Les passwords ne correspondent pas.';
-            }elseif(empty($data['avatar']) ){$data['fielfdsEmptyError']= 'L\'avatar doit être renseigné';
+           
             }elseif
-                ($_POST['email']!= $_SESSION['email'] && $this->userModel->findUserByEmail($data['email'])) {
+                ($_POST['email']!= $_SESSION['email'] && $this->adminModel->findAdminByEmail($data['email'])) {
                     $data['emailError'] = 'Cet email est déja utilisé.';
             }
         // error vide
-        if (empty($data['confirmPasswordError']) && empty($data['emailError']) && empty($data['fieldsEmptyError'])) {
+        if (empty($data['confirmPasswordError']) && empty($data['emailError']) ) {
 
                 // Hash password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 //enregistre utilisateur
-                if ($this->userModel->profil($data)) {
+                if ($this->adminModel->profil($data)) {
                     //Redirect page connexion
-                    header('location: ' . URLROOT . '/users/logout');
+                    header('location: ' . URLROOT . '/admins/logout');
                 } else {
                     die('Erreur système.');
                 }
             }
         }
-        $this->view('users/profil', $data);
+        $this->view('admins/profil', $data);
     }
 
 
-    public function createUserSession($user) {
-        $_SESSION['id'] = $user->id;
-        $_SESSION['login'] = $user->login;
-        $_SESSION['email'] = $user->email;
-        header('location:' . URLROOT . '/posts/home');
+    public function createAdminSession($admin) {
+        $_SESSION['id'] = $admin->id;
+        $_SESSION['login'] = $admin->login;
+        $_SESSION['email'] = $admin->email;
+        header('location:' . URLROOT . '/admins/crud');
     }
 
     public function logout() {

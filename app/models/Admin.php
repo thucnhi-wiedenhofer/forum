@@ -7,10 +7,12 @@ class User {
 
     public function profil($data){
             
-            $this->db->query('UPDATE utilisateurs SET login= :login, password= :password WHERE id= :id');
+            $this->db->query('UPDATE utilisateurs SET login= :login, password= :password, email= :email WHERE id= :id');
             $this->db->bind(':login', $data['login']);
             $this->db->bind(':password', $data['password']);
+            $this->db->bind(':email', $data['email']);
             $this->db->bind(':id', $data['id']);
+            
            
             //Execute function
         if ($this->db->execute()) {
@@ -23,8 +25,8 @@ class User {
     public function inscription($data) {
         $creation= date("Y-m-d");
         $intranet= $data['login'].'@intranet';
-        $this->db->query('INSERT INTO utilisateurs (login, password, email, intranet, avatar, naissance,
-         creation, genre, role) VALUES(:login, :password, :email, :intranet,:avatar, :naissance, :creation, :genre, :role)');
+        $this->db->query('INSERT INTO utilisateurs (login, password, email, intranet, avatar, 
+         creation, role) VALUES(:login, :password, :email, :intranet,:avatar,:creation,:role)');
 
 
         //Bind values
@@ -32,10 +34,8 @@ class User {
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':intranet', $intranet);
-        $this->db->bind(':avatar', $data['avatar']);
-        $this->db->bind(':naissance', $data['naissance']);
-        $this->db->bind(':creation', $creation);
-        $this->db->bind(':genre', $data['genre']);
+        $this->db->bind(':avatar', $data['avatar']);        
+        $this->db->bind(':creation', $creation);        
         $this->db->bind(':role', $data['role']);
        
         
@@ -69,7 +69,7 @@ class User {
     }
 
     //méthode finduser par login. login est passée par le Controller.
-    public function findUserByLogin($login) {
+    public function findAdminByLogin($login) {
         $this->db->query('SELECT * FROM utilisateurs WHERE login = :login');
 
         //Bind 
@@ -80,7 +80,7 @@ class User {
     }
 
     //Find user by email. Email is passed in by the Controller.
-    public function findUserByEmail($email) {
+    public function findAdminByEmail($email) {
         //Prepared statement
         $this->db->query('SELECT * FROM utilisateurs WHERE email = :email');
 
