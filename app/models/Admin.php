@@ -94,4 +94,10 @@ class Admin {
             return false;
         }
     }
+        public function crud(){
+            $this->db->query('SELECT * FROM utilisateurs');
+            $users=$this->db->resultSet();
+            return $users;
+        }
+    
 }

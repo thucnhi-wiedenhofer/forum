@@ -160,7 +160,7 @@ class Admins extends Controller {
                 }
             }
         }
-        $this->view('admins/profil', $data);
+        $this->view('admins/profilAdmin', $data);
     }
 
 
@@ -168,6 +168,7 @@ class Admins extends Controller {
         $_SESSION['id'] = $admin->id;
         $_SESSION['login'] = $admin->login;
         $_SESSION['email'] = $admin->email;
+        $_SESSION['role'] = $admin->role;
         header('location:' . URLROOT . '/admins/crud');
     }
 
@@ -178,4 +179,14 @@ class Admins extends Controller {
         header('location:' . URLROOT . '/posts/home');
     }
 
+    public function crud(){
+        if (!empty($_SESSION['id']) && $_SESSION['role']=='admin'){
+            if ($this->adminModel->crud()) {
+                //affiche la view crud
+                $this->view('admins/crud', $users);
+            } else {
+                die('Erreur système.');
+            }
+        }
+    }
 }
