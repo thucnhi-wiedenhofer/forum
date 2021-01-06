@@ -94,11 +94,22 @@ class Admin {
             return false;
         }
     }
-        public function crud(){
-            $this->db->query('SELECT * FROM utilisateurs ORDER BY login ASC');
-            $users=$this->db->resultSet();
-            return $users;
-        }
+
+    public function crud(){
+        $this->db->query('SELECT * FROM utilisateurs ORDER BY login ASC');
+        $users=$this->db->resultSet();
+        return $users;
+    }
+
+    public function view($id) {
+        $this->db->query('SELECT * FROM utilisateurs WHERE id = :id');
+
+        //Bind 
+        $this->db->bind(':id', $id);
+        //méthode row comme objet de database
+        $user = $this->db->single();
+        return $user;
+    }
         
     
 }

@@ -193,12 +193,28 @@ class Admins extends Controller {
                  header('location:' . URLROOT . '/posts/home');
             }
         }
+
+    public function vueProfil($id){
+        if (!empty($_SESSION['id']) && $_SESSION['role']=='admin'){
+            $user = $this->adminModel->view($id);
+ 
+         $data = [
+             'user' => $user
+         ];
+ 
+         $this->view('users/vueprofil', $data);
+         } else {
+                  header('location:' . URLROOT . '/admins/crud');
+             }
+         }
+  
     
-        public function update(){
+    
+    public function update(){
             echo 'ok';
         }
 
-          public function delete(){
+    public function delete(){
             echo 'ok';
         }
 

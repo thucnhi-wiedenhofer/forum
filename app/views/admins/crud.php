@@ -59,8 +59,8 @@
                             echo "<td>".$user->role."</td>";
                               echo "<td>".$user->intranet."</td>";
                            
-                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/update/"'.'>
-                             Modifier</a></td>';
+                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
+                             Voir</a></td>';
                             echo '<td><form action="'.URLROOT .'/admins/delete/'. $user->id.'" method="POST">
                             <input type="submit" name="delete" value="Delete" class="btn red">
                             </form></td>';
@@ -77,8 +77,8 @@
                             echo "<td>".$user->role."</td>";
                               echo "<td>".$user->intranet."</td>";
                            
-                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/update/"'.'>
-                             Modifier</a></td>';
+                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
+                             Voir</a></td>';
                             echo '<td><form action="'.URLROOT .'/admins/delete/'. $user->id.'" method="POST">
                             <input type="submit" name="delete" value="Delete" class="btn red">
                             </form></td>';
@@ -120,8 +120,8 @@
                              echo "<td>".$user->blocage."</td>";
 
                            
-                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/update/"'.'>
-                             Modifier</a></td>';
+                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
+                             Voir</a></td>';
                             echo '<td><form action="'.URLROOT .'/admins/delete/'. $user->id.'" method="POST">
                             <input type="submit" name="delete" value="Delete" class="btn red">
                             </form></td>';
