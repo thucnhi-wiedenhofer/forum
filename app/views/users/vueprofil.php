@@ -36,11 +36,12 @@
                                 <div class="post">
                                 
                                     <div class="postinfotop">
-                                        <div class="row">
+                                        
                                         
                                         <h2>Le profil de <?= $data['user']->login ?></h2>
+                                        <h3>Role: <?= $data['user']->role ?></h3>
                                             
-                                        </div>
+                                      
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
                                                 <ul class="cats">
