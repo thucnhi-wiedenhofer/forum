@@ -14,7 +14,7 @@
                 </li>
                         
                     <?php 
-                    if(isset($_SESSION['id'])) //message de connexion dans la navbar et bouton de déconnexion
+                    if(isset($_SESSION['id']) && ($_SESSION['role']=='membre')) //message de connexion dans la navbar et bouton de déconnexion
                     {
                         echo '<li class="nav-item active align-right">
                         <span class="nav-link">Vous êtes connecté(e)</span>    
@@ -24,6 +24,17 @@
                         echo '</li>';
                         echo '<li class="nav-item align-right">';
                         echo '<a href="'.URLROOT.'/users/logout" class="nav-link">Déconnexion</a>
+                        </li>';
+                    }
+                    elseif(isset($_SESSION['id']) && ($_SESSION['role']=='admin')){
+                        echo '<li class="nav-item active align-right">
+                        <span class="nav-link">Vous êtes connecté(e)</span>    
+                        </li>';
+                        echo '<li class="nav-item align-right">';
+                        echo '<a href="'. URLROOT.'/admins/profil" class="nav-link">Modifier</a>';
+                        echo '</li>';
+                        echo '<li class="nav-item align-right">';
+                        echo '<a href="'.URLROOT.'/admins/logout" class="nav-link">Déconnexion</a>
                         </li>';
                     }
                     else
@@ -38,6 +49,7 @@
                     }
                     ?> 
             </ul>
+            <div class="pull-left"><a class="btn btn-primary"  href="<?php echo  URLROOT.'/admins/connexion'; ?>">Administration</a></div>
 
         </div>
     </nav>
