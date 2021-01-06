@@ -55,13 +55,13 @@
                                             <div class="col-lg-6 col-md-6">
                                                 <ul class="cats">
                                                 <br />
-                                                    <li>Date création compte: <?= $data['user']->creation ?></li>
+                                                    <li>Date création compte: <?php $date=$data['user']->creation; $date_fr = implode('-',array_reverse  (explode('-',$date)));  echo $date_fr; ?></li>
                                                     <br />
                                                     <li>Age : <?php $dateNaissance= $data['user']->naissance; $aujourdhui=date('Y-m-d'); $age=date_diff(date_create($dateNaissance), date_create($aujourdhui)); echo $age->format('%y'); ?> ans</li>
                                                     <br />
                                                     <li>Sexe: <?= $data['user']->genre ?></li>
                                                     <br />
-                                                    <li>Date déblocage  : <?= $data['user']->periode_blocage ?></li>
+                                                    <li>Date déblocage  : <?php $date= $data['user']->periode_blocage; $date_fr = implode('-',array_reverse  (explode('-',$date)));  echo $date_fr; ?></li>
                                                     <br />
                                                     <br />
                                                     <li><a class="btn btn-warning"  href="<?php echo  URLROOT.'/admins/update'; ?>">Modifier le profil</a></li>
