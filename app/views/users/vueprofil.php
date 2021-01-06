@@ -21,7 +21,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 breadcrumbf">
-                            <a href="#">VOIR PROFIL</a> 
+                            <a href="<?php echo  URLROOT.'/admins/crud';?>">CRUD ></a>
+                            <a href="#"> VOIR PROFIL</a> 
                         </div>
                     </div>
                 </div>
@@ -35,7 +36,11 @@
                                 <div class="post">
                                 
                                     <div class="postinfotop">
+                                        <div class="row">
+                                        
                                         <h2>Le profil de <?= $data['user']->login ?></h2>
+                                            
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6">
                                                 <ul class="cats">
@@ -64,7 +69,11 @@
                                                     <li>Date déblocage  : <?php $date= $data['user']->periode_blocage; $date_fr = implode('-',array_reverse  (explode('-',$date)));  echo $date_fr; ?></li>
                                                     <br />
                                                     <br />
-                                                    <li><a class="btn btn-warning"  href="<?php echo  URLROOT.'/admins/update'; ?>">Modifier le profil</a></li>
+                                                    <li><a class="btn btn-warning"  href="<?php
+                                                    if($data['user']->role == 'admin'){ echo  URLROOT.'/admins/update';}
+                                                    elseif($data['user']->role == 'moderate'){ echo  URLROOT.'/moderates/update';}
+                                                    else{ echo  URLROOT.'/users/update';}
+                                                     ?>">Modifier le profil</a></li>
                                                 </ul>  
                                             </div>
                                         </div>

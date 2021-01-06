@@ -42,8 +42,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Role</th>
                          <th scope="col">Intranet</th>
-                        <th scope="col">Modifier</th>
-                        <th scope="col">Supprimer</th>
+                        <th scope="col">Voir profil</th>
                         
                         </tr>
                     </thead>
@@ -61,9 +60,6 @@
                            
                             echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
                              Voir</a></td>';
-                            echo '<td><form action="'.URLROOT .'/admins/delete/'. $user->id.'" method="POST">
-                            <input type="submit" name="delete" value="Delete" class="btn red">
-                            </form></td>';
                              echo "</tr>";
                             }   
                            
@@ -79,9 +75,6 @@
                            
                             echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
                              Voir</a></td>';
-                            echo '<td><form action="'.URLROOT .'/admins/delete/'. $user->id.'" method="POST">
-                            <input type="submit" name="delete" value="Delete" class="btn red">
-                            </form></td>';
                              echo "</tr>";
                             }   
                            
@@ -102,8 +95,8 @@
                         <th scope="col">Role</th>
                          <th scope="col">Intranet</th>
                         <th scope="col">Blocage</th>
-                        <th scope="col">Modifier</th>
-                        <th scope="col">Supprimer</th>
+                        <th scope="col">Voir profil</th>
+                        
                         
                         </tr>
                     </thead>
@@ -122,9 +115,6 @@
                            
                             echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
                              Voir</a></td>';
-                            echo '<td><form action="'.URLROOT .'/admins/delete/'. $user->id.'" method="POST">
-                            <input type="submit" name="delete" value="Delete" class="btn red">
-                            </form></td>';
                              echo "</tr>";
                             }   
                            
