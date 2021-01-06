@@ -202,7 +202,7 @@ class Admins extends Controller {
              'user' => $user
          ];
  
-         $this->view('users/vueprofil', $data);
+         $this->view('users/vueProfil', $data);
          } else {
                   header('location:' . URLROOT . '/admins/crud');
              }
@@ -210,9 +210,56 @@ class Admins extends Controller {
   
     
     
-    public function update(){
-            echo 'ok';
+    public function update($id){
+        if (!empty($_SESSION['id']) && $_SESSION['role']=='admin'){
+        $user = $this->adminModel->view($id);
+        $data = [
+            'user' => $user
+        ];
+
+        $this->view('users/updateProfil', $data);
+        } else {
+                header('location:' . URLROOT . '/admins/crud');
+            }
         }
+
+    public function updateProfil($data){
+        $user = [
+            'id'=> '',
+            'role'=> '',
+            'blocage'=> '',
+            'periode_blocage'=> ''
+            ];
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $user = [
+                'id' => $data['user']->id,
+                'role' => $data['user']->role,
+                'blocage' => $data['user']->blocage,
+                'periode_blocage' => $data['user']->periode_blocage
+                
+            ];
+
+                //modifie utilisateur
+                if ($this->userModel->updateProfil($user)) {
+                    //Redirect page connexion
+                    header('location: ' . URLROOT . '/users/logout');
+                } else {
+                    die('Erreur système.');
+                }
+            }
+            $this->view('users/profil', $user); 
+        }
+       
+     
+    
+
+    
+ 
 
     public function delete(){
             echo 'ok';

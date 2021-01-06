@@ -71,8 +71,8 @@
                                                     <br />
                                                     <br />
                                                     <li><?php
-                                                    if($_SESSION['role'] == 'admin'){ echo '<a class="btn btn-warning"  href="'.URLROOT.'/admins/update">Modifier le profil</a>';}
-                                                    elseif($_SESSION['role'] == 'moderate' && $data['user']->role == 'membre'){ echo '<a class="btn btn-warning"  href="'.URLROOT.'/moderate/update">Modifier le profil</a>';}
+                                                    if($_SESSION['role'] == 'admin'){ echo '<a class="btn btn-warning"  href="'.URLROOT.'/admins/update/'.$data['id'].'">Modifier le profil</a>';}
+                                                    elseif($_SESSION['role'] == 'moderate' && $data['user']->role == 'membre'){ echo '<a class="btn btn-warning"  href="'.URLROOT.'/moderate/update/'.$data['id'].'">Modifier le profil</a>';}
                                                      ?></li>
                                                 </ul>  
                                             </div>
