@@ -48,7 +48,8 @@
                                                     <br />
                                                     <li>Compte bloqué ?  <?php if($data['user']->blocage == 0){echo ' NON';}else{echo ' OUI';} ?></li>
                                                     <br />
-                                                    <li><a class="btn btn-primary"  href="<?php echo  URLROOT.'/intranet/send'; ?>">Message Intranet</a></li>
+                                                    <br />
+                                                    <li><a class="btn btn-success"  href="<?php echo  URLROOT.'/intranet/send'; ?>">Message Intranet</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-6 col-md-6">
@@ -62,7 +63,8 @@
                                                     <br />
                                                     <li>Date déblocage  : <?= $data['user']->periode_blocage ?></li>
                                                     <br />
-                                                    <li><a class="btn btn-primary"  href="<?php echo  URLROOT.'/admins/update'; ?>">Modifier le profil</a></li>
+                                                    <br />
+                                                    <li><a class="btn btn-warning"  href="<?php echo  URLROOT.'/admins/update'; ?>">Modifier le profil</a></li>
                                                 </ul>  
                                             </div>
                                         </div>
