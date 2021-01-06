@@ -69,10 +69,10 @@
                                                     <li>Date déblocage  : <?php $date= $data['user']->periode_blocage; $date_fr = implode('-',array_reverse  (explode('-',$date)));  echo $date_fr; ?></li>
                                                     <br />
                                                     <br />
-                                                    <li><a class="btn btn-warning"  href="<?php
-                                                    if($data['user']->role == 'admin'){ echo  URLROOT.'/admins/update';}
-                                                    elseif($data['user']->role == 'moderate'){ echo  URLROOT.'/moderates/update';}
-                                                     ?>">Modifier le profil</a></li>
+                                                    <li><?php
+                                                    if($_SESSION['role'] == 'admin'){ echo '<a class="btn btn-warning"  href="'.URLROOT.'/admins/update">Modifier le profil</a>';}
+                                                    elseif($_SESSION['role'] == 'moderate' && $data['user']->role == 'membre'){ echo '<a class="btn btn-warning"  href="'.URLROOT.'/moderate/update">Modifier le profil</a>';}
+                                                     ?></li>
                                                 </ul>  
                                             </div>
                                         </div>
