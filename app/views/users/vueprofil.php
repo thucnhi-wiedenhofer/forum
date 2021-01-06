@@ -72,7 +72,6 @@
                                                     <li><a class="btn btn-warning"  href="<?php
                                                     if($data['user']->role == 'admin'){ echo  URLROOT.'/admins/update';}
                                                     elseif($data['user']->role == 'moderate'){ echo  URLROOT.'/moderates/update';}
-                                                    else{ echo  URLROOT.'/users/update';}
                                                      ?>">Modifier le profil</a></li>
                                                 </ul>  
                                             </div>
