@@ -13,12 +13,4 @@ class Posts extends Controller {
         $this->view('posts/home', $data);
     }
 
-    public function conversation()
-    {
-        $data = [
-            'title' => 'Conversations'
-        ];
-
-        $this->view('posts/conversation', $data);
-    }
 }
