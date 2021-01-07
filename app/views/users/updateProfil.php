@@ -43,7 +43,7 @@
                                     <div class="accsection">
                                         <div class="acccap">
                                         <div class="userinfo pull-left">&nbsp;</div>
-                                            <div class="posttext pull-left"><h3>Champs requis</h3></div>
+                                            <div class="posttext pull-left"><h3>Role et Blocage</h3></div>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="topwrap">
@@ -51,9 +51,13 @@
                                             <div class="posttext pull-left">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6">
-                                                    
-                                                        <input type="text" value="<?php echo $data['user']->role; ?>" name="role" class="form-control" />
-                                                        
+
+                                                    <label for="role">Rôle:</label>
+                                                        <select name="role" id="role">
+                                                            <option value="<?php echo $data['user']->role; ?>" selected><?php echo $data['user']->role; ?></option>
+                                                            <option value="membre">membre</option>
+                                                            <option value="moderateur">moderateur</option>
+                                                        </select>                                                                                                                                                                  
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
                                                         <input type="text"  value="<?php echo $data['user']->blocage; ?>" name="blocage" class="form-control" />
