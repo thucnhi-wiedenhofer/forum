@@ -223,7 +223,7 @@ class Admins extends Controller {
             }
         }
 
-    public function updateProfil($data){
+    public function updateProfil(){
         $user = [
             'id'=> '',
             'role'=> '',
@@ -237,33 +237,36 @@ class Admins extends Controller {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $user = [
-                'id' => $data['user']->id,
-                'role' => $data['user']->role,
-                'blocage' => $data['user']->blocage,
-                'periode_blocage' => $data['user']->periode_blocage
+                'id' => $_POST['id'],
+                'role' => $_POST['role'],
+                'blocage' => $_POST['blocage'],
+                'periode_blocage' => $_POST['periode_blocage']
                 
             ];
 
                 //modifie utilisateur
-                if ($this->userModel->updateProfil($user)) {
+                if ($this->adminModel->updateProfil($user)) {
                     //Redirect page connexion
-                    header('location: ' . URLROOT . '/users/logout');
+                    header('location: ' . URLROOT . '/admins/crud');
                 } else {
                     die('Erreur système.');
                 }
+            }else{$this->view('posts/home'); }
+            
+        }
+    
+    public function blocked(){
+        if (!empty($_SESSION['id']) && $_SESSION['role']=='admin'){
+            $blocked = $this->adminModel->blocked();
+            $data = [
+                'blocked' => $blocked
+            ];
+    
+            $this->view('admins/blocked', $data);
+            } else {
+                    header('location:' . URLROOT . '/admins/crud');
+                }
             }
-            $this->view('users/profil', $user); 
-        }
+
+    }
        
-     
-    
-
-    
- 
-
-    public function delete(){
-            echo 'ok';
-        }
-
-    
-}

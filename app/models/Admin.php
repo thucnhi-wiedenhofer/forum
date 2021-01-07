@@ -110,6 +110,23 @@ class Admin {
         $user = $this->db->single();
         return $user;
     }
+
+    public function updateProfil($user){
+            
+        $this->db->query('UPDATE utilisateurs SET role= :role, blocage= :blocage, periode_blocage= :periode_blocage WHERE id= :id');
+        $this->db->bind(':role', $user['role']);
+        $this->db->bind(':blocage', $user['blocage']);
+        $this->db->bind(':periode_blocage', $user['periode_blocage']);
+        $this->db->bind(':id', $user['id']);
+        
+       
+        //Execute function
+    if ($this->db->execute()) {
+        return true;
+    } else {
+        return false;
+    }         
+}  
         
     
 }

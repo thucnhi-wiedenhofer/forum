@@ -29,7 +29,17 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-2 col-md-2">
+                            <div class="post">
+                                <div class="postinfotop">
+                                    <h3>Fonctions</h3>
+                                    <ul class="cats">
+                                    <li><a class="btn btn-secondary"  href="<?php echo  URLROOT.'/admins/blocked'; ?>">Blocked</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-md-10">
                                <h5>ADMINISTRATION ET MODERATION</h5>
                             <!-- POST -->
                             <div class="post">
@@ -58,7 +68,7 @@
                             echo "<td>".$user->role."</td>";
                               echo "<td>".$user->intranet."</td>";
                            
-                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
+                            echo '<td><a  href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
                              Voir</a></td>';
                              echo "</tr>";
                             }   
@@ -73,7 +83,7 @@
                             echo "<td>".$user->role."</td>";
                               echo "<td>".$user->intranet."</td>";
                            
-                            echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
+                            echo '<td><a  href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
                              Voir</a></td>';
                              echo "</tr>";
                             }   
