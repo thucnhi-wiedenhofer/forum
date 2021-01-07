@@ -129,7 +129,7 @@ class Admin {
 }  
 
     public function blocked(){
-        $this->db->query('SELECT * FROM utilisateurs WHERE blocage==1 ORDER BY login ASC');
+        $this->db->query('SELECT * FROM utilisateurs WHERE blocage=1 ORDER BY login ASC');
         $blocked=$this->db->resultSet();
         return $blocked;
         }
