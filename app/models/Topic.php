@@ -14,4 +14,24 @@ class Topic {
         return $results;
     }
 
+    public function addTopic($data) {
+        
+        $this->db->query('INSERT INTO topic (titre, id_utilisateur, date_publication, droits)
+         VALUES(:titre, :id_utilisateur, :date_publication, :droits)');
+
+
+        //Bind values
+        $this->db->bind(':titre', $data['titre']);
+        $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
+        $this->db->bind(':date_publication', $data['date_publication']);
+        $this->db->bind(':droits', $data['droits']);
+        
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
