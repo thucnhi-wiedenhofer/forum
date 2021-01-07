@@ -127,6 +127,12 @@ class Admin {
         return false;
     }         
 }  
+
+    public function blocked(){
+        $this->db->query('SELECT * FROM utilisateurs WHERE blocage==1 ORDER BY login ASC');
+        $blocked=$this->db->resultSet();
+        return $blocked;
+        }
+    }
         
     
-}

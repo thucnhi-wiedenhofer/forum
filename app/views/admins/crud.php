@@ -120,7 +120,9 @@
                             echo "<td>".$user->email."</td>";
                             echo "<td>".$user->role."</td>";
                               echo "<td>".$user->intranet."</td>";
-                             echo "<td>".$user->blocage."</td>";
+                             echo "<td>";
+                             if($user->blocage==0){echo 'NON';}else{echo 'OUI';}
+                             echo "</td>";
 
                            
                             echo '<td><a class="btn orange" href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
