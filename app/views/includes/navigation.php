@@ -14,7 +14,7 @@
                 </li>
                         
                     <?php 
-                    if(isset($_SESSION['id']) && ($_SESSION['role']=='membre')) //message de connexion dans la navbar et bouton de déconnexion
+                    if(isset($_SESSION['id']) && ($_SESSION['role']=='membre' || $_SESSION['role']=='moderateur')) //message de connexion dans la navbar et bouton de déconnexion
                     {
                         echo '<li class="nav-item active align-right">
                         <span class="nav-link">Vous êtes connecté(e)</span>    
