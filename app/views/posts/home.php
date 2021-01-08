@@ -42,13 +42,14 @@
                         ?>
                             
                         <div class="sidebarblock">
+<?php var_dump($data); ?>
                             <h3>Topics</h3>
                             <div class="divline"></div>
                             <div class="blocktxt">
                                 <ul class="cats">
                                     <?php foreach($data['topics'] as $topics){
-                                        if($topics->droits == 'membre' && isset($_SESSION['role'])){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                        elseif($topics->droits == 'admin' && $_SESSION['role'] == 'admin'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}                                      
+                                        if($topics->droits == "membre" && !empty($_SESSION['role'])){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                        elseif($topics->droits == "admin" && $_SESSION['role'] == "admin"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}                                      
                                     } ?>
                                 </ul>
                             </div>

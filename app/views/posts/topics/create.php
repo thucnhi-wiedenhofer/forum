@@ -50,6 +50,8 @@
                                                             <select name="droits" id="droits">
                                                                 <option value="administrateur">administrateur</option>
                                                                 <option value="moderateur">moderateur</option>
+                                                                <option value="membre">membre</option>
+                                                                <option value="visiteur">visiteur</option>
                                                             </select>  
                                                         <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id'];?>">
                                                     </div>
