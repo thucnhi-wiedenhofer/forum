@@ -33,6 +33,14 @@
                     </div>
                     
                     <div class="col-lg-4 col-md-4">
+                        
+                        <?php if(!empty($_SESSION)){
+                            if($_SESSION['role']== 'admin' || $_SESSION['role']== 'moderateur'){
+                            echo'</br></br><a class="btn btn-warning" href="'.URLROOT.'/topics/create"
+                             role="button">Ajout topic</a></br></br>';} 
+                        }  
+                        ?>
+                            
                         <div class="sidebarblock">
                             <h3>Topics</h3>
                             <div class="divline"></div>

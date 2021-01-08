@@ -18,36 +18,62 @@
         </div>
             
     
-		<section class="content">                
+		<section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 breadcrumbf">
+                        <a href="#">AJOUT TOPIC</a> 
+                    </div>
+                </div>
+                </div>                
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                     <!-- POST -->
-                        <div class="post">
-                            <form action="<?php echo URLROOT; ?>/topics/create" class="form newtopic" method="post">
-                                <div class="topwrap">
-                                    
-                                    <div class="posttext pull-left">
-
-                                        
-                                            <input type="text" placeholder="Titre du topic" name="titre" class="form-control" />
-                                            <label for="droits">Droits:</label>
-                                                        <select name="droits" id="droits">
-                                                            <option value="administrateur">administrateur</option>
-                                                            <option value="moderateur">moderateur</option>
-                                                        </select>  
-                                            <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id'];?>">
-                                               
-                                        
-                                        <div class="pull-left"><button type="submit" class="btn btn-primary">Post</button></div>
-                                        <div class="clearfix"></div>
+                     <!-- POST --><div class="post">
+                     <form action="<?php echo URLROOT; ?>/topics/create" class="form newtopic" method="post">
+                                    <div class="postinfotop">
+                                        <h2>Ajout topic </h2>
                                     </div>
 
+                                    <!-- acc section -->
+                                    <div class="accsection">
+                                        
+                                        <div class="topwrap">
+                                        <div class="userinfo pull-left">&nbsp;</div>
+                                            <div class="posttext pull-left">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <input type="text" placeholder="Titre du topic" name="titre" class="form-control" />
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <label for="droits">Droits:</label>
+                                                            <select name="droits" id="droits">
+                                                                <option value="administrateur">administrateur</option>
+                                                                <option value="moderateur">moderateur</option>
+                                                            </select>  
+                                                        <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id'];?>">
+                                                    </div>
+                                                </div>                                                
+                                               
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>  
+                                    </div><!-- acc section END -->
+                                    
+                                                                                                                                     
 
-                                    <div class="clearfix"></div>
-                                </div>
-                            </form>
-                        </div><!-- POST -->
+                                    <div class="postinfobot">
+                                                                           
+                                        <div class="pull-right postreply">
+                                            <div class="pull-left"><button type="submit" class="btn btn-primary">Ajouter</button></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        
 
                     </div>
                     
