@@ -22,7 +22,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 breadcrumbf">
-                        <a href="#">AJOUT TOPIC</a> 
+                        <?php if($_SESSION['role']=='admin'){echo'<a href="'.URLROOT.'/admins/crud">CRUD ></a>';}?> 
+                        <a href="#"> AJOUT TOPIC</a> 
                     </div>
                 </div>
                 </div>                
