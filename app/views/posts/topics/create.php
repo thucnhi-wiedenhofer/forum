@@ -56,14 +56,10 @@
                             <h3>Topics</h3>
                             <div class="divline"></div>
                             <div class="blocktxt">
-                                <ul class="cats">
-                               
-                                    <?php foreach($data['topics'] as $topics){
-                                        if($topics->droits == null){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                        elseif($topics->droits == 'admin' && $_SESSION['role'] == 'admin'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                        elseif($topics->droits == 'moderateur' && ($_SESSION['role'] == 'admin' || $_SESSION['role']  == 'moderateur')) {echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}  
-                                        elseif($topics->droits == 'membre' && ($_SESSION['role'] == 'admin' || $_SESSION['role']  == 'moderateur'|| $_SESSION['role'] == 'membre')){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                       
+                                <ul class="cats">                              
+                                <?php foreach($data['topics'] as $topics){
+                                        if($topics->droits == 'membre' && isset($_SESSION['role'])){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                        elseif($topics->droits == 'admin' && $_SESSION['role'] == 'admin'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}                                      
                                     } ?>
                                 </ul>
                             </div>

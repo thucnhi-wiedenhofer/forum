@@ -6,6 +6,7 @@ class Admins extends Controller {
 
 
     public function connexion() {
+
         $data = [
             'title' => 'Login page',
             'loginError' => '',

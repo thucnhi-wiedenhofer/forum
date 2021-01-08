@@ -65,21 +65,14 @@
                     </div>
                         
                     <div class="col-lg-4 col-md-4">
-                        <div class="sidebarblock">
-                            <h3>Topics</h3>
-                            <div class="divline"></div>
-                                <div class="blocktxt">
-                                    <ul class="cats">
-                                        <li><a href="#">Trading for Money <span class="badge pull-right">20</span></a></li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                             <!-- -->
-                            <div class="sidebarblock"></div>
-                    </div>
-                </div>
+                            <div class="sidebarblock">
+                            <img src="<?php echo URLROOT; ?>/public/images/blackmirror.jpg" alt="black">
+                            </div>
+
+
+                        </div>
 
         </section>
 <?php
