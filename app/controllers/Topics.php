@@ -30,11 +30,11 @@ class Topics extends Controller {
             'droits' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur') {
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur')) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                
+                'topics' => $topics,
                 'titre' => trim($_POST['titre']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
                 'date_publication' => date('Y-m-d H:i:s'),

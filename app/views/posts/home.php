@@ -42,14 +42,17 @@
                         ?>
                             
                         <div class="sidebarblock">
-<?php var_dump($data); ?>
+
                             <h3>Topics</h3>
                             <div class="divline"></div>
                             <div class="blocktxt">
                                 <ul class="cats">
                                     <?php foreach($data['topics'] as $topics){
-                                        if($topics->droits == "membre" && !empty($_SESSION['role'])){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                        elseif($topics->droits == "admin" && $_SESSION['role'] == "admin"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}                                      
+                                        if(!empty($_SESSION)){
+                                            if($_SESSION['role']=="admin"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                            elseif($topics->droits != "administrateur" && $_SESSION['role'] == 'moderateur'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                            elseif($_SESSION['role'] == "membre" && $topics->droits != "administrateur"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                        }else{ if($topics->droits == "visiteur"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}   }                                 
                                     } ?>
                                 </ul>
                             </div>

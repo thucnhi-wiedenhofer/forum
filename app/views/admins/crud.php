@@ -35,6 +35,8 @@
                                     <h3>Fonctions</h3>
                                     <ul class="cats">
                                     <li><a class="btn btn-secondary"  href="<?php echo  URLROOT.'/admins/blocked'; ?>">Blocked</a></li>
+                                    </br>
+                                    <li><a class="btn btn-warning" href="<?php echo URLROOT.'/topics/create'; ?>">Ajout topic</a></li>
                                     </ul>
                                 </div>
                             </div>

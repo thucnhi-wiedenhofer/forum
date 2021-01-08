@@ -84,10 +84,12 @@
                             <h3>Topics</h3>
                             <div class="divline"></div>
                             <div class="blocktxt">
-                                <ul class="cats">                              
+                                <ul class="cats"> 
+                                          
                                 <?php foreach($data['topics'] as $topics){
-                                        if($topics->droits == 'membre' && isset($_SESSION['role'])){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                        elseif($topics->droits == 'admin' && $_SESSION['role'] == 'admin'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}                                      
+                                        if($_SESSION['role']=="admin"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                        elseif($topics->droits != 'administrateur' && $_SESSION['role'] == 'moderateur'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                                                          
                                     } ?>
                                 </ul>
                             </div>
