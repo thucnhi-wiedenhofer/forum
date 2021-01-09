@@ -7,7 +7,7 @@ class Topic {
     }
 
     public function findAllTopics() {
-        $this->db->query('SELECT * FROM topic JOIN utilisateurs ON `id_utilisateur`= utilisateurs.id ORDER BY date_publication ASC');
+        $this->db->query('SELECT * FROM topic ORDER BY date_publication ASC');
 
         $results = $this->db->resultSet();
 
@@ -44,17 +44,17 @@ class Topic {
         return $topic;
     }
 
-    public function modifyTopic() {
+    public function modifyTopic($data) {
         
-        $this->db->query('UPDATE topic SET  titre = :titre, id_utilisateur= :id_utilisateurs, date_publication= :date_publication, droits= :droits WHERE id=:id');
+        $this->db->query('UPDATE topic SET  titre= :titre, id_utilisateur= :id_utilisateur, date_publication= :date_publication, droits= :droits WHERE id=:id');
 
 
         //Bind values
-        $this->db->bind(':titre', $_POST['titre']);
-        $this->db->bind(':id_utilisateur', $_POST['id_utilisateur']);
-        $this->db->bind(':date_publication', $_POST['date_publication']);
-        $this->db->bind(':droits', $_POST['droits']);
-        $this->db->bind(':id', $_POST['id']);
+        $this->db->bind(':titre', $data['titre']);
+        $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
+        $this->db->bind(':date_publication', $data['date_publication']);
+        $this->db->bind(':droits', $data['droits']);
+        $this->db->bind(':id', $data['id']);
         
         //Execute function
         if ($this->db->execute()) {

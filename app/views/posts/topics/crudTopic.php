@@ -21,6 +21,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 breadcrumbf">
+                    <?php if($_SESSION['role']=='admin'){echo'<a href="'.URLROOT.'/admins/crud">CRUD ></a>';}?> 
                         <a href="#">CRUD TOPIC</a> 
                     </div>
                 </div>

@@ -23,6 +23,7 @@
                 <div class="row">
                     <div class="col-lg-8 breadcrumbf">
                         <?php if($_SESSION['role']=='admin'){echo'<a href="'.URLROOT.'/admins/crud">CRUD ></a>';}?> 
+                       
                         <a href="#"> MODIFIER TOPIC</a> 
                     </div>
                 </div>
@@ -31,7 +32,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
                      <!-- POST --><div class="post">
-                     <form action="<?php echo URLROOT; ?>/topics/modify" class="form newtopic" method="post">
+                     <form action="<?php echo URLROOT; ?>/topics/modifyTopic" class="form newtopic" method="post">
                                     <div class="postinfotop">
                                         <h2>Modifier topic </h2>
                                     </div>
@@ -44,10 +45,10 @@
                                             <div class="posttext pull-left">
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6">
-                                                        <input type="text" placeholder="Titre du topic" value ="<?php echo $data['titre']; ?>"name="titre" class="form-control" />
+                                                        <input type="text" placeholder="Titre du topic" value ="<?php echo $data['topic']->titre; ?>" name="titre" class="form-control" />
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
-                                                    <p>Anciens droits ( àconfirmer ) : <?php echo $data['droits']; ?> </p> 
+                                                    <p>Anciens droits ( à confirmer ) : <?php echo $data['topic']->droits; ?> </p> 
                                                         <label for="droits">Droits:</label>
                                                             <select name="droits" id="droits">
                                                                 <option value="administrateur">administrateur</option>
@@ -55,8 +56,8 @@
                                                                 <option value="membre">membre</option>
                                                                 <option value="visiteur">visiteur</option>
                                                             </select>  
-                                                        <input type="hidden" name="id" value="<?php echo $data['id']; ?>" />
-                                                        <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id'];?>" />
+                                                        <input type="hidden" name="id" value="<?php echo $data['topic']->id; ?>" />
+                                                        <input type="hidden"  name="id_utilisateur" value="<?php echo $data['topic']->id_utilisateur; ?>" />
                                                     </div>
                                                 </div>                                                
                                                

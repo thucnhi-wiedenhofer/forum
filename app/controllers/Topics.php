@@ -54,43 +54,55 @@ class Topics extends Controller {
     }
 
     public function modify($id) {
-        
+       
         if(!isLoggedIn() || $_SESSION['role']=='membre') {
             header("Location: " . URLROOT . "/posts/home");
         }
+
         $topics = $this->topicModel->findAllTopics();
         $topic = $this->topicModel->viewTopic($id);
 
+        $data = [
+            'topic'=> $topic,
+            'topics'=> $topics
+        ];
+
+        $this->view('posts/topics/modify', $data);    
+    }
+
+    public function modifyTopic(){
+
+       // $topics = $this->topicModel->findAllTopics();
 
         $data = [
-            'id'=>'',
-            'topics' => $topics,
+            'id'=>'',          
             'titre' => '',
             'id_utilisateur' => '',
             'date_publication' => '',
-            'droits' => ''
+            'droits' => ''         
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur')) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            $date = date('Y-m-d H:i:s');
             $data = [
-                'topics' => $topics,
                 'id' => trim($_POST['id']),
                 'titre' => trim($_POST['titre']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
-                'date_publication' => date('Y-m-d H:i:s'),
+                'date_publication' => $date,
                 'droits' => trim($_POST['droits'])
             ];
 
             
                 if ($this->topicModel->modifyTopic($data)) {
-                    header("Location: " . URLROOT . "/posts/home");
+                    header("Location: " . URLROOT . "/topics/listTopics");
                 } else {
                     die("Erreur système");
                 }
          }else{
              $this->view('posts/topics/modify', $data);
+            
          }
 
     }
