@@ -268,6 +268,7 @@ class Admins extends Controller {
                     header('location:' . URLROOT . '/admins/crud');
                 }
             }
+    
 
     }
        

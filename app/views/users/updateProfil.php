@@ -22,7 +22,7 @@
                     <div class="row">
                         <div class="col-lg-8 breadcrumbf">
                         <a href="<?php echo  URLROOT.'/admins/crud';?>">CRUD ></a>
-                            <a href="#">MODIFIER SON PROFIL</a> 
+                            <a href="#">MODIFIER CE PROFIL</a> 
                         </div>
                     </div>
                 </div>

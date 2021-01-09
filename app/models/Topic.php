@@ -34,4 +34,34 @@ class Topic {
         }
     }
 
+    public function viewTopic($id) {
+        $this->db->query('SELECT * FROM topic WHERE id = :id');
+
+        //Bind 
+        $this->db->bind(':id', $id);
+        //méthode row comme objet de database
+        $topic = $this->db->single();
+        return $topic;
+    }
+
+    public function modifyTopic() {
+        
+        $this->db->query('UPDATE topic SET  titre = :titre, id_utilisateur= :id_utilisateurs, date_publication= :date_publication, droits= :droits WHERE id=:id');
+
+
+        //Bind values
+        $this->db->bind(':titre', $_POST['titre']);
+        $this->db->bind(':id_utilisateur', $_POST['id_utilisateur']);
+        $this->db->bind(':date_publication', $_POST['date_publication']);
+        $this->db->bind(':droits', $_POST['droits']);
+        $this->db->bind(':id', $_POST['id']);
+        
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
