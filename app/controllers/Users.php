@@ -194,4 +194,18 @@ class Users extends Controller {
         header('location:' . URLROOT . '/posts/home');
     }
 
+     public function vueProfil($id){
+        if (!empty($_SESSION['id'])){
+            $user = $this->userModel->view($id);
+ 
+         $data = [
+             'user' => $user
+         ];
+ 
+         $this->view('users/vueProfil', $data);
+         } else {
+                  header('location:' . URLROOT . '/posts/home');
+             }
+         }
+
 }

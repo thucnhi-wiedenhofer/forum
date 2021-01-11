@@ -94,4 +94,14 @@ class User {
             return false;
         }
     }
+
+      public function view($id) {
+        $this->db->query('SELECT * FROM utilisateurs WHERE id = :id');
+
+        //Bind 
+        $this->db->bind(':id', $id);
+        //méthode row comme objet de database
+        $user = $this->db->single();
+        return $user;
+    }
 }
