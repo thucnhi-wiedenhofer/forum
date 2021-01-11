@@ -32,7 +32,7 @@
                             <div class="wrap-ut pull-left">
                                 <div class="userinfo pull-left">
                                     <div class="avatar">
-                                        <a href="<?php echo URLROOT.'/users/vueProfil('.$conversation->id_utilisateur.')"<img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
+                                        <a href="<?php echo URLROOT.'/users/vueProfil('.$conversation->id_utilisateur.')"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
                                         <div class="status green">&nbsp;</div>
                                     </div>
 
