@@ -24,7 +24,12 @@
                     <div class="col-lg-8 col-md-8">
                         <!-- POST -->
 
-                        <?php  
+                        <?php  if(empty($data['conversations'])){
+                            echo "<p>Ce topic ne contient pas encore de conversation active.</p>
+                            <p>Une fois connecté, commencez à échanger sur ce thème.</p> ";
+                        }else{
+
+                        
                                            
                                     foreach($data['conversations'] as $conversation){                                                                          
                                    
@@ -60,7 +65,7 @@
                                 
                                 <?php  
                                 }
-                                    ?>
+                             } ?>
                         
                     </div>
                     
