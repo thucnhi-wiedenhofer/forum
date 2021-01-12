@@ -207,5 +207,6 @@ class Users extends Controller {
                   header('location:' . URLROOT . '/posts/home');
              }
          }
+         
 
 }
