@@ -52,13 +52,13 @@
                                     <?php foreach($data['topics'] as $topics){
                                         if(!empty($_SESSION)){
                                             if($_SESSION['role']=="admin"){
-                                            echo '<li><a href="'.URLROOT.'/conversations/listConversations('.$topics->id.')">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                            echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
                                             elseif($topics->droits != "administrateur" && $_SESSION['role'] == 'moderateur'){
-                                            echo '<li><a href="'.URLROOT.'/conversations/listConversations('.$topics->id.')">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                            echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
                                             elseif($_SESSION['role'] == "membre" && $topics->droits != "administrateur"){
-                                            echo '<li><a href="'.URLROOT.'/conversations/listConversations('.$topics->id.')">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
+                                            echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
                                         }else{ if($topics->droits == "visiteur"){
-                                        echo '<li><a href="'.URLROOT.'/conversations/listConversations('.$topics->id.')">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}   }                                 
+                                        echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}   }                                 
                                     } ?>
                                 </ul>
                             </div>

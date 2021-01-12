@@ -24,7 +24,8 @@
                     <div class="col-lg-8 col-md-8">
                         <!-- POST -->
 
-                        <?php                                
+                        <?php  
+                                           
                                     foreach($data['conversations'] as $conversation){                                                                          
                                    
                                     ?>
@@ -56,37 +57,55 @@
                             </div>
                             <div class="clearfix"></div>
                         </div><!-- POST -->
-
-                                <?php    }
+                                
+                                <?php  
+                                }
                                     ?>
                         
                     </div>
                     
                     <div class="col-lg-4 col-md-4">
-                        
-                        <?php if(!empty($_SESSION)){
-                            if($_SESSION['role']== 'admin' || $_SESSION['role']== 'moderateur'){
-                            echo'</br></br><a class="btn btn-warning" href="'.URLROOT.'/topics/create"
-                             role="button">Ajout topic</a></br></br>';} 
-                        }  
-                        ?>
                             
                         <div class="sidebarblock">
 
                             <h3>Topics</h3>
                             <div class="divline"></div>
                             <div class="blocktxt">
-                                <ul class="cats">
-                                    <?php foreach($data['topics'] as $topics){
-                                        if(!empty($_SESSION)){
-                                            if($_SESSION['role']=="admin"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                            elseif($topics->droits != "administrateur" && $_SESSION['role'] == 'moderateur'){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                            elseif($_SESSION['role'] == "membre" && $topics->droits != "administrateur"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}
-                                        }else{ if($topics->droits == "visiteur"){echo '<li><a href="#">'.$topics->titre.'<span class="badge pull-right">20</span></a></li>';}   }                                 
-                                    } ?>
-                                </ul>
-                            </div>
-                        </div>
+                                <form action="<?php echo URLROOT; ?>/conversations/create" class="form newtopic" method="post">
+                                        <div class="postinfotop">
+                                            <h5>Ajouter message </h5>
+                                        </div>
+
+                                        <!-- acc section -->
+                                        <div class="accsection">
+                                            
+                                            <div class="topwrap">
+                                                <div class="userinfo pull-left">&nbsp;</div>
+                                                    <div class="posttext pull-left">
+                                                        <label for="titre">Titre:</label>                                                
+                                                        <input type="text" id="titre" placeholder="Titre"  name="titre" class="form-control" required/>
+                                                        <label for="texte">Texte:</label>
+                                                        <textarea id="texte" name="texte" rows="3" cols="33"></textarea>                                                 
+                                                        
+                                                        <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id']; ?>" />
+                                                        <input type="hidden" name="id_topic" value="<?php echo $data['id_topic']; ?>" />
+                                                    </div>
+                                                </div>                                                
+                                                
+                                        
+                                                <div class="clearfix"></div>
+                                                <div class="pull-right postreply">
+                                                    <div class="pull-left"><button type="submit" class="btn btn-primary">Publier</button></div>
+                                                    </form>
+                                                    <div class="clearfix"></div>
+                                                </div>
+
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                
+                            </div>  
+                        </div><!-- acc section END -->                        
                     </div>
                 </div>
             </div>

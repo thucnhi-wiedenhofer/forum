@@ -18,7 +18,7 @@ class Conversation {
     public function addConversation($data) {
         
         $this->db->query('INSERT INTO conversation (titre, texte, publication, id_utilisateur, id_topic, liked, disliked, ouvert, visible)
-         VALUES(:titre, :texte, publication, :id_utilisateur, :id_topic, :liked, :disliked, :ouvert, :visible)');
+         VALUES(:titre, :texte, :publication, :id_utilisateur, :id_topic, :liked, :disliked, :ouvert, :visible)');
 
 
         //Bind values

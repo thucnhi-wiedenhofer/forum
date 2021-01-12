@@ -8,6 +8,7 @@ class Conversations extends Controller {
         $conversations = $this->conversationModel->findAllConversations($id_topic);
 
         $data = [
+            'id_topic'=>$id_topic,
             'conversations' => $conversations
         ];
 
@@ -16,12 +17,7 @@ class Conversations extends Controller {
 
     public function create() {
         
-        
-        $topics = $this->topicModel->findAllTopics();
-
         $data = [
-            
-            'topics' => $topics,
             'titre' => '',
             'texte' => '',
             'publication' => '',
@@ -37,7 +33,6 @@ class Conversations extends Controller {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'topics' => $topics,
                 'titre' => trim($_POST['titre']),
                 'texte' => trim($_POST['texte']),
                 'publication' => date('Y-m-d H:i:s'),
@@ -49,6 +44,7 @@ class Conversations extends Controller {
                 'visible'=> 1
             ];
 
+            $this->view('resultat', $data);
             
                 if ($this-> conversationModel->addConversation($data)) {
                     header("Location: " . URLROOT . "/conversations/listConversations");

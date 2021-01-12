@@ -28,7 +28,17 @@ class Pages extends Controller
         ];
 
         $this->view('users/inscription', $data);
+    }  
+    
+    public function resultat()
+    {
+        $data = [
+            'title' => 'resultat'
+        ];
+
+        $this->view('resultat', $data);
     }   
+   
    
 
 }
