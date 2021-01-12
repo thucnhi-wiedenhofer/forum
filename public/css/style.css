@@ -123,6 +123,12 @@
     color: #ff0000;
     display: block;
 }
+
+.img-resp{
+	display: block;
+	max-width: 90%;
+	height: auto;
+}
 	
 
 	

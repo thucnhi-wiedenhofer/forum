@@ -71,6 +71,11 @@
                             <h3>Topics</h3>
                             <div class="divline"></div>
                             <div class="blocktxt">
+                            <?php if(!isLoggedIn()){ ?>
+                               
+                                <img class="img-resp" src="<?php echo URLROOT; ?>/public/images/cyberpunk.jpg" alt="cyber">
+                               
+                                <?php }else{ ?>
                                 <form action="<?php echo URLROOT; ?>/conversations/create" class="form newtopic" method="post">
                                         <div class="postinfotop">
                                             <h5>Ajouter message </h5>
@@ -104,7 +109,8 @@
                                             </div>
                                         </div>
                                 
-                            </div>  
+                            </div>
+                            <?php } ?> 
                         </div><!-- acc section END -->                        
                     </div>
                 </div>
