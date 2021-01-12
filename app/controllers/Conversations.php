@@ -4,8 +4,8 @@ class Conversations extends Controller {
         $this->conversationModel = $this->model('Conversation');
     }
 
-    public function listConversations() {
-        $conversations = $this->conversationModel->findAllConversations();
+    public function listConversations($id_topic) {
+        $conversations = $this->conversationModel->findAllConversations($id_topic);
 
         $data = [
             'conversations' => $conversations
