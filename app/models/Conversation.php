@@ -7,7 +7,7 @@ class Conversation {
     }
 
     public function findAllConversations($id_topic) {
-        $this->db->query('SELECT * FROM conversation WHERE id_topic= :id_topic ORDER BY publication ASC');
+        $this->db->query('SELECT conversation.id, login, avatar, titre, texte, publication, id_utilisateur, id_topic, liked, disliked, ouvert, visible FROM conversation JOIN utilisateurs ON utilisateurs.id=conversation.id_utilisateur WHERE id_topic= :id_topic ORDER BY publication ASC');
         //Bind
         $this->db->bind(':id_topic', $id_topic);
         $results = $this->db->resultSet();
