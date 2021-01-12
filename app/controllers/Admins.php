@@ -203,7 +203,7 @@ class Admins extends Controller {
              'user' => $user
          ];
  
-         $this->view('users/vueProfil', $data);
+         $this->view('admins/vueProfil', $data);
          } else {
                   header('location:' . URLROOT . '/admins/crud');
              }
