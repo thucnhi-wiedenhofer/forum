@@ -5,14 +5,19 @@ class Conversations extends Controller {
     }
 
     public function listConversations($id_topic) {
+       
         $conversations = $this->conversationModel->findAllConversations($id_topic);
 
         $data = [
             'id_topic'=>$id_topic,
             'conversations' => $conversations
         ];
-
-        $this->view('posts/conversations/listConversations', $data);
+        if(!empty($_GET)){
+            header("Location: " . URLROOT . "/posts/home");  
+        }
+        else{
+            $this->view('posts/conversations/listConversations', $data);
+        }
     }
 
     public function create() {
