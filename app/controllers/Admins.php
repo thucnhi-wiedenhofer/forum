@@ -218,7 +218,7 @@ class Admins extends Controller {
             'user' => $user
         ];
 
-        $this->view('users/updateProfil', $data);
+        $this->view('admins/updateProfil', $data);
         } else {
                 header('location:' . URLROOT . '/posts/home');
             }
