@@ -26,7 +26,6 @@ class Messages extends Controller {
     public function createMessage() {
         
         $data = [
-            'titre' => '',
             'texte' => '',
             'publication' => '',
             'id_utilisateur' => '',
@@ -41,7 +40,7 @@ class Messages extends Controller {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'titre' => trim($_POST['titre']),
+                
                 'texte' => trim($_POST['texte']),
                 'publication' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
@@ -87,7 +86,6 @@ class Messages extends Controller {
        // $topics = $this->topicModel->findAllTopics();
 
         $data = [
-            'titre' => '',
             'texte' => '',
             'publication' => '',
             'id_utilisateur' => '',
@@ -103,7 +101,6 @@ class Messages extends Controller {
 
            
             $data = [
-                'titre' => trim($_POST['titre']),
                 'texte' => trim($_POST['texte']),
                 'publication' => trim($_POST['publication']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),

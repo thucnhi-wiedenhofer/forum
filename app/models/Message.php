@@ -7,7 +7,7 @@ class Message {
     }
 
     public function findAllMessages($id_conversation) {
-        $this->db->query('SELECT message.id, login, avatar, titre, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement FROM message JOIN utilisateurs ON utilisateurs.id=message.id_utilisateur WHERE id_conversation= :id_conversation ORDER BY publication ASC');
+        $this->db->query('SELECT message.id, login, avatar, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement FROM message JOIN utilisateurs ON utilisateurs.id=message.id_utilisateur WHERE id_conversation= :id_conversation ORDER BY publication ASC');
         //Bind
         $this->db->bind(':id_conversation', $id_conversation);
         $results = $this->db->resultSet();
@@ -17,12 +17,12 @@ class Message {
 
     public function addMessage($data) {
         
-        $this->db->query('INSERT INTO message (titre, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement)
-         VALUES(:titre, :texte, :publication, :id_utilisateur, :id_conversation, :liked, :disliked, :visible, :signalement)');
+        $this->db->query('INSERT INTO message (texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement)
+         VALUES(:texte, :publication, :id_utilisateur, :id_conversation, :liked, :disliked, :visible, :signalement)');
 
 
         //Bind values
-        $this->db->bind(':titre', $data['titre']);
+       
         $this->db->bind(':texte', $data['texte']);
         $this->db->bind(':publication', $data['publication']);
         $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
@@ -54,12 +54,12 @@ class Message {
 
     public function modifyMessage($data) {
         
-        $this->db->query('UPDATE message SET  titre= :titre, texte= :texte, publication= :publication, id_utilisateur= :id_utilisateur,
+        $this->db->query('UPDATE message SET texte= :texte, publication= :publication, id_utilisateur= :id_utilisateur,
          id_conversation= :id_conversation, liked= :liked, disliked= :disliked, visible= :visible, signalement= :signalement WHERE id=:id');
 
 
         //Bind values
-        $this->db->bind(':titre', $data['titre']);
+       
         $this->db->bind(':texte', $data['texte']);
         $this->db->bind(':publication', $data['publication']);
         $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
