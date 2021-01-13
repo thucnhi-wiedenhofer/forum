@@ -58,7 +58,7 @@ class Messages extends Controller {
             $this->view('resultat', $data);
             
                 if ($this-> messageModel->addMessage($data)) {
-                    header("Location: " . URLROOT . "/messages/listMessages");
+                    header("Location: " . URLROOT . "/messages/listMessages/".$_POST['id_conversation']);
                 } else {
                     die("Erreur système");
                 }

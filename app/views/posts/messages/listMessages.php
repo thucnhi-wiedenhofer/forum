@@ -25,7 +25,7 @@
                     <div class="col-lg-12 breadcrumbf">
                     <?php echo '<a href="'.URLROOT.'/posts/home">HOME ></a>'; 
                      echo '<a href="'.URLROOT.'/posts/home">TOPIC: '.$data["topic"]->titre.'</a>'; 
-                     echo  '<a href="'.URLROOT.'/conversations/listConversations/'.$data["topic"]->id.'">CONVERSATION: '.$data['conversation']->titre.'</a>';
+                     echo  '<a href="'.URLROOT.'/conversations/listConversations/'.$data["topic"]->id.'"> > CONVERSATION: '.$data['conversation']->titre.'</a>';
                     ?>
                      </div>
                 </div>
@@ -50,7 +50,7 @@
 
                                             </div>
                                             <div class="posttext pull-left">
-                                                <h2><a href="02_topic.html"><?= $message->titre ?></a></h2>
+                                               
                                                 <p><?= $message->texte ?></p>
                                             </div>
                                             <div class="clearfix"></div>
@@ -66,23 +66,23 @@
                                             
                                 <?php
                                 if(isLoggedIn() && $message->id_utilisateur==$_SESSION['id']){
-                                        echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
+                                        echo '<div class="views"><a href="'. URLROOT.'/messages/modify/'.$message->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
                                 ?>
                                
                                         <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
                                     </div>
-                                    <div class="clearfix"></div>
-                    
+                                    <div class="clearfix"></div>                    
                                 
                                 <?php  
                                 }
                               ?>
-                              <?php if(empty($data['conversations'])){
+                              </div>
+                              <?php if(empty($data['messages'])){
                                   echo '<div class="post">';
                                     
-                                    echo '<p class="h4">Ce topic ne contient pas encore de conversations</p>';
+                                    echo '<p class="h4">Cette conversation ne contient pas encore de messages</p>';
                                     echo '<img class="img-resp" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
-                                    echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter une</p>';
+                                    echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter un</p>';
                                   echo '</div>';
                                  
                               }
@@ -104,9 +104,9 @@
                                 <img class="img-resp" src="<?php echo URLROOT; ?>/public/images/cyberpunk.jpg" alt="cyber">
                                
                                 <?php }else{ ?>
-                                <form action="<?php echo URLROOT; ?>/conversations/create" class="form newtopic" method="post">
+                                <form action="<?php echo URLROOT; ?>/messages/createMessage" class="form newtopic" method="post">
                                         <div class="postinfotop">
-                                            <h5>Ajouter conversation </h5>
+                                            <h5>Ajouter message </h5>
                                         </div>
 
                                         <!-- acc section -->
@@ -115,13 +115,12 @@
                                             <div class="topwrap">
                                                 <div class="userinfo pull-left">&nbsp;</div>
                                                     <div class="posttext pull-left">
-                                                        <label for="titre">Titre:</label>                                                
-                                                        <input type="text" id="titre" placeholder="Titre"  name="titre" class="form-control" required/>
+                                                        
                                                         <label for="texte">Texte:</label>
                                                         <textarea id="texte" name="texte" rows="3" cols="33"></textarea>                                                 
                                                         
                                                         <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id']; ?>" />
-                                                        <input type="hidden" name="id_topic" value="<?php echo $data['id_topic']; ?>" />
+                                                        <input type="hidden" name="id_conversation" value="<?php echo $data['id_conversation']; ?>" />
                                                     </div>
                                                 </div>                                                
                                                 
