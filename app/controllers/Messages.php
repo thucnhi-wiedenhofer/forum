@@ -2,17 +2,21 @@
 class Messages extends Controller {
     public function __construct() {
         $this->messageModel = $this->model('Message');
-        $this->conversationModel = $this->model('Conversation');  
+        $this->conversationModel = $this->model('Conversation');
+         $this->topicModel = $this->model('Topic');  
     }
 
     public function listMessages($id_conversation) {
        
         $conversation= $this->conversationModel->viewConversation($id_conversation);
         $messages = $this->messageModel->findAllMessages($id_conversation);
+        $id_topic = $conversation->id_topic;
+        $topic= $this->topicModel->viewTopic($id_topic);
 
         $data = [
-            'id_conversation'=>$id_conversation,
-            'conversation'=>$conversation,
+            'id_conversation'=> $id_conversation,
+            'conversation'=> $conversation,
+            'topic' => $topic,
             'messages' => $messages
         ];
         if(empty($_SERVER['HTTP_REFERER'])){
