@@ -36,46 +36,44 @@
                         <!-- POST -->
                             <br />                   
                                                                                                              
-                                   <?php foreach($data['conversations'] as $conversation){
-                                    ?>
-                                    <div class="post">
-                                        <div class="wrap-ut pull-left">
-                                            <div class="userinfo pull-left">
-                                                <div class="avatar">
-                                                    <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
-                                                    <div class="status green">&nbsp;</div>
-                                                </div>
-
-                                            </div>
-                                            <div class="posttext pull-left">
-                                                <h2><?php echo '<a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a>'; ?></h2>
-                                                <p><?= $conversation->texte ?></p>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="postinfo pull-left">
-                                            <div class="comments">
-                                                <div class="commentbg">
-                                                    560
-                                                    <div class="mark"></div>
-                                                </div>
-
-                                            </div>
-                                            
-                                <?php
-                                if(isLoggedIn() && $conversation->id_utilisateur==$_SESSION['id']){
-                                        echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
-                                ?>
-                               
-                                        <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
+                        <?php foreach($data['conversations'] as $conversation){
+                        ?>
+                        <div class="post">
+                            <div class="wrap-ut pull-left">
+                                <div class="userinfo pull-left">
+                                    <div class="avatar">
+                                        <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
+                                        <div class="status green">&nbsp;</div>
                                     </div>
+                                </div>
+                                <div class="posttext pull-left">
+                                    <h2><?php echo '<a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a>'; ?></h2>
+                                    <p><?= $conversation->texte ?></p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="postinfo pull-left">
+                                <div class="comments">
+                                    <div class="commentbg">
+                                        560
+                                        <div class="mark"></div>
+                                    </div>
+                                </div>
+                                            
+                                    <?php
+                                    if(isLoggedIn() && $conversation->id_utilisateur==$_SESSION['id']){
+                                            echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
+                                    ?>
+                               
+                                    <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
+                            </div>
                                     <div class="clearfix"></div>
                     
                                 
                                 <?php  
                                }
                               ?>
-                              </div>
+                            </div>
                               <?php if(empty($data['conversations'])){
                                   echo '<div class="post">';
                                     
@@ -83,9 +81,10 @@
                                     echo '<img class="img-resp" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
                                     echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter une</p>';
                                   echo '</div>';
-                                 
+                         echo '</div>';                                                    
                               }
                               ?>
+                             
                              
                     </div><!-- POST -->      
                         
