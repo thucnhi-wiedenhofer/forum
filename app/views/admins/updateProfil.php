@@ -60,15 +60,16 @@
                                                         </select>                                                                                                                                                                  
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
-                                                        <input type="text"  value="<?php echo $data['user']->blocage; ?>" name="blocage" class="form-control" />
+                                                    <label for="blocage">Compte bloqué:</label>
+                                                        <input type="text" id="blocage" value="<?php echo $data['user']->blocage; ?>" name="blocage" class="form-control" />
                                                        
                                                     </div>
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6">
-                                                    
-                                                        <input type="date" value="<?php echo $data['user']->periode_blocage; ?>" name="periode_blocage" class="form-control" />
+                                                        <label for="deblocage">Date de déblocage:</label>
+                                                        <input type="date" id="deblocage" value="<?php echo $data['user']->periode_blocage; ?>" name="periode_blocage" class="form-control" />
                                                         
                                                     </div>
                                                     
