@@ -24,7 +24,8 @@
                 <div class="row">
                     <div class="col-lg-12 breadcrumbf">
                     <?php echo'<a href="'.URLROOT.'/posts/home">HOME ></a>';?> 
-                        <a href="#">TOPIC: <?= $data['topic']->titre ?></a> 
+                    <?php echo'<a href="'.URLROOT.'/posts/topic">TOPIC: <?= $data['topic']->titre ?></a>';?> 
+                        <a href="#">CONVERSATION: <?= $data['conversation']->titre ?></a>
                     </div>
                 </div>
             </div>                
@@ -35,21 +36,21 @@
                     <div class="col-lg-8 col-md-8">
                         <!-- POST -->
                             <br />                   
-                                                                                                             
-                                   <?php foreach($data['conversations'] as $conversation){
+                            <?php foreach($data['messages'] as $message){                                                                          
+                                   
                                     ?>
                                     <div class="post">
                                         <div class="wrap-ut pull-left">
                                             <div class="userinfo pull-left">
                                                 <div class="avatar">
-                                                    <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
+                                                    <a href="<?php echo URLROOT.'/users/vueProfil/'.$message->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$message->avatar.'.png " alt="" /></a>'; ?>
                                                     <div class="status green">&nbsp;</div>
                                                 </div>
 
                                             </div>
                                             <div class="posttext pull-left">
-                                                <h2><a href="02_topic.html"><?= $conversation->titre ?></a></h2>
-                                                <p><?= $conversation->texte ?></p>
+                                                <h2><a href="02_topic.html"><?= $message->titre ?></a></h2>
+                                                <p><?= $message->texte ?></p>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>
@@ -63,7 +64,7 @@
                                             </div>
                                             
                                 <?php
-                                if(isLoggedIn() && $conversation->id_utilisateur==$_SESSION['id']){
+                                if(isLoggedIn() && $message->id_utilisateur==$_SESSION['id']){
                                         echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
                                 ?>
                                

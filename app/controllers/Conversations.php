@@ -15,6 +15,7 @@ class Conversations extends Controller {
             'conversations' => $conversations,
             'topic' => $topic
         ];
+        //On bloque l'acces du visiteur qui transformerait l'adresse http directement
         if(empty($_SERVER['HTTP_REFERER'])){
             header("Location: " . URLROOT . "/posts/home");  
         }
