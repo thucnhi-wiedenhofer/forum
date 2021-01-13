@@ -73,8 +73,9 @@
                     
                                 
                                 <?php  
-                                }
+                               }
                               ?>
+                              </div>
                               <?php if(empty($data['conversations'])){
                                   echo '<div class="post">';
                                     
