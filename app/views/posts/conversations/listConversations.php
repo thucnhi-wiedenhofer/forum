@@ -48,7 +48,7 @@
 
                                             </div>
                                             <div class="posttext pull-left">
-                                                <h2><a href="02_topic.html"><?= $conversation->titre ?></a></h2>
+                                                <h2><?php echo '<a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a>'; ?></h2>
                                                 <p><?= $conversation->texte ?></p>
                                             </div>
                                             <div class="clearfix"></div>

@@ -25,8 +25,9 @@
                     <div class="col-lg-12 breadcrumbf">
                     <?php echo '<a href="'.URLROOT.'/posts/home">HOME ></a>'; 
                      echo '<a href="'.URLROOT.'/posts/home">TOPIC: '.$data["topic"]->titre.'</a>'; 
-                     echo  '<a href="'.URLROOT.'/conversations/listConversations/'.">CONVERSATION: <?= $data['conversation']->titre ?></a>
-                    </div>
+                     echo  '<a href="'.URLROOT.'/conversations/listConversations/'.$data["topic"]->id.'">CONVERSATION: '.$data['conversation']->titre.'</a>';
+                    ?>
+                     </div>
                 </div>
             </div>                
             <div class="container">
