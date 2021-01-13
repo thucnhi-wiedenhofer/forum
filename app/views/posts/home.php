@@ -35,6 +35,7 @@
                     </div>
                     
                     <div class="col-lg-6 col-md-6">
+                    <br />
                         
                         <?php if(!empty($_SESSION)){
                             if($_SESSION['role']== 'admin' || $_SESSION['role']== 'moderateur'){

@@ -18,62 +18,83 @@
         </div>
             
     
-		<section class="content">                
-            <div class="container">
+		<section class="content">
+
+        <div class="container">
                 <div class="row">
+                    <div class="col-lg-12 breadcrumbf">
+                    <?php echo'<a href="'.URLROOT.'/posts/home">HOME ></a>';?> 
+                        <a href="#">TOPIC: <?= $data['topic']->titre ?></a> 
+                    </div>
+                </div>
+            </div>                
+            <div class="container">
+           
+                <div class="row">
+                
                     <div class="col-lg-8 col-md-8">
                         <!-- POST -->
-
-                        <?php  if(empty($data['conversations'])){
-                            echo "<p>Ce topic ne contient pas encore de conversation active.</p>
-                            <p>Une fois connecté, commencez à échanger sur ce thème.</p> ";
-                        }else{
-
-                        
-                                           
-                                    foreach($data['conversations'] as $conversation){                                                                          
+                            <br />                   
+                                   <?php foreach($data['conversations'] as $conversation){                                                                          
                                    
                                     ?>
                                     <div class="post">
-                            <div class="wrap-ut pull-left">
-                                <div class="userinfo pull-left">
-                                    <div class="avatar">
-                                        <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
-                                        <div class="status green">&nbsp;</div>
-                                    </div>
+                                        <div class="wrap-ut pull-left">
+                                            <div class="userinfo pull-left">
+                                                <div class="avatar">
+                                                    <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
+                                                    <div class="status green">&nbsp;</div>
+                                                </div>
 
-                                </div>
-                                <div class="posttext pull-left">
-                                    <h2><a href="02_topic.html"><?= $conversation->titre ?></a></h2>
-                                    <p><?= $conversation->texte ?></p>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="postinfo pull-left">
-                                <div class="comments">
-                                    <div class="commentbg">
-                                        560
-                                        <div class="mark"></div>
-                                    </div>
+                                            </div>
+                                            <div class="posttext pull-left">
+                                                <h2><a href="02_topic.html"><?= $conversation->titre ?></a></h2>
+                                                <p><?= $conversation->texte ?></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="postinfo pull-left">
+                                            <div class="comments">
+                                                <div class="commentbg">
+                                                    560
+                                                    <div class="mark"></div>
+                                                </div>
 
-                                </div>
-                                <div class="views"><i class="fa fa-eye"></i> 1,568</div>
-                                <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
-                            </div>
-                            <div class="clearfix"></div>
-                        </div><!-- POST -->
+                                            </div>
+                                            
+                                <?php
+                                if(isLoggedIn() && $conversation->id_utilisateur==$_SESSION['id']){
+                                        echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
+                                ?>
+                               
+                                        <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
+                                    </div>
+                                    <div class="clearfix"></div>
+                    
                                 
                                 <?php  
                                 }
-                             } ?>
+                              ?>
+                              <?php if(empty($data['conversations'])){
+                                  echo '<div class="post">';
+                                    
+                                    echo '<p class="h4">Ce topic ne contient pas encore de conversations</p>';
+                                    echo '<img class="img-resp" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
+                                    echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter une</p>';
+                                  echo '</div>';
+                                 
+                              }
+                              ?>
+                             
+                    </div><!-- POST -->      
                         
-                    </div>
+                   
                     
                     <div class="col-lg-4 col-md-4">
                             
                         <div class="sidebarblock">
 
-                            <h3>Topics</h3>
+                          
                             <div class="divline"></div>
                             <div class="blocktxt">
                             <?php if(!isLoggedIn()){ ?>
@@ -83,7 +104,7 @@
                                 <?php }else{ ?>
                                 <form action="<?php echo URLROOT; ?>/conversations/create" class="form newtopic" method="post">
                                         <div class="postinfotop">
-                                            <h5>Ajouter message </h5>
+                                            <h5>Ajouter conversation </h5>
                                         </div>
 
                                         <!-- acc section -->

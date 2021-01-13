@@ -17,7 +17,7 @@
                     if(isset($_SESSION['id']) && ($_SESSION['role']=='membre' || $_SESSION['role']=='moderateur')) //message de connexion dans la navbar et bouton de déconnexion
                     {
                         echo '<li class="nav-item active align-right">
-                        <span class="nav-link">Vous êtes connecté(e)'; if($_SESSION['role']=='moderateur'){echo 'comme Modérateur.';}else{echo 'comme Membre.';}   
+                        <span class="nav-link">Vous êtes connecté(e)'; if($_SESSION['role']=='moderateur'){echo ' comme Modérateur.';}else{echo ' comme Membre.';}   
                         echo '</span></li>';
                         echo '<li class="nav-item align-right">';
                         echo '<a href="'. URLROOT.'/users/profil" class="nav-link">Modifier</a>';

@@ -205,7 +205,7 @@ class Admins extends Controller {
  
          $this->view('admins/vueProfil', $data);
          } else {
-                  header('location:' . URLROOT . '/admins/crud');
+                  header('location:' . URLROOT . '/posts/home');
              }
          }
   
@@ -220,7 +220,7 @@ class Admins extends Controller {
 
         $this->view('users/updateProfil', $data);
         } else {
-                header('location:' . URLROOT . '/admins/crud');
+                header('location:' . URLROOT . '/posts/home');
             }
         }
 
@@ -265,7 +265,7 @@ class Admins extends Controller {
     
             $this->view('admins/blocked', $data);
             } else {
-                    header('location:' . URLROOT . '/admins/crud');
+                    header('location:' . URLROOT . '/posts/home');
                 }
             }
     

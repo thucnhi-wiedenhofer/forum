@@ -1,40 +1,37 @@
 <?php
-class Conversations extends Controller {
+class Messages extends Controller {
     public function __construct() {
-        $this->conversationModel = $this->model('Conversation');
-        $this->topicModel = $this->model('Topic');
+        $this->messageModel = $this->model('Message');
     }
 
-    public function listConversations($id_topic) {
+    public function listMessages($id_conversation) {
        
-        $conversations = $this->conversationModel->findAllConversations($id_topic);
-        $topic = $this->topicModel->viewTopic($id_topic);
+        $messages = $this->messageModel->findAllMessages($id_conversation);
 
         $data = [
-            'id_topic'=>$id_topic,
-            'conversations' => $conversations,
-            'topic' => $topic
+            'id_topic'=>$id_conversation,
+            'messages' => $messages
         ];
         if(empty($_SERVER['HTTP_REFERER'])){
             header("Location: " . URLROOT . "/posts/home");  
         }
         else{
-            $this->view('posts/conversations/listConversations', $data);
+            $this->view('posts/messages/listMessages', $data);
         }
     }
 
-    public function create() {
+    public function createMessage() {
         
         $data = [
             'titre' => '',
             'texte' => '',
             'publication' => '',
             'id_utilisateur' => '',
-            'id_topic' => '',
+            'id_conversation' => '',
             'liked' => '',
             'disliked' => '',
-            'ouvert' => '',
-            'visible' => ''
+            'visible' => '',
+            'signalement' =>''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && (isset($_SESSION['id']))) {
@@ -45,22 +42,22 @@ class Conversations extends Controller {
                 'texte' => trim($_POST['texte']),
                 'publication' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
-                'id_topic' => trim($_POST['id_topic']),
+                'id_conversation' => trim($_POST['id_conversation']),
                 'liked' => 0,
                 'disliked' => 0,
-                'ouvert'=> 1,
-                'visible'=> 1
+                'visible'=> 1,
+                'signalement'=> 0
             ];
 
             $this->view('resultat', $data);
             
-                if ($this-> conversationModel->addConversation($data)) {
-                    header("Location: " . URLROOT . "/conversations/listConversations");
+                if ($this-> messageModel->addMessage($data)) {
+                    header("Location: " . URLROOT . "/messages/listMessages");
                 } else {
                     die("Erreur système");
                 }
          }else{
-             $this->view('posts/conversations/createConversation', $data);
+             $this->view('posts/messages/createMessage', $data);
          }
 
     }
@@ -71,18 +68,18 @@ class Conversations extends Controller {
             header("Location: " . URLROOT . "/posts/home");
         }
 
-        $topics = $this->topicModel->findAllTopics();
-        $conversation = $this->conversationModel->viewConversation($id);
+        $conversations = $this->conversationModel->findAllConversations();
+        $message = $this->messageModel->viewMessage($id);
 
         $data = [
-            'conversation'=> $conversation,
-            'topics'=> $topics
+            'message'=> $message,
+            'conversations'=> $conversations
         ];
 
-        $this->view('posts/conversations/modifyConversation', $data);    
+        $this->view('posts/messages/modifyMessage', $data);    
     }
 
-    public function modifyConversation(){
+    public function modifyMessage(){
 
        // $topics = $this->topicModel->findAllTopics();
 
@@ -91,11 +88,11 @@ class Conversations extends Controller {
             'texte' => '',
             'publication' => '',
             'id_utilisateur' => '',
-            'id_topic' => '',
+            'id_conversation' => '',
             'liked' => '',
             'disliked' => '',
-            'ouvert' => '',
-            'visible' => ''
+            'visible' => '',
+            'signalement' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur')) {
@@ -107,21 +104,21 @@ class Conversations extends Controller {
                 'texte' => trim($_POST['texte']),
                 'publication' => trim($_POST['publication']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
-                'id_topic' => trim($_POST['id_topic']),
+                'id_conversation' => trim($_POST['id_conversation']),
                 'liked' => trim($_POST['liked']),
                 'disliked' => trim($_POST['disliked']),
-                'ouvert'=> trim($_POST['ouvert']),
-                'visible'=> trim($_POST['visible'])
+                'visible'=> trim($_POST['visible']),
+                'signalement'=> trim($_POST['signalement'])
             ];
 
             
-                if ($this->conversationModel->modifyConversation($data)) {
-                    header("Location: " . URLROOT . "/conversations/listConversations");
+                if ($this->messageModel->modifyMessage($data)) {
+                    header("Location: " . URLROOT . "/posts/home");
                 } else {
                     die("Erreur système");
                 }
          }else{
-             $this->view('posts/conversations/modifyConversation', $data);
+             $this->view('posts/messages/modifyMessage', $data);
             
          }
 
@@ -135,8 +132,8 @@ class Conversations extends Controller {
                 'id' => $_POST['id'],
                 'liked' => $_POST['liked']+1
             ];
-            if ($this->conversationModel->modifyLiked($data)) {
-                header("Location: " . URLROOT . "/conversations/listConversations");
+            if ($this->messageModel->modifyLiked($data)) {
+                header("Location: " . URLROOT . "/messages/listMessages/".$_POST['id']);
             } else {
                 die("Erreur système");
             }
@@ -152,8 +149,25 @@ class Conversations extends Controller {
                 'id' => $_POST['id'],
                 'disliked' => $_POST['disliked']+1
             ];
-            if ($this->conversationModel->modifyDisliked($data)) {
-                header("Location: " . URLROOT . "/conversations/listConversations");
+            if ($this->messageModel->modifyDisliked($data)) {
+                header("Location: " . URLROOT .  "/messages/listMessages/".$_POST['id']);
+            } else {
+                die("Erreur système");
+            }
+        }
+
+    }
+
+    public function signalMessage($data){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()) {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            $data = [
+                'id' => $_POST['id'],
+                'signalement' => 1
+            ];
+            if ($this->messageModel->modifySignalMessage($data)) {
+                header("Location: " . URLROOT . "/messages/listMessages/".$_POST['id']);
             } else {
                 die("Erreur système");
             }

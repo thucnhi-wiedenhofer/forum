@@ -20,15 +20,16 @@
     
 		<section class="content">                
             <div class="container">
+            <br />
                 <h2>Règles et guide du forum </h2>
                 <div class="row">
-                <div class="blocktxt">
+                           
+                    <div class="col-lg-8 col-md-8">                        
+                    <div class="blocktxt">
                             <h5>Pour passer des moments amicaux et conviviaux sur le forum,
                              chacun se doit de respecter les règles de bonne conduite que 
                              vous trouverez ici.</h5>
-                        </div>                    
-                    <div class="col-lg-8 col-md-8">                        
-                       
+                        </div>         
                         <div class="post-rules">
                             <p>Ce qu'on attend de vous:</p>
 

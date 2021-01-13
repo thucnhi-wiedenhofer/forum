@@ -1,24 +1,24 @@
 <?php
-class Conversation {
+class Message {
     private $db;
 
     public function __construct() {
         $this->db = new Database;
     }
 
-    public function findAllConversations($id_topic) {
-        $this->db->query('SELECT conversation.id as id, login, avatar, titre, texte, publication, id_utilisateur, id_topic, liked, disliked, ouvert, visible FROM conversation JOIN utilisateurs ON utilisateurs.id=conversation.id_utilisateur WHERE id_topic= :id_topic ORDER BY publication ASC');
+    public function findAllMessages($id_conversation) {
+        $this->db->query('SELECT message.id, login, avatar, titre, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement FROM message JOIN utilisateurs ON utilisateurs.id=message.id_utilisateur WHERE id_conversation= :id_conversation ORDER BY publication ASC');
         //Bind
-        $this->db->bind(':id_topic', $id_topic);
+        $this->db->bind(':id_conversation', $id_conversation);
         $results = $this->db->resultSet();
 
         return $results;
     }
 
-    public function addConversation($data) {
+    public function addMessage($data) {
         
-        $this->db->query('INSERT INTO conversation (titre, texte, publication, id_utilisateur, id_topic, liked, disliked, ouvert, visible)
-         VALUES(:titre, :texte, :publication, :id_utilisateur, :id_topic, :liked, :disliked, :ouvert, :visible)');
+        $this->db->query('INSERT INTO message (titre, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement)
+         VALUES(:titre, :texte, :publication, :id_utilisateur, :id_conversation, :liked, :disliked, :visible, :signalement)');
 
 
         //Bind values
@@ -26,11 +26,11 @@ class Conversation {
         $this->db->bind(':texte', $data['texte']);
         $this->db->bind(':publication', $data['publication']);
         $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
-        $this->db->bind(':id_topic', $data['id_topic']);
+        $this->db->bind(':id_conversation', $data['id_conversation']);
         $this->db->bind(':liked', $data['liked']);
         $this->db->bind(':disliked', $data['disliked']);
-        $this->db->bind(':ouvert', $data['ouvert']);
         $this->db->bind(':visible', $data['visible']);
+        $this->db->bind(':signalement', $data['signalement']);
 
 
         
@@ -42,20 +42,20 @@ class Conversation {
         }
     }
 
-    public function viewConversation($id) {
-        $this->db->query('SELECT * FROM conversation WHERE id = :id');
+    public function viewMessage($id) {
+        $this->db->query('SELECT * FROM message WHERE id = :id');
 
         //Bind 
         $this->db->bind(':id', $id);
         //méthode row comme objet de database
-        $conversation = $this->db->single();
-        return $conversation;
+        $message = $this->db->single();
+        return $message;
     }
 
-    public function modifyConversation($data) {
+    public function modifyMessage($data) {
         
-        $this->db->query('UPDATE conversation SET  titre= :titre, texte= :texte, publication= :publication, id_utilisateur= :id_utilisateur,
-         id_topic= :id_topic, liked= :liked, disliked= :disliked, ouvert= :ouvert, visible= :visible WHERE id=:id');
+        $this->db->query('UPDATE message SET  titre= :titre, texte= :texte, publication= :publication, id_utilisateur= :id_utilisateur,
+         id_conversation= :id_conversation, liked= :liked, disliked= :disliked, visible= :visible, signalement= :signalement WHERE id=:id');
 
 
         //Bind values
@@ -63,11 +63,11 @@ class Conversation {
         $this->db->bind(':texte', $data['texte']);
         $this->db->bind(':publication', $data['publication']);
         $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
-        $this->db->bind(':id_topic', $data['id_topic']);
+        $this->db->bind(':id_conversation', $data['id_conversation']);
         $this->db->bind(':liked', $data['liked']);
         $this->db->bind(':disliked', $data['disliked']);
-        $this->db->bind(':ouvert', $data['ouvert']);
         $this->db->bind(':visible', $data['visible']);
+        $this->db->bind(':signalement', $data['signalement']);
         $this->db->bind(':id', $data['id']);
         
         //Execute function
@@ -79,7 +79,7 @@ class Conversation {
     }
 
     public function modifyLiked($data){
-        $this->db->query('UPDATE conversation SET liked= :liked WHERE id= :id' );
+        $this->db->query('UPDATE message SET liked= :liked WHERE id= :id' );
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':liked', $data['liked']);
         
@@ -92,9 +92,22 @@ class Conversation {
     }
 
     public function modifyDisliked($data){
-        $this->db->query('UPDATE conversation SET disliked= :disliked WHERE id= :id' );
+        $this->db->query('UPDATE message SET disliked= :disliked WHERE id= :id' );
         $this->db->bind(':id', $data['id']);
         $this->db->bind(':disliked', $data['disliked']);
+        
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function modifySignalMessage($data){
+        $this->db->query('UPDATE message SET signalement= :signalement WHERE id= :id' );
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':signalement', $data['signalement']);
         
         //Execute function
         if ($this->db->execute()) {
