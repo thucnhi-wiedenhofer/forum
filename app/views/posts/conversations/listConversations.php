@@ -35,10 +35,10 @@
                 <div class="col-lg-8 col-md-8">
                     <!-- POST -->
                         <br />                   
-                        <div class="post">                                                                                    
+                                                                                                           
                             <?php foreach($data['conversations'] as $conversation){
                             ?>
-                                
+                                 <div class="post">
                                     <div class="wrap-ut pull-left">
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
@@ -61,7 +61,7 @@
                                         </div>
                                                     
                                             <?php
-                                            if(isLoggedIn() && $conversation->id_utilisateur==$_SESSION['id']){
+                                            if(isLoggedIn() && $_SESSION['role']!='membre'){
                                                     echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
                                             ?>
                                     
@@ -69,19 +69,19 @@
                                     </div>
                                     <div class="clearfix"></div>
                             
-                                        
+                                </div>        
                             <?php } ?>
                        
                             <?php if(empty($data['conversations'])){
                                 
                                 
-                                echo '<p class="h4">Ce topic ne contient pas encore de conversations</p>';
-                                echo '<img class="img-resp" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
-                                echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter une</p>';
+                                echo '<p class="h4 text-center p-3">Ce topic ne contient pas encore de conversations</p>';
+                                echo '<img class="img-resp mx-auto d-block" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
+                                echo '<p class="h5 text-center p-3">Si vous êtes connecté, vous pouvez en ajouter une</p>';
                                                                         
                             }
                             ?> 
-                        </div>                         
+                                                 
                 </div>   
                 
                 <div class="col-lg-4 col-md-4">

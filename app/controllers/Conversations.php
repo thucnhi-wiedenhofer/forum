@@ -68,7 +68,7 @@ class Conversations extends Controller {
 
     public function modify($id) {
        
-        if(!isLoggedIn() || $_SESSION['role']=='membre') {
+        if(!isLoggedIn() || $_SESSION['role'] == 'membre') {
             header("Location: " . URLROOT . "/posts/home");
         }
 
@@ -99,7 +99,7 @@ class Conversations extends Controller {
             'visible' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur')) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']!='membre')) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
            
