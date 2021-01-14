@@ -106,7 +106,7 @@
                         <div class="col-lg-4 col-md-4">
 
                             <div class="sidebarblock">
-                            <img src="<?php echo URLROOT; ?>/public/images/blackmirror.jpg" alt="comic-con">
+                            <img src="<?php echo URLROOT; ?>/public/images/blackmirror.jpg" alt="black mirror">
                             </div>
 
 
