@@ -27,6 +27,21 @@ class Messages extends Controller {
         }
     }
 
+    public function crudMessages($id_conversation) {
+       
+        $messages = $this->messageModel->findAllMessages($id_conversation);
+        $conversation = $this->conversationModel->viewConversation($id_conversation);
+
+        $data = [
+            'id_conversation'=>$id_conversation,
+            'messages' => $messages,
+            'topic' => $conversation
+        ];
+        
+            $this->view('posts/conversations/crudMessages', $data);
+        
+    }
+
     public function createMessage() {
         
         $data = [
@@ -70,26 +85,28 @@ class Messages extends Controller {
 
     public function modify($id) {
        
-        if(!isLoggedIn() || $_SESSION['role']=='membre') {
-            header("Location: " . URLROOT . "/posts/home");
-        }
-
-        $conversations = $this->conversationModel->findAllConversations();
         $message = $this->messageModel->viewMessage($id);
+        $id_conversation=$message->id_conversation;
+        $conversation = $this->conversationModel->viewConversation($id_conversation);
 
         $data = [
             'message'=> $message,
-            'conversations'=> $conversations
+            'conversation'=> $conversation
         ];
+
+        if((isLoggedIn() && $_SESSION['role']== 'membre' && $message->id_utilisateur!=$_SESSION['id']) || !isLoggedIn() ) {
+            header("Location: " . URLROOT . "/posts/home");
+        }
 
         $this->view('posts/messages/modifyMessage', $data);    
     }
 
     public function modifyMessage(){
 
-       // $topics = $this->topicModel->findAllTopics();
+       
 
         $data = [
+            'id'=> '',
             'texte' => '',
             'publication' => '',
             'id_utilisateur' => '',
@@ -100,11 +117,12 @@ class Messages extends Controller {
             'signalement' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur')) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur' || $_SESSION['id']==$_POST['id_utilisateur'])) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
            
             $data = [
+                'id' => trim($_POST['id']),
                 'texte' => trim($_POST['texte']),
                 'publication' => trim($_POST['publication']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
@@ -117,7 +135,7 @@ class Messages extends Controller {
 
             
                 if ($this->messageModel->modifyMessage($data)) {
-                    header("Location: " . URLROOT . "/posts/home");
+                    header("Location: " . URLROOT . '/messages/listMessages/'.$data['id_conversation']);
                 } else {
                     die("Erreur système");
                 }
