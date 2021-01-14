@@ -60,6 +60,7 @@
                                                     
                                                         
                                                         <input type="hidden" name="id" value="<?php echo $data['conversation']->id; ?>" />
+                                                        <input type="hidden" name="id_topic" value="<?php echo $data['conversation']->id_topic; ?>" />
                                                         <input type="hidden"  name="id_utilisateur" value="<?php echo $data['conversation']->id_utilisateur; ?>" />
                                                         <input type="hidden"  name="publication" value="<?php echo $data['conversation']->publication; ?>" />
                                                         <input type="hidden"  name="liked" value="<?php echo $data['conversation']->liked; ?>" />

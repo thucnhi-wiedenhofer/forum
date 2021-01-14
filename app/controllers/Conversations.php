@@ -102,6 +102,7 @@ class Conversations extends Controller {
     public function modifyConversation(){
  
         $data = [
+            'id' => '',
             'titre' => '',
             'texte' => '',
             'publication' => '',
@@ -118,6 +119,7 @@ class Conversations extends Controller {
 
            
             $data = [
+                'id' => trim($_POST['id']),
                 'titre' => trim($_POST['titre']),
                 'texte' => trim($_POST['texte']),
                 'publication' => trim($_POST['publication']),
@@ -131,7 +133,7 @@ class Conversations extends Controller {
                 
             
                 if ($this->conversationModel->modifyConversation($data)) {
-                    header("Location: " . URLROOT . "/conversations/listConversations");
+                    header("Location: " . URLROOT . '/conversations/listConversations/'.$data['id_topic']);
                 } else {
                     die("Erreur système");
                 }
