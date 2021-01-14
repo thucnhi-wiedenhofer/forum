@@ -56,7 +56,7 @@ class Conversations extends Controller {
             $this->view('resultat', $data);
             
                 if ($this-> conversationModel->addConversation($data)) {
-                    header("Location: " . URLROOT . "/conversations/listConversations");
+                    header("Location: " . URLROOT . '/conversations/listConversations/'.$data['id_topic']);
                 } else {
                     die("Erreur système");
                 }
