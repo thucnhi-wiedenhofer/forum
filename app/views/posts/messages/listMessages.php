@@ -65,25 +65,25 @@
                                             </div>
                                             
                                 <?php
-                                if(isLoggedIn() && $message->id_utilisateur==$_SESSION['id']){
+                                if((isLoggedIn() && $message->id_utilisateur==$_SESSION['id']) || (isLoggedIn() && $_SESSION['role']== 'moderateur')){
                                         echo '<div class="views"><a href="'. URLROOT.'/messages/modify/'.$message->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
                                 ?>
                                
                                         <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
                                     </div>
                                     <div class="clearfix"></div>                    
-                                
+                                </div>
                                 <?php  
                                 }
                               ?>
-                              </div>
+                              
                               <?php if(empty($data['messages'])){
-                                  echo '<div class="post">';
+                                  
                                     
                                     echo '<p class="h4">Cette conversation ne contient pas encore de messages</p>';
                                     echo '<img class="img-resp" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
                                     echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter un</p>';
-                                  echo '</div>';
+                                  
                                  
                               }
                               ?>
