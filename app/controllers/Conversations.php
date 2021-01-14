@@ -24,6 +24,22 @@ class Conversations extends Controller {
         }
     }
 
+    public function crudConversations($id_topic) {
+       
+        $conversations = $this->conversationModel->findAllConversations($id_topic);
+        $topic = $this->topicModel->viewTopic($id_topic);
+
+        $data = [
+            'id_topic'=>$id_topic,
+            'conversations' => $conversations,
+            'topic' => $topic
+        ];
+        
+            $this->view('posts/conversations/crudConversations', $data);
+        
+    }
+
+
     public function create() {
         
         $data = [

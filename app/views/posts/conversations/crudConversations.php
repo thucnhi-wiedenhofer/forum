@@ -21,8 +21,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 breadcrumbf">
-                    <?php if($_SESSION['role']=='admin'){echo'<a href="'.URLROOT.'/admins/crud">CRUD ></a>';}?> 
-                        <a href="#">CRUD TOPIC</a> 
+                    <?php if($_SESSION['role']=='admin'){echo'<a href="'.URLROOT.'/admins/crud">CRUD ></a> <a href="'.URLROOT.'/topics/listTopics">TOPICS ></a>'; }?> 
+                        <a href="#">CONVERSATIONS</a> 
                     </div>
                 </div>
             </div>
@@ -41,13 +41,13 @@
                                 </br>
                                 <li><a class="btn btn-primary" href="<?php echo URLROOT.'/topics/listTopics'; ?>">Crud topic</a></li>
                                 </br>
-                                <li><p class="h6">Conversations: click sur le titre du topic</p></li>
+                                <li><p class="h6">Messages: click sur le titre de la conversation</p></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-10">
-                        <h5>Topics Administration</h5>
+                        <h5>Conversations Administration</h5>
                             <!-- POST -->
                         <div class="post">
 
@@ -56,9 +56,13 @@
                                     <tr class="table-active">
                                     <th scope="col">ID</th>
                                     <th scope="col">Titre</th>
-                                    <th scope="col">Id utilisateur</th>
-                                    <th scope="col">date publication</th>
-                                    <th scope="col">droits</th>
+                                    <th scope="col">Login</th>
+                                    <th scope="col">Texte</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Likes</th>
+                                    <th scope="col">Dislikes</th>
+                                    <th scope="col">Ouvert</th>
+                                    <th scope="col">Visible</th>
                                     <th scope="col">Modifier</th>
                                     
                                     </tr>
@@ -66,17 +70,20 @@
                                 <tbody>
                                     <?php
                                 
-                                    foreach($data['topics'] as $topic){
-                                    if($topic->droits =='administrateur'){
-                                        $id_topic= $topic->id;
+                                    foreach($data['conversations'] as $conversation){
+                                    if($conversation->role =='administrateur'){
                                     echo "<tr>";//affiche en boucle les données de la table
-                                    echo "<td>".$topic->id."</td>";
-                                    echo '<td><a href="'.URLROOT.'/conversations/crudConversations/'.$id_topic.'">'.$topic->titre.'</a></td>';
-                                    echo "<td>".$topic->id_utilisateur."</td>";
-                                    echo "<td>".$topic->date_publication."</td>";
-                                    echo "<td>".$topic->droits."</td>";
+                                    echo "<td>".$conversation->id."</td>";
+                                    echo "<td>".$conversation->titre."</td>";
+                                    echo "<td>".$conversation->login."</td>";
+                                    echo "<td>".$conversation->texte."</td>";
+                                    echo "<td>".$conversation->publication."</td>";
+                                    echo "<td>".$conversation->liked."</td>";
+                                    echo "<td>".$conversation->disliked."</td>";
+                                    echo "<td>".$conversation->ouvert."</td>";
+                                    echo "<td>".$conversation->visible."</td>";
                                 
-                                    echo '<td><a  href="'.URLROOT .'/topics/modify/'.$topic->id.'">
+                                    echo '<td><a  href="'.URLROOT .'/conversations/modify/'.$conversation->id.'">
                                     Modifier</a></td>';
                                     echo "</tr>";
                                     }   
@@ -88,7 +95,7 @@
                         </div>
                         </br>
 
-                        <h5>Topics Modérateurs</h5>
+                        <h5>Conversations Modérateurs</h5>
                         <!-- POST -->
                         <div class="post">
 
@@ -97,26 +104,33 @@
                                     <tr class="table-active">
                                     <th scope="col">ID</th>
                                     <th scope="col">Titre</th>
-                                    <th scope="col">Id utilisateur</th>
-                                    <th scope="col">date publication</th>
-                                    <th scope="col">droits</th>
+                                    <th scope="col">Login</th>
+                                    <th scope="col">Texte</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Likes</th>
+                                    <th scope="col">Dislikes</th>
+                                    <th scope="col">Ouvert</th>
+                                    <th scope="col">Visible</th>
                                     <th scope="col">Modifier</th>
                                     
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach($data['topics'] as $topic){
+                                foreach($data['conversations'] as $conversation){
                                 if($topic->droits =='moderateur'){
-                                    $id_topic= $topic->id;
                                     echo "<tr>";//affiche en boucle les données de la table
-                                    echo "<td>".$topic->id."</td>";
-                                    echo '<td><a href="'.URLROOT.'/conversations/crudConversations/'.$id_topic.'">'.$topic->titre.'</a></td>';
-                                    echo "<td>".$topic->id_utilisateur."</td>";
-                                    echo "<td>".$topic->date_publication."</td>";
-                                    echo "<td>".$topic->droits."</td>";
+                                    echo "<td>".$conversation->id."</td>";
+                                    echo "<td>".$conversation->titre."</td>";
+                                    echo "<td>".$conversation->login."</td>";
+                                    echo "<td>".$conversation->texte."</td>";
+                                    echo "<td>".$conversation->publication."</td>";
+                                    echo "<td>".$conversation->liked."</td>";
+                                    echo "<td>".$conversation->disliked."</td>";
+                                    echo "<td>".$conversation->ouvert."</td>";
+                                    echo "<td>".$conversation->visible."</td>";
                                 
-                                    echo '<td><a  href="'.URLROOT .'/topics/modify/'.$topic->id.'">
+                                    echo '<td><a  href="'.URLROOT .'/conversations/modify/'.$conversation->id.'">
                                     Modifier</a></td>';
                                     echo "</tr>";
                                     }   
@@ -128,7 +142,7 @@
                         </div>
                         </br>
 
-                        <h5>Topics Membres</h5>
+                        <h5>Conversations Membres</h5>
                         <!-- POST -->
                         <div class="post">
 
@@ -137,26 +151,33 @@
                                     <tr class="table-active">
                                     <th scope="col">ID</th>
                                     <th scope="col">Titre</th>
-                                    <th scope="col">Id utilisateur</th>
-                                    <th scope="col">date publication</th>
-                                    <th scope="col">droits</th>
+                                    <th scope="col">Login</th>
+                                    <th scope="col">Texte</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Likes</th>
+                                    <th scope="col">Dislikes</th>
+                                    <th scope="col">Ouvert</th>
+                                    <th scope="col">Visible</th>
                                     <th scope="col">Modifier</th>
                                     
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach($data['topics'] as $topic){
+                                foreach($data['conversations'] as $conversation){
                                 if($topic->droits =='membre'){
-                                    $id_topic= $topic->id;
                                     echo "<tr>";//affiche en boucle les données de la table
-                                    echo "<td>".$topic->id."</td>";
-                                    echo '<td><a href="'.URLROOT.'/conversations/crudConversations/'.$id_topic.'">'.$topic->titre.'</a></td>';
-                                    echo "<td>".$topic->id_utilisateur."</td>";
-                                    echo "<td>".$topic->date_publication."</td>";
-                                    echo "<td>".$topic->droits."</td>";
+                                    echo "<td>".$conversation->id."</td>";
+                                    echo "<td>".$conversation->titre."</td>";
+                                    echo "<td>".$conversation->login."</td>";
+                                    echo "<td>".$conversation->texte."</td>";
+                                    echo "<td>".$conversation->publication."</td>";
+                                    echo "<td>".$conversation->liked."</td>";
+                                    echo "<td>".$conversation->disliked."</td>";
+                                    echo "<td>".$conversation->ouvert."</td>";
+                                    echo "<td>".$conversation->visible."</td>";
                                 
-                                    echo '<td><a  href="'.URLROOT .'/topics/modify/'.$topic->id.'">
+                                    echo '<td><a  href="'.URLROOT .'/conversations/modify/'.$conversation->id.'">
                                     Modifier</a></td>';
                                     echo "</tr>";
                                     }   
@@ -168,45 +189,6 @@
                         </div>
                         </br>
 
-                        <h5>Topics Visiteurs</h5>
-                        <!-- POST -->
-                        <div class="post">
-
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr class="table-active">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Id utilisateur</th>
-                                    <th scope="col">date publication</th>
-                                    <th scope="col">droits</th>
-                                    <th scope="col">Modifier</th>
-                                    
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                foreach($data['topics'] as $topic){
-                                if($topic->droits =='visiteur'){
-                                    $id_topic= $topic->id;
-                                    echo "<tr>";//affiche en boucle les données de la table
-                                    echo "<td>".$topic->id."</td>";
-                                    echo '<td><a href="'.URLROOT.'/conversations/crudConversations/'.$id_topic.'">'.$topic->titre.'</a></td>';
-                                    echo "<td>".$topic->id_utilisateur."</td>";
-                                    echo "<td>".$topic->date_publication."</td>";
-                                    echo "<td>".$topic->droits."</td>";
-                                
-                                    echo '<td><a  href="'.URLROOT .'/topics/modify/'.$topic->id.'">
-                                    Modifier</a></td>';
-                                    echo "</tr>";
-                                    }   
-                                
-                                }
-                                ?>  
-                                </tbody>
-                            </table>
-                        </div>
-                        </br>
 
 
                             
