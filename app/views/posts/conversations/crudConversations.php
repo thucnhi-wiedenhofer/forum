@@ -118,7 +118,7 @@
                                 <tbody>
                                 <?php
                                 foreach($data['conversations'] as $conversation){
-                                if($topic->droits =='moderateur'){
+                                if($conversation->role =='moderateur'){
                                     echo "<tr>";//affiche en boucle les données de la table
                                     echo "<td>".$conversation->id."</td>";
                                     echo "<td>".$conversation->titre."</td>";
@@ -165,7 +165,7 @@
                                 <tbody>
                                 <?php
                                 foreach($data['conversations'] as $conversation){
-                                if($topic->droits =='membre'){
+                                if($conversation->role =='membre'){
                                     echo "<tr>";//affiche en boucle les données de la table
                                     echo "<td>".$conversation->id."</td>";
                                     echo "<td>".$conversation->titre."</td>";
