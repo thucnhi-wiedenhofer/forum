@@ -101,7 +101,7 @@ class Conversations extends Controller {
 
     public function modifyConversation(){
 
-       // $topics = $this->topicModel->findAllTopics();
+        
 
         $data = [
             'titre' => '',
@@ -112,7 +112,8 @@ class Conversations extends Controller {
             'liked' => '',
             'disliked' => '',
             'ouvert' => '',
-            'visible' => ''
+            'visible' => '',
+            'topic'=> ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']!='membre')) {
@@ -128,9 +129,25 @@ class Conversations extends Controller {
                 'liked' => trim($_POST['liked']),
                 'disliked' => trim($_POST['disliked']),
                 'ouvert'=> trim($_POST['ouvert']),
-                'visible'=> trim($_POST['visible'])
+                'visible'=> trim($_POST['visible']),
+                'topic'=> ''
             ];
+                
+                $id_topic= $data['id_topic'];
+                $topic = $this->topicModel->viewTopic($id_topic);
 
+                $data = [
+                    'titre' => trim($_POST['titre']),
+                    'texte' => trim($_POST['texte']),
+                    'publication' => trim($_POST['publication']),
+                    'id_utilisateur' => trim($_POST['id_utilisateur']),
+                    'id_topic' => trim($_POST['id_topic']),
+                    'liked' => trim($_POST['liked']),
+                    'disliked' => trim($_POST['disliked']),
+                    'ouvert'=> trim($_POST['ouvert']),
+                    'visible'=> trim($_POST['visible']),
+                    'topic'=> $topic
+                ];
             
                 if ($this->conversationModel->modifyConversation($data)) {
                     header("Location: " . URLROOT . "/conversations/listConversations");

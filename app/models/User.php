@@ -24,7 +24,7 @@ class User {
         $creation= date("Y-m-d");
         $intranet= $data['login'].'@intranet';
         $this->db->query('INSERT INTO utilisateurs (login, password, email, intranet, avatar, naissance,
-         creation, genre, role) VALUES(:login, :password, :email, :intranet,:avatar, :naissance, :creation, :genre, :role)');
+         creation, genre, role, blocage, periode_blocage) VALUES(:login, :password, :email, :intranet,:avatar, :naissance, :creation, :genre, :role, :blocage, :periode_blocage)');
 
 
         //Bind values
@@ -37,6 +37,8 @@ class User {
         $this->db->bind(':creation', $creation);
         $this->db->bind(':genre', $data['genre']);
         $this->db->bind(':role', $data['role']);
+        $this->db->bind(':blocage', $data['blocage']);
+        $this->db->bind(':periode_blocage', $data['periode_blocage']);
        
         
         //Execute function

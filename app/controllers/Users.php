@@ -60,7 +60,9 @@ class Users extends Controller {
             'naissance'=>'',
             'creation'=> '',
             'genre'=>'',
-            'role' => ''
+            'role' => '',
+            'blocage'=> '',
+            'periode_blocage'=> ''
             ];
 
 
@@ -84,8 +86,9 @@ class Users extends Controller {
                 'naissance'=>trim($_POST["naissance"]),
                 'creation'=> date('Y-m-d'),
                 'genre'=>trim($_POST["genre"]),
-                'role' => trim($_POST['role'])
-
+                'role' => trim($_POST['role']),
+                'blocage'=> trim($_POST['blocage']),
+                'periode_blocage'=> trim($_POST['periode_blocage'])
             ];
 
 

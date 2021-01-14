@@ -259,6 +259,8 @@
 
                                        
                                         <input type="hidden" name="role" value="membre" />
+                                        <input type="hidden" name="blocage" value="0" />
+                                        <input type="hidden" name="periode_blocage" value="0001-01-01" />
                                         
                                         
 
