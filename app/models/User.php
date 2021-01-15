@@ -107,4 +107,27 @@ class User {
         $user = $this->db->single();
         return $user;
     }
+
+    public function connected($user){
+        $this->db->query('INSERT INTO connected (id_utilisateur) VALUES( :id_utilisateur)');
+        $this->db->bind('id_utilisateur', $user->id);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function disconnected($user){
+        
+        $this->db->query('DELETE FROM connected WHERE id = :id');
+        $this->db->bind('id', $user);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

@@ -182,6 +182,7 @@ class Users extends Controller {
 
 
     public function createUserSession($user) {
+        $this->userModel->connected($user);
         $_SESSION['id'] = $user->id;
         $_SESSION['login'] = $user->login;
         $_SESSION['email'] = $user->email;
@@ -190,6 +191,8 @@ class Users extends Controller {
     }
 
     public function logout() {
+        $user=$_SESSION['id'];
+        $this->userModel->disconnected($user);
         unset($_SESSION['id']);
         unset($_SESSION['login']);
         unset($_SESSION['email']);
