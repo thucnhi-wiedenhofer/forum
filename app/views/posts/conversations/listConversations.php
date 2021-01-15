@@ -37,22 +37,24 @@
                         <br />                   
                                                                                                            
                             <?php foreach($data['conversations'] as $conversation){
-                            ?>
-                                 <div class="post">
+                            
+                                 echo '<div class="post">
                                     <div class="wrap-ut pull-left">
                                         <div class="userinfo pull-left">
-                                            <div class="avatar">
-                                                <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
-                                                <?php 
-                                                $user=$conversation->id_utilisateur;
-                                                $connected= $this->conversationModel->findconnected($user);
-                                                if(isLoggedIn() && $connected==TRUE){echo '<div class="status green">&nbsp;</div>';} ?>
-                                            </div>
+                                            <div class="avatar">';
+                                                echo '<a href="'.URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>';
+                                             
+                                               foreach($data['connected'] as $connected){
+                                                if(isLoggedIn() && $connected->id_utilisateur == $conversation->id_utilisateur){echo '<div class="status green">&nbsp;</div>';} 
+                                               } 
+                                            echo'</div>
+                                               
+                                              
                                         </div>
-                                        <div class="posttext pull-left">
-                                            <h2><?php echo '<a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a>'; ?></h2>
-                                            <p><?= $conversation->texte ?></p>
-                                        </div>
+                                        <div class="posttext pull-left">';
+                                            echo '<h2><a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a></h2>';
+                                            echo '<p>'.$conversation->texte.'</p>';
+                                        echo '</div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="postinfo pull-left">
@@ -61,24 +63,24 @@
                                                 560
                                                 <div class="mark"></div>
                                             </div>
-                                        </div>
+                                        </div>';
                                                     
-                                            <?php
+                                        
                                             if(isLoggedIn() && $_SESSION['role']!='membre'){
                                                     echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
-                                            ?>
+                                            
                                     
-                                            <div class="time"><i class="fa fa-clock-o"></i>
-                                            <?php $timestamp = strtotime($conversation->publication);
-                                            echo elapsed($timestamp, $precision=3)  ?>
-                                            </div>                                    
+                                            echo'<div class="time"><i class="fa fa-clock-o"></i>';
+                                             $timestamp = strtotime($conversation->publication);
+                                            echo elapsed($timestamp, $precision=3);
+                                            echo'</div>                                    
                                     </div>
                                     <div class="clearfix"></div>
                             
-                                </div>        
-                            <?php } ?>
+                                </div>';        
+                             } 
                        
-                            <?php if(empty($data['conversations'])){
+                             if(empty($data['conversations'])){
                                 
                                 
                                 echo '<p class="h4 text-center p-3">Ce topic ne contient pas encore de conversations</p>';

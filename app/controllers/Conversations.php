@@ -9,11 +9,13 @@ class Conversations extends Controller {
        
         $conversations = $this->conversationModel->findAllConversations($id_topic);
         $topic = $this->topicModel->viewTopic($id_topic);
+        $connected = $this->conversationModel->findAllConnected();
 
         $data = [
             'id_topic'=>$id_topic,
             'conversations' => $conversations,
-            'topic' => $topic
+            'topic' => $topic,
+            'connected' => $connected
         ];
         //On bloque l'acces du visiteur qui transformerait l'adresse http directement
         if(empty($_SERVER['HTTP_REFERER'])){
@@ -23,6 +25,7 @@ class Conversations extends Controller {
             $this->view('posts/conversations/listConversations', $data);
         }
     }
+
 
     public function crudConversations($id_topic) {
        
