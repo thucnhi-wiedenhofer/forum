@@ -47,10 +47,14 @@
                                                foreach($data['connected'] as $connected){
                                                 if(isLoggedIn() && $connected->id_utilisateur == $conversation->id_utilisateur){echo '<div class="status green">&nbsp;</div>';} 
                                                } 
-                                            echo'</div>
-                                               
-                                              
-                                        </div>
+                                             
+                                               echo '<p><small>'.$conversation->login.'<br />';
+                                               echo $conversation->role.'</small></p>';   
+                                            echo'</div>';
+                                            
+                                           
+                                                                                                                                     
+                                        echo'</div>
                                         <div class="posttext pull-left">';
                                             echo '<h2><a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a></h2>';
                                             echo '<p>'.$conversation->texte.'</p>';
@@ -72,7 +76,7 @@
                                     
                                             echo'<div class="time"><i class="fa fa-clock-o"></i>';
                                              $timestamp = strtotime($conversation->publication);
-                                            echo elapsed($timestamp, $precision=3);
+                                            echo '<small>'.elapsed($timestamp, $precision=3).'</small>';  
                                             echo'</div>                                    
                                     </div>
                                     <div class="clearfix"></div>
