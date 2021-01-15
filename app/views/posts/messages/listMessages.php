@@ -69,7 +69,9 @@
                                         echo '<div class="views"><a href="'. URLROOT.'/messages/modify/'.$message->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
                                 ?>
                                
-                                        <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>                                    
+                                        <div class="time"><i class="fa fa-clock-o"></i> <?php $timestamp = strtotime($message->publication);
+                                            echo elapsed($timestamp, $precision=2)  ?>
+                                            </div>                                    
                                     </div>
                                     <div class="clearfix"></div>                    
                                 </div>
