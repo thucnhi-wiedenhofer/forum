@@ -211,7 +211,7 @@
                                     <div class="postinfobot"></br>
                                        
                                         <div class="pull-right postreply">
-                                            <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
+                                            
                                             <div class="pull-left"><input type="submit" class="btn btn-primary" name="modifier" value="Modifier"></div>
                                             <div class="clearfix"></div>
                                         </div>
