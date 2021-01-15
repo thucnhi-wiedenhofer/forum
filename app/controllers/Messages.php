@@ -35,10 +35,10 @@ class Messages extends Controller {
         $data = [
             'id_conversation'=>$id_conversation,
             'messages' => $messages,
-            'topic' => $conversation
+            'conversation' => $conversation
         ];
         
-            $this->view('posts/conversations/crudMessages', $data);
+            $this->view('posts/messages/crudMessages', $data);
         
     }
 
@@ -117,7 +117,7 @@ class Messages extends Controller {
             'signalement' => ''
         ];
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && ($_SESSION['role']=='admin'|| $_SESSION['role']=='moderateur' || $_SESSION['id']==$_POST['id_utilisateur'])) {
+        if($_SERVER['REQUEST_METHOD'] == 'POST' && (($_SESSION['role']=='moderateur' || $_SESSION['id']==$_POST['id_utilisateur'] || $_SESSION['role']=='admin'))) {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
            
@@ -135,7 +135,12 @@ class Messages extends Controller {
 
             
                 if ($this->messageModel->modifyMessage($data)) {
-                    header("Location: " . URLROOT . '/messages/listMessages/'.$data['id_conversation']);
+                    if($_SESSION['role']=='admin'){
+                        header("Location: " . URLROOT . '/messages/crudMessages/'.$data['id_conversation']);
+                    }else{
+                        header("Location: " . URLROOT . '/messages/listMessages/'.$data['id_conversation']);
+                    }
+                   
                 } else {
                     die("Erreur système");
                 }

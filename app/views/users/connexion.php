@@ -70,7 +70,7 @@
                                     <div class="postinfobot">
                                                                            
                                         <div class="pull-right postreply">
-                                            <div class="pull-left smile"><a href="#"><i class="fas fa-smile"></i></a></div>
+                                            
                                             <div class="pull-left"><input type="submit" class="btn btn-primary" name="submit" value="se connecter"></div>
                                             <div class="clearfix"></div>
                                         </div>

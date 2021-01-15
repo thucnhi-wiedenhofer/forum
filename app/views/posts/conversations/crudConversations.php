@@ -72,9 +72,10 @@
                                 
                                     foreach($data['conversations'] as $conversation){
                                     if($conversation->role =='administrateur'){
+                                        $id_conversation=$conversation->id;
                                     echo "<tr>";//affiche en boucle les données de la table
                                     echo "<td>".$conversation->id."</td>";
-                                    echo "<td>".$conversation->titre."</td>";
+                                    echo '<td><a href="'.URLROOT.'/messages/crudMessages/'.$id_conversation.'">'.$conversation->titre.'</a></td>';
                                     echo "<td>".$conversation->login."</td>";
                                     echo "<td>".$conversation->texte."</td>";
                                     echo "<td>".$conversation->publication."</td>";
@@ -119,9 +120,10 @@
                                 <?php
                                 foreach($data['conversations'] as $conversation){
                                 if($conversation->role =='moderateur'){
+                                    $id_conversation=$conversation->id;
                                     echo "<tr>";//affiche en boucle les données de la table
                                     echo "<td>".$conversation->id."</td>";
-                                    echo "<td>".$conversation->titre."</td>";
+                                    echo '<td><a href="'.URLROOT.'/messages/crudMessages/'.$id_conversation.'">'.$conversation->titre.'</a></td>';
                                     echo "<td>".$conversation->login."</td>";
                                     echo "<td>".$conversation->texte."</td>";
                                     echo "<td>".$conversation->publication."</td>";
@@ -166,9 +168,10 @@
                                 <?php
                                 foreach($data['conversations'] as $conversation){
                                 if($conversation->role =='membre'){
+                                    $id_conversation=$conversation->id;
                                     echo "<tr>";//affiche en boucle les données de la table
                                     echo "<td>".$conversation->id."</td>";
-                                    echo "<td>".$conversation->titre."</td>";
+                                    echo '<td><a href="'.URLROOT.'/messages/crudMessages/'.$id_conversation.'">'.$conversation->titre.'</a></td>';
                                     echo "<td>".$conversation->login."</td>";
                                     echo "<td>".$conversation->texte."</td>";
                                     echo "<td>".$conversation->publication."</td>";

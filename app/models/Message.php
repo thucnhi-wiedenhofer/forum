@@ -7,7 +7,7 @@ class Message {
     }
 
     public function findAllMessages($id_conversation) {
-        $this->db->query('SELECT message.id, login, avatar, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement FROM message JOIN utilisateurs ON utilisateurs.id=message.id_utilisateur WHERE id_conversation= :id_conversation ORDER BY publication ASC');
+        $this->db->query('SELECT message.id, utilisateurs.role as role, login, avatar, texte, publication, id_utilisateur, id_conversation, liked, disliked, visible, signalement FROM message JOIN utilisateurs ON utilisateurs.id=message.id_utilisateur WHERE id_conversation= :id_conversation ORDER BY publication ASC');
         //Bind
         $this->db->bind(':id_conversation', $id_conversation);
         $results = $this->db->resultSet();

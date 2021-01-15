@@ -133,10 +133,16 @@ class Conversations extends Controller {
                 
             
                 if ($this->conversationModel->modifyConversation($data)) {
-                    header("Location: " . URLROOT . '/conversations/listConversations/'.$data['id_topic']);
+                    if($_SESSION['role']=='admin'){
+                        header("Location: " . URLROOT . '/conversations/crudConversations/'.$data['id_topic']);
+                    }else{
+                        header("Location: " . URLROOT . '/conversations/listConversations/'.$data['id_topic']);
+                    }
+                   
                 } else {
                     die("Erreur système");
                 }
+                    
          }else{
              $this->view('posts/conversations/modifyConversation', $data);
             

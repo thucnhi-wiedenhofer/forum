@@ -58,14 +58,20 @@
                                                         <input type="text" id="visible" value ="'. $data['message']->visible.'" name="visible" class="form-control" />';
                                                         echo '<label for="signalement">signalement:</label>
                                                         <input type="text" id="signalement" value ="'. $data['message']->signalement.'" name="signalement" class="form-control" />';
-                                                        } 
+                                                        }
+                                                        elseif(isLoggedIn() && $_SESSION['role'] == 'admin'){
+                                                            echo '<label for="visible">Visible:</label>
+                                                        <input type="text" id="visible" value ="'. $data['message']->visible.'" name="visible" class="form-control" />';
+                                                        echo '<label for="signalement">signalement:</label>
+                                                        <input type="text" id="signalement" value ="'. $data['message']->signalement.'" name="signalement" class="form-control" />';
+                                                        }
                                                         ?>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
                                                     <label for="texte">Texte:</label>
                                                     <textarea id="texte" name="texte" rows="3" cols="33" ><?php echo $data['message']->texte; ?></textarea>                                                 
                                                     
-                                                        
+                                                        <input type="hidden" name="id" value="<?php echo $data['message']->id; ?>" />
                                                         <input type="hidden" name="id_conversation" value="<?php echo $data['message']->id_conversation; ?>" />
                                                         
                                                         <input type="hidden"  name="id_utilisateur" value="<?php echo $data['message']->id_utilisateur; ?>" />

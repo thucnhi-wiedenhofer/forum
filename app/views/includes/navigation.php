@@ -49,7 +49,10 @@
                     }
                      
             echo '</ul>';
-            if(!isset($_SESSION['id'])){echo '<div class="pull-left"><a class="btn btn-primary"  href="'.URLROOT.'/admins/connexion">Administration</a></div>';}
+            if(!isset($_SESSION['id'])){
+                echo '<div class="pull-left"><a class="btn btn-primary"  href="'.URLROOT.'/admins/connexion">Administration</a></div>';
+            }
+            elseif(isLoggedIn() && $_SESSION['role']=="admin"){echo '<div class="pull-left"><a class="btn btn-primary"  href="'.URLROOT.'/admins/crud">CRUD</a></div>';}
 
             ?>
             

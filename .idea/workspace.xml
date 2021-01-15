@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b2be351-fc1d-45a3-b391-2e736754c186" name="Default Changelist" comment="" />
+    <list default="true" id="0b2be351-fc1d-45a3-b391-2e736754c186" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Conversations.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Conversations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admins/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admins/connexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/includes/navigation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/includes/navigation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/conversations/crudConversations.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/conversations/crudConversations.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/messages/listMessages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/messages/listMessages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/messages/modifyMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/messages/modifyMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/connexion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +35,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Documents/Dfarkas/kpulse" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -37,6 +56,8 @@
       <workItem from="1610179816230" duration="21000" />
       <workItem from="1610346606734" duration="1084000" />
       <workItem from="1610512570800" duration="69000" />
+      <workItem from="1610691269975" duration="928000" />
+      <workItem from="1610694086773" duration="12000" />
     </task>
     <servers />
   </component>
@@ -44,9 +65,9 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="4580" y="275" key="FileChooserDialogImpl" timestamp="1610512638001">
+    <state x="4580" y="275" key="FileChooserDialogImpl" timestamp="1610694096191">
       <screen x="3840" y="0" width="1920" height="1040" />
     </state>
-    <state x="4580" y="275" key="FileChooserDialogImpl/1920.-98.1920.1020/0.0.1280.680/3840.0.1920.1040@3840.0.1920.1040" timestamp="1610512638001" />
+    <state x="4580" y="275" key="FileChooserDialogImpl/1920.-98.1920.1020/0.0.1280.680/3840.0.1920.1040@3840.0.1920.1040" timestamp="1610694096191" />
   </component>
 </project>

@@ -5,12 +5,12 @@
                         <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2020, forum.com</div>
                         <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
                             <ul class="socialicons">
-                                <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cloud"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                <li><i class="fab fa-facebook-square"></i></li>
+                                <li><i class="fab fa-twitter"></i></li>
+                                <li><i class="fab fa-google-plus"></i></li>
+                                <li><i class="fab fa-dribbble"></i></li>
+                                <li><i class="fa fa-cloud"></i></li>
+                                <li><i class="fa fa-rss"></i></li>
                             </ul>
                         </div>
                     </div>

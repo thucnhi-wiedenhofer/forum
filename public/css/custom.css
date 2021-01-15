@@ -558,7 +558,7 @@ td.chbox {
 }
 
 .breadcrumbf a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /*--- Topic ---*/
@@ -721,7 +721,7 @@ a.down:hover {
     color: #ffffff;
     font-size: 14px;
     font-family: 'Open Sans Bold', sans-serif; 
-    border: none;
+    
 
 }
 

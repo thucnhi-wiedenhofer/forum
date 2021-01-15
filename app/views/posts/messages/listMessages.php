@@ -80,9 +80,9 @@
                               <?php if(empty($data['messages'])){
                                   
                                     
-                                    echo '<p class="h4">Cette conversation ne contient pas encore de messages</p>';
-                                    echo '<img class="img-resp" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
-                                    echo '<p class="h5">Si vous êtes connecté, vous pouvez en ajouter un</p>';
+                                  echo '<p class="h4 text-center p-3">Ce topic ne contient pas encore de conversations</p>';
+                                  echo '<img class="img-resp mx-auto d-block" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
+                                  echo '<p class="h5 text-center p-3">Si vous êtes connecté, vous pouvez en ajouter une</p>';
                                   
                                  
                               }
