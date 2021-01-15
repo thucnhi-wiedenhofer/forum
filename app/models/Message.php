@@ -117,19 +117,12 @@ class Message {
         }
     }
 
-    public function findConnected($user) {
+    public function findAllConnected() {
         //Prepared statement
-        $this->db->query('SELECT * FROM connected WHERE id_utilisateur = :id_utilisateur');
+        $this->db->query('SELECT * FROM connected ');
+        $results = $this->db->resultSet();
 
-        //Email param will be binded with the email variable
-        $this->db->bind(':id_utilisateur', $user->id);
-
-        //Check if email is already registered
-        if($this->db->rowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return $results;
     }
 
 }

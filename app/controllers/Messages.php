@@ -12,12 +12,14 @@ class Messages extends Controller {
         $messages = $this->messageModel->findAllMessages($id_conversation);
         $id_topic = $conversation->id_topic;
         $topic= $this->topicModel->viewTopic($id_topic);
+        $connected = $this->messageModel->findAllConnected();
 
         $data = [
             'id_conversation'=> $id_conversation,
             'conversation'=> $conversation,
             'topic' => $topic,
-            'messages' => $messages
+            'messages' => $messages,
+            'connected' => $connected
         ];
         if(empty($_SERVER['HTTP_REFERER'])){
             header("Location: " . URLROOT . "/posts/home");  
@@ -31,11 +33,13 @@ class Messages extends Controller {
        
         $messages = $this->messageModel->findAllMessages($id_conversation);
         $conversation = $this->conversationModel->viewConversation($id_conversation);
-
+       
+       
         $data = [
             'id_conversation'=>$id_conversation,
             'messages' => $messages,
             'conversation' => $conversation
+            
         ];
         
             $this->view('posts/messages/crudMessages', $data);

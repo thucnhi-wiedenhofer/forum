@@ -39,44 +39,46 @@
                             <br />                   
                             <?php foreach($data['messages'] as $message){                                                                          
                                    
-                                    ?>
-                                    <div class="post">
-                                        <div class="wrap-ut pull-left">
-                                            <div class="userinfo pull-left">
-                                                <div class="avatar">
-                                                    <a href="<?php echo URLROOT.'/users/vueProfil/'.$message->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$message->avatar.'.png " alt="" /></a>'; ?>
-                                                    <?php if(isLoggedIn()){echo '<div class="status green">&nbsp;</div>';} ?>
-                                                </div>
+                                   echo '<div class="post">
+                                   <div class="wrap-ut pull-left">
+                                       <div class="userinfo pull-left">
+                                           <div class="avatar">';
+                                               echo '<a href="'.URLROOT.'/users/vueProfil/'.$message->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$message->avatar.'.png " alt="" /></a>';
+                                               foreach($data['connected'] as $connected){
+                                                if(isLoggedIn() && $connected->id_utilisateur == $message->id_utilisateur){echo '<div class="status green">&nbsp;</div>';} 
+                                               } 
+                                               echo '<p><small>'.$message->login.'<br />';
+                                               echo $message->role.'</small></p>';   
+                                            echo'</div>';
+                                        echo'</div>
 
-                                            </div>
-                                            <div class="posttext pull-left">
-                                               
-                                                <p><?= $message->texte ?></p>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div class="postinfo pull-left">
-                                            <div class="comments">
-                                                <div class="commentbg">
-                                                    560
-                                                    <div class="mark"></div>
-                                                </div>
-
-                                            </div>
-                                            
-                                <?php
-                                if((isLoggedIn() && $message->id_utilisateur==$_SESSION['id']) || (isLoggedIn() && $_SESSION['role']== 'moderateur')){
-                                        echo '<div class="views"><a href="'. URLROOT.'/messages/modify/'.$message->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
-                                ?>
-                               
-                                        <div class="time"><i class="fa fa-clock-o"></i> <?php $timestamp = strtotime($message->publication);
-                                            echo elapsed($timestamp, $precision=2)  ?>
-                                            </div>                                    
-                                    </div>
-                                    <div class="clearfix"></div>                    
+                                        <div class="posttext pull-left">';
+                                        
+                                        echo '<p>'.$message->texte.'</p>';
+                                    echo '</div>
+                                    <div class="clearfix"></div>
                                 </div>
-                                <?php  
-                                }
+                                <div class="postinfo pull-left">
+                                    <div class="comments">
+                                        <div class="commentbg">
+                                            560
+                                            <div class="mark"></div>
+                                        </div>
+                                    </div>';
+                                            
+                                    if(isLoggedIn() && $_SESSION['role']!='membre'){
+                                        echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
+                                
+                        
+                                echo'<div class="time"><i class="fa fa-clock-o"></i>';
+                                 $timestamp = strtotime($message->publication);
+                                echo '<small>'.elapsed($timestamp, $precision=3).'</small>';  
+                                echo'</div>                                    
+                        </div>
+                        <div class="clearfix"></div>
+                
+                    </div>';        
+                 } 
                               ?>
                               
                               <?php if(empty($data['messages'])){
