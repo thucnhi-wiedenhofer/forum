@@ -67,7 +67,7 @@
                                     
                                             <div class="time"><i class="fa fa-clock-o"></i>
                                             <?php $timestamp = strtotime($conversation->publication);
-                                            echo elapsed($timestamp, $precision=2)  ?>
+                                            echo elapsed($timestamp, $precision=3)  ?>
                                             </div>                                    
                                     </div>
                                     <div class="clearfix"></div>
