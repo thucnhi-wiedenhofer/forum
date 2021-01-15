@@ -1,7 +1,7 @@
 <?php
-function elapsed($timestamp, $precision = 4) {
+function elapsed($timestamp, $precision = 3) {
   $time = time() - $timestamp;
-  $a = array( 'D' => 86400, 'h' => 3600, 'm' => 60);
+  $a = array( 'J' => 86400, 'h' => 3600, 'm' => 60);
   $i = 0;
   foreach($a as $k => $v) {
     $$k = floor($time/$v);

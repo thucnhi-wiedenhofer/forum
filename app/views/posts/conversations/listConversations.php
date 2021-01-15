@@ -43,7 +43,7 @@
                                         <div class="userinfo pull-left">
                                             <div class="avatar">
                                                 <a href="<?php echo URLROOT.'/users/vueProfil/'.$conversation->id_utilisateur.'"><img src="'.URLROOT.'/public/images/avatars/'.$conversation->avatar.'.png " alt="" /></a>'; ?>
-                                                <div class="status green">&nbsp;</div>
+                                                <?php if(isLoggedIn()){echo '<div class="status green">&nbsp;</div>';} ?>
                                             </div>
                                         </div>
                                         <div class="posttext pull-left">
