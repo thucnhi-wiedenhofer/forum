@@ -121,8 +121,8 @@ class User {
 
     public function disconnected($user){
         
-        $this->db->query('DELETE FROM connected WHERE id = :id');
-        $this->db->bind('id', $user);
+        $this->db->query('DELETE FROM connected WHERE id_utilisateur = :id_utilisateur');
+        $this->db->bind('id_utilisateur', $user);
         if ($this->db->execute()) {
             return true;
         } else {
