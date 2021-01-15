@@ -10,12 +10,15 @@ class Conversations extends Controller {
         $conversations = $this->conversationModel->findAllConversations($id_topic);
         $topic = $this->topicModel->viewTopic($id_topic);
         $connected = $this->conversationModel->findAllConnected();
+        $count = $this->coversationModel->countConversation();
+
 
         $data = [
             'id_topic'=>$id_topic,
             'conversations' => $conversations,
             'topic' => $topic,
-            'connected' => $connected
+            'connected' => $connected,
+            'count' => $count
         ];
         //On bloque l'acces du visiteur qui transformerait l'adresse http directement
         if(empty($_SERVER['HTTP_REFERER'])){

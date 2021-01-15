@@ -14,6 +14,8 @@ class Topics extends Controller {
         $this->view('posts/topics/crudTopic', $data);
     }
 
+   
+
     public function create() {
         
         if(!isLoggedIn() || $_SESSION['role']=='membre') {

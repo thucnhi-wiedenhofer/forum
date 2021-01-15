@@ -112,4 +112,11 @@ class Conversation {
         return $results;
     }
 
+    public function countConversation(){
+        $this->db->query('SELECT id_topic, COUNT(id_topic) FROM conversation GROUP BY id_topic');
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
 }
