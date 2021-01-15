@@ -60,9 +60,9 @@
                                 </div>
                                 <div class="postinfo pull-left">
                                     <div class="comments">
-                                        <div class="commentbg">
-                                            560
-                                            <div class="mark"></div>
+                                        <div class="commentbg">';
+                                        foreach($data['count'] as $count){ if($message->id == $count->id_conversation){echo $count->freq;}} 
+                                           echo '<div class="mark"></div>
                                         </div>
                                     </div>';
                                             

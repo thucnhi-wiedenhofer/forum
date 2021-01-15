@@ -13,13 +13,15 @@ class Messages extends Controller {
         $id_topic = $conversation->id_topic;
         $topic= $this->topicModel->viewTopic($id_topic);
         $connected = $this->messageModel->findAllConnected();
+        $count = $this->conversationModel->countMessage();
 
         $data = [
             'id_conversation'=> $id_conversation,
             'conversation'=> $conversation,
             'topic' => $topic,
             'messages' => $messages,
-            'connected' => $connected
+            'connected' => $connected,
+            'count'=> $count
         ];
         if(empty($_SERVER['HTTP_REFERER'])){
             header("Location: " . URLROOT . "/posts/home");  

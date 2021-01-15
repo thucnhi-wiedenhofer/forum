@@ -10,7 +10,7 @@ class Conversations extends Controller {
         $conversations = $this->conversationModel->findAllConversations($id_topic);
         $topic = $this->topicModel->viewTopic($id_topic);
         $connected = $this->conversationModel->findAllConnected();
-        $count = $this->coversationModel->countConversation();
+        $count = $this->conversationModel->countMessage();
 
 
         $data = [

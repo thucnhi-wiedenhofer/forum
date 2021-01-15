@@ -64,7 +64,7 @@
                                     <div class="postinfo pull-left">
                                         <div class="comments">
                                             <div class="commentbg">';
-                                                
+                                            foreach($data['count'] as $count){ if($conversation->id == $count->id_conversation){echo $count->freq;}} 
                                                 echo '<div class="mark"></div>
                                             </div>
                                         </div>';
@@ -72,7 +72,7 @@
                                         
                                             if(isLoggedIn() && $_SESSION['role']!='membre'){
                                                     echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
-                                            
+                                                    
                                     
                                             echo'<div class="time"><i class="fa fa-clock-o"></i>';
                                              $timestamp = strtotime($conversation->publication);

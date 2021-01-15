@@ -112,8 +112,8 @@ class Conversation {
         return $results;
     }
 
-    public function countConversation(){
-        $this->db->query('SELECT id_topic, COUNT(id_topic) FROM conversation GROUP BY id_topic');
+    public function countMessage(){
+        $this->db->query('SELECT id_conversation, COUNT(id_conversation) AS freq FROM message GROUP BY id_conversation');
         $results = $this->db->resultSet();
 
         return $results;
