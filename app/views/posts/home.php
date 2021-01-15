@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="post-rules center">
-                        <h6>Bienvenue, il y a actuellement XX membres connectés sur le forum. </h6><br>
+                        <h6>Bienvenue, il y a actuellement <?php echo $data['countConnected']; if($data['countConnected']>1) {echo ' membres connectés';} else{echo ' membre connecté';} ?>  sur le forum. </h6><br>
                     <p>Le forum Scy~Fy est votre espace ! C'est un lieu où vous pouvez échanger 
                         librement avec la plus grande communauté de fans de la culture pop dédiée à la science fiction. </p>                       
                         <p>En vous inscrivant, vous acceptez les <a href="<?php echo URLROOT;?>/pages/regles"><b>Règles du forum</b></a><br />

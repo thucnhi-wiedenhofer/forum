@@ -11,11 +11,13 @@ class Posts extends Controller {
     {
         $topics = $this->topicModel->findAllTopics();
         $count = $this->topicModel->countConversation();
+        $countConnected = $this->postModel->countConnected();
 
         $data = [
             'title'=> 'Home page',
             'topics' => $topics,
-            'count'=>$count
+            'count'=>$count,
+            'countConnected'=> $countConnected
         ];
       
         $this->view('posts/home', $data);
