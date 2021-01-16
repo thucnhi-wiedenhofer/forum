@@ -6,8 +6,8 @@ class Post {
     }
     
     public function countConnected(){
-        $this->db->query('SELECT COUNT(id) FROM `connected`');
-        $countConnected = $this->db->execute();
+        $this->db->query('SELECT COUNT(id) as count FROM `connected`');
+        $countConnected =  $this->db->single();
         return $countConnected;
     }
 }
