@@ -61,13 +61,15 @@
                                 <div class="postinfo pull-left">
                                     <div class="comments">
                                         <div class="commentbg">';
-                                        foreach($data['count'] as $count){ if($message->id == $count->id_conversation){echo $count->freq;}} 
+                                        $compt="0";
+                                            foreach($data['count'] as $count){ if($message->id_conversation == $count->id_conversation){$compt= $count->freq;}}
+                                            echo $compt; 
                                            echo '<div class="mark"></div>
                                         </div>
                                     </div>';
                                             
                                     if(isLoggedIn() && $_SESSION['role']!='membre'){
-                                        echo '<div class="views"><a href="'. URLROOT.'/conversations/modify/'.$conversation->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
+                                        echo '<div class="views"><a href="'. URLROOT.'/messages/modify/'.$message->id.'"> <i class="fa fa-eye"></i> modifier</a></div>';} 
                                 
                         
                                 echo'<div class="time"><i class="fa fa-clock-o"></i>';
@@ -84,9 +86,9 @@
                               <?php if(empty($data['messages'])){
                                   
                                     
-                                  echo '<p class="h4 text-center p-3">Ce topic ne contient pas encore de conversations</p>';
+                                  echo '<p class="h4 text-center p-3">Cette conversation ne contient pas encore de messages</p>';
                                   echo '<img class="img-resp mx-auto d-block" src="'.URLROOT.'/public/images/conversation.png " alt="" />';
-                                  echo '<p class="h5 text-center p-3">Si vous êtes connecté, vous pouvez en ajouter une</p>';
+                                  echo '<p class="h5 text-center p-3">Si vous êtes connecté, vous pouvez en ajouter un.</p>';
                                   
                                  
                               }

@@ -64,7 +64,10 @@
                                     <div class="postinfo pull-left">
                                         <div class="comments">
                                             <div class="commentbg">';
-                                            foreach($data['count'] as $count){ if($conversation->id == $count->id_conversation){echo $count->freq;}} 
+                                            $compt="0";
+                                            foreach($data['count'] as $count){ if($conversation->id == $count->id_conversation){$compt= $count->freq;}}
+                                            echo $compt; 
+                                            
                                                 echo '<div class="mark"></div>
                                             </div>
                                         </div>';

@@ -182,6 +182,8 @@ class Users extends Controller {
 
 
     public function createUserSession($user) {
+        $strt=strtotime("now")-7300;
+        $this->userModel->cleanConnected($strt);
         $this->userModel->connected($user);
         $_SESSION['id'] = $user->id;
         $_SESSION['login'] = $user->login;

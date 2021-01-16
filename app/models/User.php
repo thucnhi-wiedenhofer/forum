@@ -109,8 +109,9 @@ class User {
     }
 
     public function connected($user){
-        $this->db->query('INSERT INTO connected (id_utilisateur) VALUES( :id_utilisateur)');
+        $this->db->query('INSERT INTO connected (id_utilisateur, str_connect) VALUES( :id_utilisateur, :str_connect)');
         $this->db->bind('id_utilisateur', $user->id);
+        $this->db->bind('str_connect', strtotime("now") );
         if ($this->db->execute()) {
             return true;
         } else {
@@ -118,6 +119,17 @@ class User {
         }
 
     }
+
+    public function cleanConnected($strt){
+        $this->db->query('DELETE FROM connected WHERE str_connect < :strt');
+        $this->db->bind('strt', $strt);
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+   
 
     public function disconnected($user){
         

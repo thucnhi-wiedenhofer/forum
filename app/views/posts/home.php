@@ -20,6 +20,7 @@
     
 		<section class="content">                
             <div class="container">
+          
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="post-rules center">
@@ -54,19 +55,27 @@
                                         if(!empty($_SESSION)){
                                             if($_SESSION['role']=="admin"){
                                             echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">';
-                                            foreach($data['count'] as $count){ if($topics->id == $count->id_topic){echo $count->freq;}}
+                                            $compt="0";
+                                            foreach($data['count'] as $count){ if($topics->id == $count->id_topic){$compt= $count->freq;}}
+                                            echo $compt;                                                                                    
                                             echo '</span></a></li>';}
                                             elseif($topics->droits != "administrateur" && $_SESSION['role'] == 'moderateur'){
                                             echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">';
-                                            foreach($data['count'] as $count){ if($topics->id == $count->id_topic){echo $count->freq;}}
+                                            $compt="0";
+                                            foreach($data['count'] as $count){ if($topics->id == $count->id_topic){$compt= $count->freq;}}
+                                            echo $compt; 
                                             echo '</span></a></li>';}
                                             elseif($_SESSION['role'] == "membre" && $topics->droits != "administrateur"){
                                             echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">';
-                                            foreach($data['count'] as $count){ if($topics->id == $count->id_topic){echo $count->freq;}}
+                                            $compt="0";
+                                            foreach($data['count'] as $count){ if($topics->id == $count->id_topic){$compt= $count->freq;}}
+                                            echo $compt; 
                                             echo '</span></a></li>';}
                                         }else{ if($topics->droits == "visiteur"){
                                         echo '<li><a href="'.URLROOT.'/conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">';
-                                        foreach($data['count'] as $count){ if($topics->id == $count->id_topic){echo $count->freq;}}
+                                        $compt="0";
+                                        foreach($data['count'] as $count){ if($topics->id == $count->id_topic){$compt= $count->freq;}}
+                                        echo $compt; 
                                         echo '</span></a></li>';}   }                                 
                                     } ?>
                                 </ul>
