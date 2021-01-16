@@ -22,14 +22,21 @@ class Intranets extends Controller {
         }
         
     }
-    
-    public function create() {
+    public function mail($id_destinataire){
+        $destinataire = $this->userModel->view($id_destinataire);
+        $data= [
+            'destinataire'=> $destinataire
+        ];
+        $this->view('intranet/createMail', $data);
+    }
+
+    public function create($data) {
       
         $data = [
             'objet' => '',
             'texte' => '',
-            'id_expediteur' => '',
-            'id_destinataire' => '',
+            'id_expediteur' => $_SESSION['id'],
+            'id_destinataire' => $destinataire,
             'envoi' => '',
             'signalement' =>''
         ];
@@ -40,8 +47,8 @@ class Intranets extends Controller {
             $data = [
                 'objet' => trim($_POST['objet']),
                 'texte' => trim($_POST['texte']),                
-                'id_expediteur' => trim($_POST['id_expediteur']),
-                'id_destinataire' => trim($_POST['id_destinataire']),
+                'id_expediteur' => $_SESSION['id'],
+                'id_destinataire' => $destinataire,
                 'envoi' => date('Y-m-d H:i:s'),
                 'signalement'=> 0
             ];
@@ -52,7 +59,7 @@ class Intranets extends Controller {
                     die("Erreur système");
                 }
          }else{
-             $this->view('Intranet/listMail', $data);
+             $this->view('intranet/createMail', $data);
          }
 
     } 

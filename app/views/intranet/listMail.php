@@ -64,7 +64,7 @@
                                     <input type="hidden" name="id" value="'.$receipt->id.'>
                                     <input type="button" value="submit">
                                     </form>';
-                                    echo '<td><a  href="'.URLROOT .'/intranets/create/'.$receipt->id_expediteur.'">
+                                    echo '<td><a  href="'.URLROOT .'/intranets/mail/'.$receipt->id_expediteur.'">
                                     Répondre</a></td>';                                  
                                     echo '<td><a  href="'.URLROOT .'/intranets/delete/'.$receipt->id.'">
                                     Delete</a></td>';
