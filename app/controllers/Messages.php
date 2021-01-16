@@ -76,8 +76,6 @@ class Messages extends Controller {
                 'signalement'=> 0
             ];
 
-            $this->view('resultat', $data);
-            
                 if ($this-> messageModel->addMessage($data)) {
                     header("Location: " . URLROOT . "/messages/listMessages/".$_POST['id_conversation']);
                 } else {

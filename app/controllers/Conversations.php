@@ -75,8 +75,6 @@ class Conversations extends Controller {
                 'visible'=> 1
             ];
 
-            $this->view('resultat', $data);
-            
                 if ($this-> conversationModel->addConversation($data)) {
                     header("Location: " . URLROOT . '/conversations/listConversations/'.$data['id_topic']);
                 } else {
