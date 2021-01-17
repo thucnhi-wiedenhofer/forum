@@ -61,8 +61,8 @@
 
                                                 <div class="row">
                                                     <div class="col-lg-6 col-md-6">
-                                                        <label for="destinataire">Destinataire:</label>
-                                                        <input type="date" id="deblocage" value="<?php echo $data['user']->periode_blocage; ?>" name="periode_blocage" class="form-control" />
+                                                        <label for="destinataire">Destinataire: <?php echo $data['destinataire']->login; ?></label>
+                                                        <input type="text" id="destinataire" value="<?php echo $data['destinataire']->id; ?>" name="id_destinataire" class="form-control" disabled/>
                                                         
                                                     </div>
                                                     
@@ -81,7 +81,7 @@
 
                                    
                                     <div class="postinfobot"></br>
-                                       <input type="hidden" value="<?php echo $data['user']->id; ?>" name="id" />
+                                       
                                         <div class="pull-right postreply">
                                             <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
                                             <div class="pull-left"><input type="submit" class="btn btn-primary" name="update" value="Modifier"></div>

@@ -78,11 +78,22 @@ class Message {
         }
     }
 
-    public function modifyLiked($data){
-        $this->db->query('UPDATE message SET liked= :liked WHERE id= :id' );
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':liked', $data['liked']);
-        
+    public function verifyLiked($id, $id_utilisateur){
+        $this->db->query('SELECT * FROM likedmessage WHERE id_message= :id_message AND id_utilisateur= :id_utilisateur');
+        $this->db->bind(':id_message', $id);
+        $this->db->bind(':id_utilisateur', $id_utilisateur);
+       
+        $row = $this->db->single();
+       return $row;
+    }
+
+    public function createLiked($id, $id_utilisateur){
+        $this->db->query('INSERT INTO likedmessage (liked, id_message, id_utilisateur)
+        VALUES(:liked, :id_message, :id_utilisateur)');
+        $this->db->bind(':liked', 1);
+        $this->db->bind(':id_message', $id);
+        $this->db->bind(':id_utilisateur', $id_utilisateur);
+       
         //Execute function
         if ($this->db->execute()) {
             return true;
@@ -91,17 +102,27 @@ class Message {
         }
     }
 
-    public function modifyDisliked($data){
-        $this->db->query('UPDATE message SET disliked= :disliked WHERE id= :id' );
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':disliked', $data['disliked']);
-        
+    public function createDisliked($id, $id_utilisateur){
+        $this->db->query('INSERT INTO likedmessage (disliked, id_message, id_utilisateur)
+        VALUES(:disliked, :id_message, :id_utilisateur)');
+        $this->db->bind(':disliked', 1);
+        $this->db->bind(':id_message', $id);
+        $this->db->bind(':id_utilisateur', $id_utilisateur);
+       
         //Execute function
         if ($this->db->execute()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function countLike(){
+        $this->db->query('SELECT id_message, COUNT(liked) AS liked, COUNT(disliked) AS disliked FROM likedmessage GROUP BY id_message');
+       
+        $results = $this->db->resultSet();
+
+        return $results;
     }
 
     public function modifySignalMessage($data){

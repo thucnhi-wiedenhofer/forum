@@ -59,7 +59,16 @@
                                             echo '<h2><a href="'.URLROOT.'/messages/listMessages/'.$conversation->id.'">'.$conversation->titre.'</a></h2>';
                                             echo '<p>'.$conversation->texte.'</p>';
                                         echo '</div>
+                                        <div class="likeblock pull-left">';
+                                        $liked='0';
+                                        $disliked='0';
+                                        foreach($data['like'] as $like){ if($conversation->id == $like->id_conversation){$liked= $like->liked; $disliked= $like->disliked;}}
+
+                                        echo '<a href="'.URLROOT.'/conversations/liked/'.$conversation->id.'/'.$conversation->id_topic.'" class="up"><i class="fa fa-thumbs-up"></i>'.$liked.'</a>
+                                        <a href="'.URLROOT.'/conversations/disliked/'.$conversation->id.'/'.$conversation->id_topic.'" class="down"><i class="fa fa-thumbs-down"></i>'.$disliked.'</a>
+                                    </div>
                                         <div class="clearfix"></div>
+                                        
                                     </div>
                                     <div class="postinfo pull-left">
                                         <div class="comments">

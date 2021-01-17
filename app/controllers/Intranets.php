@@ -35,8 +35,8 @@ class Intranets extends Controller {
         $data = [
             'objet' => '',
             'texte' => '',
-            'id_expediteur' => $_SESSION['id'],
-            'id_destinataire' => $destinataire,
+            'id_expediteur' => '',
+            'id_destinataire' => '',
             'envoi' => '',
             'signalement' =>''
         ];
@@ -48,7 +48,7 @@ class Intranets extends Controller {
                 'objet' => trim($_POST['objet']),
                 'texte' => trim($_POST['texte']),                
                 'id_expediteur' => $_SESSION['id'],
-                'id_destinataire' => $destinataire,
+                'id_destinataire' => trim($_POST['destinataire']),
                 'envoi' => date('Y-m-d H:i:s'),
                 'signalement'=> 0
             ];

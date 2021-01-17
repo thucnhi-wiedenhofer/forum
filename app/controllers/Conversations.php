@@ -11,6 +11,7 @@ class Conversations extends Controller {
         $topic = $this->topicModel->viewTopic($id_topic);
         $connected = $this->conversationModel->findAllConnected();
         $count = $this->conversationModel->countMessage();
+        $like = $this->conversationModel->countLike();
 
 
         $data = [
@@ -18,7 +19,8 @@ class Conversations extends Controller {
             'conversations' => $conversations,
             'topic' => $topic,
             'connected' => $connected,
-            'count' => $count
+            'count' => $count,
+            'like' =>$like
         ];
         //On bloque l'acces du visiteur qui transformerait l'adresse http directement
         if(empty($_SERVER['HTTP_REFERER'])){
@@ -154,33 +156,50 @@ class Conversations extends Controller {
 
     }
 
-    public function liked($data){
+    public function liked($id, $id_topic){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'id' => $_POST['id'],
-                'liked' => $_POST['liked']+1
-            ];
-            if ($this->conversationModel->modifyLiked($data)) {
-                header("Location: " . URLROOT . "/conversations/listConversations");
-            } else {
-                die("Erreur système");
+        if(isLoggedIn()) {
+            $id_utilisateur = $_SESSION['id']; 
+            $row= $this->conversationModel->verifyLiked($id, $id_utilisateur);
+            if(!empty($row)){
+                header("Location: ". URLROOT ."/conversations/listConversations/".$id_topic);
+            }else{
+                if ($this->conversationModel->createLiked($id, $id_utilisateur)) {
+                    header("Location: ". URLROOT ."/conversations/listConversations/".$id_topic);
+                } else {
+                    die("Erreur système");
+                } 
             }
+           
         }
 
     }
 
-    public function disliked($data){
+    public function disliked($id, $id_topic){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'id' => $_POST['id'],
-                'disliked' => $_POST['disliked']+1
-            ];
-            if ($this->conversationModel->modifyDisliked($data)) {
-                header("Location: " . URLROOT . "/conversations/listConversations");
+        if(isLoggedIn()) {
+            $id_utilisateur = $_SESSION['id']; 
+            $row= $this->conversationModel->verifyLiked($id, $id_utilisateur);
+            if(!empty($row)){
+                header("Location: ". URLROOT ."/conversations/listConversations/".$id_topic);
+            }else{
+                if ($this->conversationModel->createDisliked($id, $id_utilisateur)) {
+                    header("Location: ". URLROOT ."/conversations/listConversations/".$id_topic);
+                } else {
+                    die("Erreur système");
+                } 
+            }
+           
+        }
+
+    }
+
+    public function signalConversation($id, $id_topic){
+
+        if(isLoggedIn()) {
+           
+            if ($this->conversationModel->modifySignalConversation($id)) {
+                header("Location: " . URLROOT . "/conversations/listConversations/".$id_topic);
             } else {
                 die("Erreur système");
             }

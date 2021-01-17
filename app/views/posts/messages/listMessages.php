@@ -55,9 +55,18 @@
                                         <div class="posttext pull-left">';
                                         
                                         echo '<p>'.$message->texte.'</p>';
-                                    echo '</div>
-                                    <div class="clearfix"></div>
-                                </div>
+                                        echo '</div>
+                                        <div class="likeblock pull-left">';
+                                        $liked='0';
+                                        $disliked='0';
+                                        foreach($data['like'] as $like){ if($message->id == $like->id_message){$liked= $like->liked; $disliked= $like->disliked;}}
+
+                                        echo '<a href="'.URLROOT.'/messages/liked/'.$message->id.'/'.$message->id_conversation.'" class="up"><i class="fa fa-thumbs-up"></i>'.$liked.'</a>
+                                        <a href="'.URLROOT.'/messages/disliked/'.$message->id.'/'.$message->id_conversation.'" class="down"><i class="fa fa-thumbs-down"></i>'.$disliked.'</a>
+                                    </div>
+                                        <div class="clearfix"></div>
+                                        
+                                    </div>
                                 <div class="postinfo pull-left">
                                     <div class="comments">
                                         <div class="commentbg">';

@@ -53,7 +53,7 @@
                 echo '<div class="pull-left"><a class="btn btn-primary"  href="'.URLROOT.'/admins/connexion">Administration</a></div>';
             }
             elseif(isLoggedIn() && $_SESSION['role']=="admin"){echo '<div class="pull-left"><a class="btn btn-primary"  href="'.URLROOT.'/admins/crud">CRUD</a></div>';}
-
+            elseif(isLoggedIn() && $_SESSION['role']!="admin"){echo '<div class="pull-left"><a class="btn btn-primary"  href="'.URLROOT.'/intranets/listMail/'.$_SESSION['id'].'">INTRANET</a></div>';}
             ?>
             
 

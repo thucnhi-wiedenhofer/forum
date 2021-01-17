@@ -78,10 +78,37 @@ class Conversation {
         }
     }
 
-    public function modifyLiked($data){
-        $this->db->query('UPDATE conversation SET liked= :liked WHERE id= :id' );
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':liked', $data['liked']);
+    public function verifyLiked($id, $id_utilisateur){
+        $this->db->query('SELECT * FROM likedconversation WHERE id_conversation= :id_conversation AND id_utilisateur= :id_utilisateur');
+        $this->db->bind(':id_conversation', $id);
+        $this->db->bind(':id_utilisateur', $id_utilisateur);
+       
+        $row = $this->db->single();
+       return $row;
+    }
+
+    public function createLiked($id, $id_utilisateur){
+        $this->db->query('INSERT INTO likedconversation (liked, id_conversation, id_utilisateur)
+        VALUES(:liked, :id_conversation, :id_utilisateur)');
+        $this->db->bind(':liked', 1);
+        $this->db->bind(':id_conversation', $id);
+        $this->db->bind(':id_utilisateur', $id_utilisateur);
+       
+        //Execute function
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function createDisliked($id, $id_utilisateur){
+        $this->db->query('INSERT INTO likedconversation (disliked, id_conversation, id_utilisateur)
+        VALUES(:disliked, :id_conversation, :id_utilisateur)');
+         $this->db->bind(':disliked', 1);
+        $this->db->bind(':id_conversation', $id);
+        $this->db->bind(':id_utilisateur', $id_utilisateur);
+       
         
         //Execute function
         if ($this->db->execute()) {
@@ -91,18 +118,14 @@ class Conversation {
         }
     }
 
-    public function modifyDisliked($data){
-        $this->db->query('UPDATE conversation SET disliked= :disliked WHERE id= :id' );
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':disliked', $data['disliked']);
-        
-        //Execute function
-        if ($this->db->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+    public function countLike(){
+        $this->db->query('SELECT id_conversation, COUNT(liked) AS liked, COUNT(disliked) AS disliked FROM likedconversation GROUP BY id_conversation');
+       
+        $results = $this->db->resultSet();
+
+        return $results;
     }
+
 
     public function findAllConnected() {
         //Prepared statement

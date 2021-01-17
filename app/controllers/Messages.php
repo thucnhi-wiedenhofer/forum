@@ -14,6 +14,7 @@ class Messages extends Controller {
         $topic= $this->topicModel->viewTopic($id_topic);
         $connected = $this->messageModel->findAllConnected();
         $count = $this->conversationModel->countMessage();
+        $like = $this->messageModel->countLike();
 
         $data = [
             'id_conversation'=> $id_conversation,
@@ -21,7 +22,8 @@ class Messages extends Controller {
             'topic' => $topic,
             'messages' => $messages,
             'connected' => $connected,
-            'count'=> $count
+            'count'=> $count,
+            'like'=> $like
         ];
         if(empty($_SERVER['HTTP_REFERER'])){
             header("Location: " . URLROOT . "/posts/home");  
@@ -155,50 +157,48 @@ class Messages extends Controller {
 
     }
 
-    public function liked($data){
+    public function liked($id, $id_conversation){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'id' => $_POST['id'],
-                'liked' => $_POST['liked']+1
-            ];
-            if ($this->messageModel->modifyLiked($data)) {
-                header("Location: " . URLROOT . "/messages/listMessages/".$_POST['id']);
+        if(isLoggedIn()) {
+            $id_utilisateur=$_SESSION['id'];
+            $row= $this->messageModel->verifyLiked($id, $id_utilisateur);
+            if(!empty($row)){
+                header("Location: ". URLROOT ."/messages/listMessages/".$id_conversation);
+            }else{
+            if ($this->messageModel->createLiked($id, $id_utilisateur)) {
+                header("Location: ". URLROOT ."/messages/listMessages/".$id_conversation);
             } else {
                 die("Erreur système");
             }
         }
+    }
 
     }
 
-    public function disliked($data){
+    public function disliked($id, $id_conversation){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'id' => $_POST['id'],
-                'disliked' => $_POST['disliked']+1
-            ];
-            if ($this->messageModel->modifyDisliked($data)) {
-                header("Location: " . URLROOT .  "/messages/listMessages/".$_POST['id']);
+        if(isLoggedIn()) {
+            $id_utilisateur=$_SESSION['id'];
+            $row= $this->messageModel->verifyLiked($id, $id_utilisateur);
+            if(!empty($row)){
+                header("Location: ". URLROOT ."/messages/listMessages/".$id_conversation);
+            }else{
+            if ($this->messageModel->createDisliked($id, $id_utilisateur)) {
+                header("Location: ". URLROOT ."/messages/listMessages/".$id_conversation);
             } else {
                 die("Erreur système");
             }
         }
+    }
 
     }
 
-    public function signalMessage($data){
+    public function signalMessage($id, $id_conversation){
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                'id' => $_POST['id'],
-                'signalement' => 1
-            ];
-            if ($this->messageModel->modifySignalMessage($data)) {
-                header("Location: " . URLROOT . "/messages/listMessages/".$_POST['id']);
+        if(isLoggedIn()) {
+           
+            if ($this->messageModel->modifySignalMessage($id)) {
+                header("Location: " . URLROOT . "/messages/listMessages/".$id_conversation);
             } else {
                 die("Erreur système");
             }
