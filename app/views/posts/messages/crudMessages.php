@@ -58,8 +58,6 @@
                                     <th scope="col">Login</th>
                                     <th scope="col">Texte</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Likes</th>
-                                    <th scope="col">Dislikes</th>
                                     <th scope="col">visible</th>
                                     <th scope="col">Signalement</th>
                                     <th scope="col">Modifier</th>
@@ -76,8 +74,6 @@
                                     echo "<td>".$message->login."</td>";
                                     echo "<td>".$message->texte."</td>";
                                     echo "<td>".$message->publication."</td>";
-                                    echo "<td>".$message->liked."</td>";
-                                    echo "<td>".$message->disliked."</td>";
                                     echo "<td>".$message->visible."</td>";
                                     echo "<td>".$message->signalement."</td>";    
                                 
@@ -104,8 +100,6 @@
                                     <th scope="col">Login</th>
                                     <th scope="col">Texte</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Likes</th>
-                                    <th scope="col">Dislikes</th>
                                     <th scope="col">visible</th>
                                     <th scope="col">Signalement</th>
                                     <th scope="col">Modifier</th>
@@ -121,8 +115,6 @@
                                     echo "<td>".$message->login."</td>";
                                     echo "<td>".$message->texte."</td>";
                                     echo "<td>".$message->publication."</td>";
-                                    echo "<td>".$message->liked."</td>";
-                                    echo "<td>".$message->disliked."</td>";
                                     echo "<td>".$message->visible."</td>";
                                     echo "<td>".$message->signalement."</td>";                               
                                     echo '<td><a  href="'.URLROOT .'/messages/modify/'.$message->id.'">
@@ -148,8 +140,6 @@
                                     <th scope="col">Login</th>
                                     <th scope="col">Texte</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Likes</th>
-                                    <th scope="col">Dislikes</th>
                                     <th scope="col">visible</th>
                                     <th scope="col">Signalement</th>
                                     <th scope="col">Modifier</th>
@@ -165,8 +155,6 @@
                                     echo "<td>".$message->login."</td>";
                                     echo "<td>".$message->texte."</td>";
                                     echo "<td>".$message->publication."</td>";
-                                    echo "<td>".$message->liked."</td>";
-                                    echo "<td>".$message->disliked."</td>";
                                     echo "<td>".$message->visible."</td>";
                                     echo "<td>".$message->signalement."</td>";    
                                 

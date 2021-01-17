@@ -76,8 +76,7 @@
                                                         
                                                         <input type="hidden"  name="id_utilisateur" value="<?php echo $data['message']->id_utilisateur; ?>" />
                                                         <input type="hidden"  name="publication" value="<?php echo $data['message']->publication; ?>" />
-                                                        <input type="hidden"  name="liked" value="<?php echo $data['message']->liked; ?>" />
-                                                        <input type="hidden"  name="disliked" value="<?php echo $data['message']->disliked; ?>" />
+                                                       
                                                     </div>
                                                 </div>                                                
                                                

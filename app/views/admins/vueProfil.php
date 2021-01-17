@@ -55,7 +55,7 @@
                                                     <li>Compte bloqué ?  <?php if($data['user']->blocage == 0){echo ' NON';}else{echo ' OUI';} ?></li>
                                                     <br />
                                                     <br />
-                                                    <li><a class="btn btn-success"  href="<?php echo  URLROOT.'/intranet/send'; ?>">Message Intranet</a></li>
+                                                    <li><a class="btn btn-success"  href="<?php echo  URLROOT.'/intranets/mail'; ?>">Message Intranet</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-6 col-md-6">

@@ -56,8 +56,6 @@ class Conversations extends Controller {
             'publication' => '',
             'id_utilisateur' => '',
             'id_topic' => '',
-            'liked' => '',
-            'disliked' => '',
             'ouvert' => '',
             'visible' => ''
         ];
@@ -71,8 +69,6 @@ class Conversations extends Controller {
                 'publication' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
                 'id_topic' => trim($_POST['id_topic']),
-                'liked' => 0,
-                'disliked' => 0,
                 'ouvert'=> 1,
                 'visible'=> 1
             ];
@@ -114,8 +110,6 @@ class Conversations extends Controller {
             'publication' => '',
             'id_utilisateur' => '',
             'id_topic' => '',
-            'liked' => '',
-            'disliked' => '',
             'ouvert' => '',
             'visible' => '',
         ];
@@ -131,8 +125,6 @@ class Conversations extends Controller {
                 'publication' => trim($_POST['publication']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
                 'id_topic' => trim($_POST['id_topic']),
-                'liked' => trim($_POST['liked']),
-                'disliked' => trim($_POST['disliked']),
                 'ouvert'=> trim($_POST['ouvert']),
                 'visible'=> trim($_POST['visible']),
             ];

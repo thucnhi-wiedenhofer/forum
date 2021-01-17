@@ -203,18 +203,20 @@ class Users extends Controller {
     }
 
      public function vueProfil($id){
-        if (!empty($_SESSION['id'])){
+        if (empty($_SESSION['id']) || empty($_SERVER['HTTP_REFERER']) ){
+            header('location:' . URLROOT . '/posts/home');}
+        else{
             $user = $this->userModel->view($id);
  
-         $data = [
-             'user' => $user
-         ];
- 
-         $this->view('users/vueProfil', $data);
-         } else {
-                  header('location:' . URLROOT . '/posts/home');
-             }
-         }
+            $data = [
+                'user' => $user
+            ];
+    
+            $this->view('users/vueProfil', $data);  
+        }
+           
+           
+     }
          
 
 }

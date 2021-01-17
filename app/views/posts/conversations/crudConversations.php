@@ -59,8 +59,6 @@
                                     <th scope="col">Login</th>
                                     <th scope="col">Texte</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Likes</th>
-                                    <th scope="col">Dislikes</th>
                                     <th scope="col">Ouvert</th>
                                     <th scope="col">Visible</th>
                                     <th scope="col">Modifier</th>
@@ -79,8 +77,6 @@
                                     echo "<td>".$conversation->login."</td>";
                                     echo "<td>".$conversation->texte."</td>";
                                     echo "<td>".$conversation->publication."</td>";
-                                    echo "<td>".$conversation->liked."</td>";
-                                    echo "<td>".$conversation->disliked."</td>";
                                     echo "<td>".$conversation->ouvert."</td>";
                                     echo "<td>".$conversation->visible."</td>";
                                 
@@ -108,8 +104,6 @@
                                     <th scope="col">Login</th>
                                     <th scope="col">Texte</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Likes</th>
-                                    <th scope="col">Dislikes</th>
                                     <th scope="col">Ouvert</th>
                                     <th scope="col">Visible</th>
                                     <th scope="col">Modifier</th>
@@ -127,8 +121,6 @@
                                     echo "<td>".$conversation->login."</td>";
                                     echo "<td>".$conversation->texte."</td>";
                                     echo "<td>".$conversation->publication."</td>";
-                                    echo "<td>".$conversation->liked."</td>";
-                                    echo "<td>".$conversation->disliked."</td>";
                                     echo "<td>".$conversation->ouvert."</td>";
                                     echo "<td>".$conversation->visible."</td>";
                                 
@@ -156,8 +148,6 @@
                                     <th scope="col">Login</th>
                                     <th scope="col">Texte</th>
                                     <th scope="col">Date</th>
-                                    <th scope="col">Likes</th>
-                                    <th scope="col">Dislikes</th>
                                     <th scope="col">Ouvert</th>
                                     <th scope="col">Visible</th>
                                     <th scope="col">Modifier</th>
@@ -175,8 +165,6 @@
                                     echo "<td>".$conversation->login."</td>";
                                     echo "<td>".$conversation->texte."</td>";
                                     echo "<td>".$conversation->publication."</td>";
-                                    echo "<td>".$conversation->liked."</td>";
-                                    echo "<td>".$conversation->disliked."</td>";
                                     echo "<td>".$conversation->ouvert."</td>";
                                     echo "<td>".$conversation->visible."</td>";
                                 

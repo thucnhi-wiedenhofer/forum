@@ -17,8 +17,8 @@ class Conversation {
 
     public function addConversation($data) {
         
-        $this->db->query('INSERT INTO conversation (titre, texte, publication, id_utilisateur, id_topic, liked, disliked, ouvert, visible)
-         VALUES(:titre, :texte, :publication, :id_utilisateur, :id_topic, :liked, :disliked, :ouvert, :visible)');
+        $this->db->query('INSERT INTO conversation (titre, texte, publication, id_utilisateur, id_topic, ouvert, visible)
+         VALUES(:titre, :texte, :publication, :id_utilisateur, :id_topic, :ouvert, :visible)');
 
 
         //Bind values
@@ -27,8 +27,6 @@ class Conversation {
         $this->db->bind(':publication', $data['publication']);
         $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
         $this->db->bind(':id_topic', $data['id_topic']);
-        $this->db->bind(':liked', $data['liked']);
-        $this->db->bind(':disliked', $data['disliked']);
         $this->db->bind(':ouvert', $data['ouvert']);
         $this->db->bind(':visible', $data['visible']);
 
@@ -55,7 +53,7 @@ class Conversation {
     public function modifyConversation($data) {
         
         $this->db->query('UPDATE conversation SET  titre= :titre, texte= :texte, publication= :publication, id_utilisateur= :id_utilisateur,
-         id_topic= :id_topic, liked= :liked, disliked= :disliked, ouvert= :ouvert, visible= :visible WHERE id=:id');
+         id_topic= :id_topic, ouvert= :ouvert, visible= :visible WHERE id=:id');
 
 
         //Bind values
@@ -64,8 +62,6 @@ class Conversation {
         $this->db->bind(':publication', $data['publication']);
         $this->db->bind(':id_utilisateur', $data['id_utilisateur']);
         $this->db->bind(':id_topic', $data['id_topic']);
-        $this->db->bind(':liked', $data['liked']);
-        $this->db->bind(':disliked', $data['disliked']);
         $this->db->bind(':ouvert', $data['ouvert']);
         $this->db->bind(':visible', $data['visible']);
         $this->db->bind(':id', $data['id']);

@@ -57,8 +57,6 @@ class Messages extends Controller {
             'publication' => '',
             'id_utilisateur' => '',
             'id_conversation' => '',
-            'liked' => '',
-            'disliked' => '',
             'visible' => '',
             'signalement' =>''
         ];
@@ -72,8 +70,6 @@ class Messages extends Controller {
                 'publication' => date('Y-m-d H:i:s'),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
                 'id_conversation' => trim($_POST['id_conversation']),
-                'liked' => 0,
-                'disliked' => 0,
                 'visible'=> 1,
                 'signalement'=> 0
             ];
@@ -117,8 +113,6 @@ class Messages extends Controller {
             'publication' => '',
             'id_utilisateur' => '',
             'id_conversation' => '',
-            'liked' => '',
-            'disliked' => '',
             'visible' => '',
             'signalement' => ''
         ];
@@ -133,8 +127,6 @@ class Messages extends Controller {
                 'publication' => trim($_POST['publication']),
                 'id_utilisateur' => trim($_POST['id_utilisateur']),
                 'id_conversation' => trim($_POST['id_conversation']),
-                'liked' => trim($_POST['liked']),
-                'disliked' => trim($_POST['disliked']),
                 'visible'=> trim($_POST['visible']),
                 'signalement'=> trim($_POST['signalement'])
             ];

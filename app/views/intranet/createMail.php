@@ -84,7 +84,7 @@
                                        
                                         <div class="pull-right postreply">
                                             <div class="pull-left smile"><a href="#"><i class="fa fa-smile-o"></i></a></div>
-                                            <div class="pull-left"><input type="submit" class="btn btn-primary" name="update" value="Modifier"></div>
+                                            <div class="pull-left"><input type="submit" class="btn btn-primary" name="envoyer"></div>
                                             <div class="clearfix"></div>
                                         </div>
 
@@ -94,7 +94,7 @@
                             </div><!-- POST -->
 
 
-                        </div>
+                       
                   
                         <div class="col-lg-4 col-md-4">
 
