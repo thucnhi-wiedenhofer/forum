@@ -60,10 +60,14 @@
                                         $liked='0';
                                         $disliked='0';
                                         foreach($data['like'] as $like){ if($message->id == $like->id_message){$liked= $like->liked; $disliked= $like->disliked;}}
-
-                                        echo '<a href="'.URLROOT.'/messages/liked/'.$message->id.'/'.$message->id_conversation.'" class="up"><i class="fa fa-thumbs-up"></i>'.$liked.'</a>
-                                        <a href="'.URLROOT.'/messages/disliked/'.$message->id.'/'.$message->id_conversation.'" class="down"><i class="fa fa-thumbs-down"></i>'.$disliked.'</a>
-                                    </div>
+                                        if(isLoggedIn()){
+                                            echo '<a href="'.URLROOT.'/messages/liked/'.$message->id.'/'.$message->id_conversation.'" class="up"><i class="fa fa-thumbs-up"></i>'.$liked.'</a>
+                                            <a href="'.URLROOT.'/messages/disliked/'.$message->id.'/'.$message->id_conversation.'" class="down"><i class="fa fa-thumbs-down"></i>'.$disliked.'</a>';
+                                        }else{
+                                            echo '<a href="#" class="up"><i class="fa fa-thumbs-up"></i>'.$liked.'</a>
+                                            <a href="#" class="down"><i class="fa fa-thumbs-down"></i>'.$disliked.'</a>';
+                                        }  
+                                        echo '</div>
                                         <div class="clearfix"></div>
                                         
                                     </div>
