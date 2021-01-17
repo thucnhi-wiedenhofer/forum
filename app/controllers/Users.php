@@ -27,14 +27,17 @@ class Users extends Controller {
 
 
                 $loggedInUser = $this->userModel->connexion($login, $password);
-
-                if ($loggedInUser != false) {
-                    $this->createUserSession($loggedInUser);
-                } else {
+               
+                if ($loggedInUser == false ) {
                     $data['loginError'] = 'Le mot de passe ou le login sont incorrects.';
-
                     $this->view('users/connexion', $data);
-                }
+                } elseif($loggedInUser->blocage == '1') {
+                   
+                    $data['loginError'] = 'Votre compte est bloqué jusqu\'au '.strftime("%d-%m-%Y", strtotime($loggedInUser->periode_blocage)).' pour avoir enfreint les régles du forum.';
+                    $this->view('users/connexion', $data);                  
+                }else{
+                    $this->createUserSession($loggedInUser);
+                } 
 
 
         } else {
