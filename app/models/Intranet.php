@@ -7,7 +7,7 @@ class Intranet {
     }
 
     public function receipt($id_user) {
-        $this->db->query('SELECT `id_mail`, `objet`, `texte`, `id_expediteur`, `id_destinataire`, `envoi`, `signalement`, id, login, avatar FROM mail_intranet JOIN utilisateurs ON utilisateurs.id = mail_intranet.id_expediteur WHERE id_destinataire = :id_user ORDER BY envoi ASC');
+        $this->db->query('SELECT `id_mail`, `objet`, `texte`, `id_expediteur`, `id_destinataire`, `envoi`, `signalement`, login FROM mail_intranet JOIN utilisateurs ON utilisateurs.id = mail_intranet.id_expediteur WHERE id_destinataire = :id_user ORDER BY envoi ASC');
         //Bind
         $this->db->bind(':id_user', $id_user);
         $results = $this->db->resultSet();
@@ -16,7 +16,7 @@ class Intranet {
     }
 
     public function sent($id_user) {
-        $this->db->query('SELECT `id_mail`, `objet`, `texte`, `id_expediteur`, `id_destinataire`, `envoi`, `signalement`, id, login, avatar FROM mail_intranet JOIN utilisateurs ON utilisateurs.id = mail_intranet.id_destinataire WHERE id_destinataire = :id_user ORDER BY envoi ASC');
+        $this->db->query('SELECT `id_mail`, `objet`, `texte`, `id_expediteur`, `id_destinataire`, `envoi`, `signalement`, login FROM mail_intranet JOIN utilisateurs ON utilisateurs.id = mail_intranet.id_destinataire WHERE id_expediteur = :id_user ORDER BY envoi ASC');
         //Bind
         $this->db->bind(':id_user', $id_user);
         $results = $this->db->resultSet();
@@ -47,7 +47,7 @@ class Intranet {
     }
 
     public function view($id) {
-        $this->db->query('SELECT * FROM mail_intranet WHERE id_mail = :id_mail');
+        $this->db->query('SELECT `id_mail`, `objet`, `texte`, `id_expediteur`, `id_destinataire`, `envoi`, `signalement`, login, role FROM mail_intranet JOIN utilisateurs ON utilisateurs.id = mail_intranet.id_expediteur WHERE id_mail = :id_mail');
 
         //Bind 
         $this->db->bind(':id_mail', $id);
@@ -56,11 +56,11 @@ class Intranet {
         return $mail;
     }
 
-    public function signalement($data) {
+    public function signalement($id) {
         
-            $this->db->query('UPDATE mail_intranet SET signalement= :signalement WHERE id= :id' );
-            $this->db->bind(':id', $data['id']);
-            $this->db->bind(':signalement', $data['signalement']);
+            $this->db->query('UPDATE mail_intranet SET signalement= :signalement WHERE id_mail= :id_mail' );
+            $this->db->bind(':id_mail', $id);
+            $this->db->bind(':signalement', 1);
             
             //Execute function
             if ($this->db->execute()) {

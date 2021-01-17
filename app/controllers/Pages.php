@@ -21,7 +21,10 @@ class Pages extends Controller
         $this->view('regles', $data);
     } 
     
-   
+   public function resultat()
+   {
+       $this->view('resultat');
+   }
    
    
 

@@ -7,13 +7,13 @@
 
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-            <?php
-       require APPROOT . '/views/includes/navigation.php';
-    ?>
-            <div class="tp-banner-container">
-                <p class="h1">Scy~Fy</p> 
-                <p class="h5">Le forum de la culture pop</p>
-            </div>
+                <?php
+                require APPROOT . '/views/includes/navigation.php';
+                ?>
+                <div class="tp-banner-container">
+                    <p class="h1">Scy~Fy</p> 
+                    <p class="h5">Le forum de la culture pop</p>
+                </div>
             </div>
         </div>
 

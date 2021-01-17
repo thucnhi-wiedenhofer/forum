@@ -55,18 +55,17 @@
                                     foreach($data['receipt'] as $receipt){
                                    
                                     echo "<tr>";//affiche en boucle les données de la table
-                                    echo "<td>".$receipt->id."</td>";                                   
+                                    echo "<td>".$receipt->id_mail."</td>";                                   
                                     echo "<td>".$receipt->login."</td>";
                                     echo "<td>".$receipt->objet."</td>";
-                                    echo "<td>".$receipt->texte."</td>";
-                                    echo "<td>".$receipt->envoi."</td>";
-                                    echo '<td><form action="'.URLROOT .'/intranets/signalement" method="post">
-                                    <input type="hidden" name="id" value="'.$receipt->id.'>
-                                    <input type="button" value="submit">
-                                    </form>';
+                                    echo '<td><a  href="'.URLROOT .'/intranets/viewMail/'.$receipt->id_mail.'">
+                                    Voir</a></td>';
+                                    echo '<td>'.$receipt->envoi.'</td>';
+                                    echo '<td><a  href="'.URLROOT .'/intranets/signalement/'.$receipt->id_mail.'">
+                                    Signaler</a></td>';
                                     echo '<td><a  href="'.URLROOT .'/intranets/mail/'.$receipt->id_expediteur.'">
                                     Répondre</a></td>';                                  
-                                    echo '<td><a  href="'.URLROOT .'/intranets/delete/'.$receipt->id.'">
+                                    echo '<td><a  href="'.URLROOT .'/intranets/delete/'.$receipt->id_mail.'">
                                     Delete</a></td>';
                                     echo "</tr>";
                                     }   
@@ -99,12 +98,12 @@
                                 foreach($data['sent'] as $sent){
                              
                                     echo "<tr>";//affiche en boucle les données de la table
-                                    echo "<td>".$sent->id."</td>";                                   
+                                    echo "<td>".$sent->id_mail."</td>";                                   
                                     echo "<td>".$sent->login."</td>";
                                     echo "<td>".$sent->objet."</td>";
                                     echo "<td>".$sent->texte."</td>";
                                     echo "<td>".$sent->envoi."</td>";
-                                    echo '<td><a  href="'.URLROOT .'/intranets/delete/'.$sent->id.'">
+                                    echo '<td><a  href="'.URLROOT .'/intranets/delete/'.$sent->id_mail.'">
                                     Delete</a></td>';
                                     echo "</tr>";
                                     }   
