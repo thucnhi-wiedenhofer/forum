@@ -36,12 +36,14 @@
                                 <h3>Fonctions</h3>
                                 <ul class="cats">
                                 <li><a class="btn btn-secondary"  href="<?php echo  URLROOT.'/admins/blocked'; ?>">Blocked</a></li>
-                                </br>
-                                <li><a class="btn btn-warning" href="<?php echo URLROOT.'/topics/create'; ?>">Ajout topic</a></li>
-                                </br>
-                                <li><a class="btn btn-primary" href="<?php echo URLROOT.'/topics/listTopics'; ?>">Crud topic</a></li>
-                                </br>
-                                <li><p class="h6">Messages: click sur le titre de la conversation</p></li>
+                                    <br />
+                                    <li><a class="btn btn-warning" href="<?php echo URLROOT.'/topics/create'; ?>">Ajout topic</a></li>
+                                    <br />
+                                    <li><a class="btn btn-info" href="<?php echo URLROOT.'/topics/listTopics'; ?>">Topic</a></li>
+                                    <br />
+                                    <li><a class="btn btn-success" href="<?php echo URLROOT.'/intranets/crudMail'; ?>">Intranet</a></li>
+                                    <br />
+                                    <li><p class="h6">Messages: click sur le titre de la conversation</p></li>
                                 </ul>
                             </div>
                         </div>

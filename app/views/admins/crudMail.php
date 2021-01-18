@@ -21,11 +21,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 breadcrumbf">
-                        <a href="<?php echo  URLROOT.'/admins/crud';?>">CRUD ></a>
-                            <a href="#">MEMBRES BLOQUES</a> 
+                            <a href="#">CRUD MAIL</a> 
                         </div>
                     </div>
                 </div>
+
 
                 <div class="container">
                     <div class="row">
@@ -46,47 +46,45 @@
                             </div>
                         </div>
                         <div class="col-lg-10 col-md-10">
-                               <h5>Membres bloqués</h5>
+                               <h5>INTRANET</h5>
                             <!-- POST -->
+                            <div class="post">
 
-                         <div class="post">
-                         <table class="table table-hover">
-                        <thead>
+                <table class="table table-hover">
+                    <thead>
                         <tr class="table-active">
                         <th scope="col">ID</th>
-                        <th scope="col">Login</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Intranet</th>
-                        <th scope="col">Blocage</th>
-                        <th scope="col">Periode Blocage</th>
-                        <th scope="col">Voir profil</th>
-                        
+                        <th scope="col">Objet</th>
+                        <th scope="col">Texte</th>
+                        <th scope="col">Expediteur</th>
+                         <th scope="col">Destinataire</th>
+                        <th scope="col">Envoi</th>
+                        <th scope="col">Signalement</th>
+                        <th scope="col">Contacter Exp</th>
+
                         
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                         foreach($data['blocked'] as $user){
+                        
+                    foreach($data['crud'] as $mail){
                        
                             echo "<tr>";//affiche en boucle les données de la table
-                            echo "<td>".$user->id."</td>";
-                            echo "<td>".$user->login."</td>";
-                            echo "<td>".$user->email."</td>";
-                            echo "<td>".$user->role."</td>";
-                              echo "<td>".$user->intranet."</td>";
-                             echo "<td>";
-                             if($user->blocage==0){echo 'NON';}else{echo 'OUI';}
-                             echo "</td>";
-                             echo "<td>".$user->periode_blocage."</td>";
-
+                            echo "<td>".$mail->id_mail."</td>";
+                            echo "<td>".$mail->objet."</td>";
+                            echo "<td>".$mail->texte."</td>";
+                            echo "<td>".$mail->id_expediteur."</td>";
+                            echo "<td>".$mail->id_destinataire."</td>";
+                            echo "<td>".$mail->envoi."</td>";
+                            echo "<td>".$mail->signalement."</td>";
                            
-                            echo '<td><a  href="'.URLROOT .'/admins/vueProfil/'.$user->id.'">
-                             Voir</a></td>';
+                            echo '<td><a  href="'.URLROOT .'/admins/vueProfil/'.$mail->id_expediteur.'">
+                             Contacter</a></td>';
                              echo "</tr>";
                             }   
                            
-                        
+                       
                     
                     ?>  
                     </tbody>

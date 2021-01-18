@@ -22,6 +22,17 @@ class Intranets extends Controller {
         }
         
     }
+
+    public function crudMail(){
+        if($_SESSION['role']=="admin"){
+            $crud = $this->intranetModel->crud();
+            $data = ['crud'=>$crud];
+            $this->view('admins/crudMail', $data);
+        }else{
+            header("Location: " . URLROOT . "/posts/home");   
+        }
+    }
+
     public function mail($id_destinataire){
         $destinataire = $this->userModel->view($id_destinataire);
         $data= [

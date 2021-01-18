@@ -6,6 +6,13 @@ class Intranet {
         $this->db = new Database;
     }
 
+    public function crud() {
+        $this->db->query('SELECT * FROM mail_intranet ORDER BY envoi ASC');
+        $results = $this->db->resultSet();
+
+        return $results;
+    }
+
     public function receipt($id_user) {
         $this->db->query('SELECT `id_mail`, `objet`, `texte`, `id_expediteur`, `id_destinataire`, `envoi`, `signalement`, login FROM mail_intranet JOIN utilisateurs ON utilisateurs.id = mail_intranet.id_expediteur WHERE id_destinataire = :id_user ORDER BY envoi ASC');
         //Bind
