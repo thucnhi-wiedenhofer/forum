@@ -66,8 +66,13 @@
                                         }else{
                                             echo '<a href="#" class="up"><i class="fa fa-thumbs-up"></i>'.$liked.'</a>
                                             <a href="#" class="down"><i class="fa fa-thumbs-down"></i>'.$disliked.'</a>';
-                                        }  
+                                        } 
+                                       
+                                       if(isLoggedIn() && $message->role!='admin'){ echo '&nbsp;&nbsp;&nbsp;&nbsp;<a  href="'.URLROOT .'/messages/signalement/'.$message->id.'/'.$message->id_conversation.'">
+                                        <i class="fa fa-envelope"></i> Signaler</a></td>'; }
+                                      
                                         echo '</div>
+                                       
                                         <div class="clearfix"></div>
                                         
                                     </div>

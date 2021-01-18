@@ -185,11 +185,11 @@ class Messages extends Controller {
 
     }
 
-    public function signalMessage($id, $id_conversation){
+    public function signalement($id, $id_conversation){
 
         if(isLoggedIn()) {
            
-            if ($this->messageModel->modifySignalMessage($id)) {
+            if ($this->messageModel->signalement($id)) {
                 header("Location: " . URLROOT . "/messages/listMessages/".$id_conversation);
             } else {
                 die("Erreur système");

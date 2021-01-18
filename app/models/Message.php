@@ -121,10 +121,12 @@ class Message {
         return $results;
     }
 
-    public function modifySignalMessage($data){
+
+    public function signalement($id) {
+        
         $this->db->query('UPDATE message SET signalement= :signalement WHERE id= :id' );
-        $this->db->bind(':id', $data['id']);
-        $this->db->bind(':signalement', $data['signalement']);
+        $this->db->bind(':id', $id);
+        $this->db->bind(':signalement', 1);
         
         //Execute function
         if ($this->db->execute()) {
@@ -133,6 +135,7 @@ class Message {
             return false;
         }
     }
+
 
     public function findAllConnected() {
         //Prepared statement
