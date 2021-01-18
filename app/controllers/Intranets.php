@@ -18,7 +18,7 @@ class Intranets extends Controller {
             'receipt'=> $receipt,
             'sent'=> $sent
             ];
-            $this->view('Intranet/listMail', $data);
+            $this->view('intranet/listMail', $data);
         }
         
     }
