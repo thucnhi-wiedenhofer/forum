@@ -1,13 +1,8 @@
 <?php
 // On génère une constante contenant le chemin vers la racine publique du projet
 define('ROOT', str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
-$url=rtrim($_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'],'/');
-$url=(parse_url($url));
-$rep= (explode('/', $url['path']));
-$root=$rep[1];
 
-
-define("WWW_ROOT", rtrim($_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].'/'.$root.'/'));
+define("WWW_ROOT", rtrim($_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST'].dirname($_SERVER['SCRIPT_NAME']).'/'));
 
 // On appelle le modèle et le contrôleur principaux
    //Requiert les librairies génériques
