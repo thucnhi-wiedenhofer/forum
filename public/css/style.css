@@ -1,0 +1,136 @@
+
+
+
+.boxedcontainer		{	max-width: 1170px; margin:auto; padding:0px 30px;}
+
+/*********************************************
+	-	SETTINGS FOR BANNER CONTAINERS	-
+**********************************************/
+
+.tp-banner-container{
+	position:relative;
+	padding:0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #fff;
+	cursor: default;
+	text-align: left;
+	
+	}
+.tp-banner-container .h1{
+	color:white;
+	font-size:5em;
+	padding-top: 1.5em;	
+	padding-left: 1em;
+}
+
+.tp-banner-container .h5{
+	color:white;
+	font-size:1.7em;
+	opacity:0.7;
+	padding-left: 2.5em;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {.tp-banner-container{	background-image: url("../../public/images/banner-xxsm.jpg");width:100vw;
+	height:10vh;}}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {.tp-banner-container{	background-image: url("../../public/images/banner-xsm.jpg");width:100vw;
+	height:15vh;
+	}.tp-banner-container .h1 {padding-top: 0.5em; font-size: 3em;}}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {.tp-banner-container{	background-image: url("../../public/images/banner-sm.jpg");width:100vw;
+	height:20vh;} .tp-banner-container .h1{padding-top: 0.5em; font-size: 3em;}}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {.tp-banner-container{	background-image: url("../../public/images/banner-md.jpg");width:100vw;
+	height:25vh;}.tp-banner-container .h1{padding-top: 0.5em; font-size:4em;  } }
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {.tp-banner-container{	background-image: url("../../public/images/banner2.jpg");width:100vw;
+	height:35vh;} .tp-banner-container .h1{padding-top: 1em; font-size:5em; } }
+
+	@media only screen and (max-width: 600px) {.tp-banner-container .h1{ display:none;} }
+	@media only screen and (max-width: 600px) {.tp-banner-container .h5{ display: none;}}
+	
+	.tp-banner-landing{
+		position:relative;
+		padding:0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		color: #fff;
+		text-align: left;
+		background-image: url("../../public/images/banner3.jpg");
+		width:100vw;
+		height:90vh;}
+		
+		
+		
+	.tp-banner-landing .h1{
+		color:white;
+		font-size:5em;
+		padding-top: 5em;	
+		padding-left: 3em;
+	}
+	
+	.tp-banner-landing .h5{
+		color:white;
+		font-size:1.7em;
+		opacity:0.7;
+		padding-left: 9em;
+	}
+
+
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px) {.tp-banner-landing .h1{ padding-left: 0.5em; padding-top: 4em;}}
+@media only screen and (max-width: 768px) {.tp-banner-landing .h5{ padding-left: 1em;}}
+
+	.container-fluid-black{
+		background-color: rgb(20, 20, 20)!important;
+		width:100vw;
+		height:100vh;
+		padding-top:5vh;
+	}
+
+	.container-fluid-black a{
+		text-decoration: none;
+		cursor: hand;
+	}
+
+.post-rules{
+	width: 85%;
+    padding-right: 30px;
+    padding-top: 20px;
+	padding-bottom: 15px;
+	padding-left:30px;
+	background-color: #fff;
+    color: #343636;
+    font-size: 14px;
+    font-family: 'Open Sans Light', sans-serif;   
+	line-height: 25px;
+	margin-bottom: 20px;
+	margin-top:30px;
+	
+}
+
+.center{
+	text-align: center;
+}
+
+.invalidFeedback {
+    color: #ff0000;
+    display: block;
+}
+
+.img-resp{
+	display: block;
+	max-width: 90%;
+	height: auto;
+}
+	
+
+	
+	
