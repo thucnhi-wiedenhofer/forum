@@ -6,6 +6,8 @@ Il y a 4 catégories d'utilisateurs:
 - modérateur (id:moderateur, psw:1234)
 - membre 
 - visiteur
+
+
 L'administrateur dispose d'un CRUD . Le modérateur peut ajouter des topics, modifier les conversations et messages .
 Le membre peut ajouter conversations et messages. Le visiteur peut consulter les topics, conversations, messages définis avec droits visiteurs.
 On consulte les topics conversations et messages en cliquant sur le titre.
