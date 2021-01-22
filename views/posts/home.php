@@ -38,7 +38,7 @@
                     <div class="col-lg-6 col-md-6">
                     <br />
                         
-                        <?php if(!empty($_SESSION)){
+                        <?php if(!empty($_SESSION['role'])){
                             if($_SESSION['role']== 'admin' || $_SESSION['role']== 'moderateur'){
                             echo'</br></br><a class="btn btn-warning" href="'.WWW_ROOT.'topics/create"
                              role="button">Ajout topic</a></br></br>';} 
@@ -52,7 +52,7 @@
                             <div class="blocktxt">
                                 <ul class="cats">
                                     <?php foreach($data['topics'] as $topics){
-                                        if(!empty($_SESSION)){
+                                        if(!empty($_SESSION['role'])){
                                             if($_SESSION['role']=="admin"){
                                             echo '<li><a href="'.WWW_ROOT.'conversations/listConversations/'.$topics->id.'">'.$topics->titre.'<span class="badge pull-right">';
                                             $compt="0";
