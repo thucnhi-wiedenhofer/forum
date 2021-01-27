@@ -144,7 +144,7 @@
                                                         <textarea id="texte" name="texte" rows="3" cols="33"></textarea>                                                 
                                                         
                                                         <input type="hidden"  name="id_utilisateur" value="<?php echo $_SESSION['id']; ?>" />
-                                                        <input type="hidden" name="id_conversation" value="<?php echo $data['id_conversation']; ?>" />
+                                                        <input type="hidden" name="id_conversation" value="<?php echo $data['id_conversation']; ?>" />                                                
                                                     </div>
                                                 </div>                                                
                                                 
